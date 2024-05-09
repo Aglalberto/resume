@@ -63,8 +63,7 @@ video {
 }
 
 #profile-picture {
-    filter: opacity(0.8) saturate(0.8);
-    border-radius: 1.5rem;
+    filter: opacity(0.87) saturate(0.8);
 }
 
 #scroll-icon {
