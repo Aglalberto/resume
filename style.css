@@ -49,14 +49,18 @@ video {
 
 /* CONTEÚDO */
 
+h1 {
+    font-size: 3rem;
+}
+
 #scroll-icon {
     display: flex;
     justify-content: center;
     margin-top: 12rem;
 }
 
-h1 {
-    font-size: 3rem;
+#scroll-mobile {
+    display: none;
 }
 
 a {
@@ -100,7 +104,7 @@ i.bi {
    border-radius: 0;
    border: none;
    font-size: 1.5rem;
-   padding: 1.5rem;
+   padding: 1rem;
    transition: 0.2s ease;
 }
 
@@ -130,6 +134,8 @@ i.bi {
 
 /* RESPONSIVIDADE */
 
+
+
 @media (max-width: 600px) {
     .txt-reduce {
         font-size: 2.5rem;
@@ -141,6 +147,14 @@ i.bi {
     }
 
     #socials button i {
+        display: block;
+    }
+
+    #scroll-desktop {
+        display: none;
+    }
+
+    #scroll-mobile {
         display: block;
     }
 
