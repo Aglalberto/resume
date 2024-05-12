@@ -130,14 +130,18 @@ i.bi {
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 574px) {
+@media (max-width: 600px) {
     .txt-reduce {
         font-size: 2.5rem;
     }
 
     #socials button {
         padding: 1rem;
-        font-size: 1rem;
+        font-size: 1.2rem;
+    }
+
+    #socials button i {
+        display: block;
     }
 
 
