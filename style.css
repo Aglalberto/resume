@@ -150,6 +150,8 @@ i.bi {
     background-color: #000000;
 }
 
+/* MODAL */
+
 #journey-modal-btn {
     border: 2px solid white;
     background-color: black;
@@ -169,6 +171,8 @@ i.bi {
 #journey-modal-btn i {
     color: #a8dacb;
 }
+
+/* LINKS EXP PROFISSIONAL */
 
 .exp-link i {
     color: #a8dacb;
