@@ -24,6 +24,14 @@ html {
     border-top: none;
 }
 
+.modal-backdrop {
+    opacity: 0.8 !important;
+  }
+
+.modal-body p {
+    font-size: 1.2rem;
+}
+
 /* VIDEO */
 
 video {
