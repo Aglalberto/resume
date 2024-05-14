@@ -18,6 +18,11 @@ html {
     
 }
 
+/* AJUSTES */
+
+.modal-footer {
+    border-top: none;
+}
 
 /* VIDEO */
 
@@ -94,6 +99,11 @@ i.bi {
     
 }
 
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 
 
@@ -132,6 +142,16 @@ i.bi {
     background-color: #000000;
 }
 
+#journey-modal {
+    border: 2px solid white;
+    background-color: black;
+    transition: 0.2s ease;
+}
+
+#journey-modal:hover {
+    background-color: #1d1d1d;
+}
+
 /* RESPONSIVIDADE */
 
 
@@ -166,5 +186,5 @@ i.bi {
         display: none;
     }
 
-
 }
+
