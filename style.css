@@ -170,6 +170,22 @@ i.bi {
     color: #a8dacb;
 }
 
+.exp-link i {
+    color: #a8dacb;
+}
+
+.exp-link {
+    color: #a8dacb;
+}
+
+.exp-link:hover i {
+    color: #00ffae;
+}
+
+.exp-link:hover {
+    color: #00ffae;
+}
+
 
 
 
