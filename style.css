@@ -150,15 +150,28 @@ i.bi {
     background-color: #000000;
 }
 
-#journey-modal {
+#journey-modal-btn {
     border: 2px solid white;
     background-color: black;
     transition: 0.2s ease;
 }
 
-#journey-modal:hover {
-    background-color: #1d1d1d;
+#journey-modal-btn:hover i {
+    color: black;
+
 }
+
+#journey-modal-btn:hover {
+    color: black;
+    background-color: #ffffff;
+}
+
+#journey-modal-btn i {
+    color: #a8dacb;
+}
+
+
+
 
 /* RESPONSIVIDADE */
 
