@@ -6,7 +6,7 @@
     font-optical-sizing: auto;
     font-style: normal;
     color: white;
-    
+
 }
 
 body,
@@ -15,7 +15,7 @@ html {
     padding: 0;
     height: 100%;
     background-color: black;
-    
+
 }
 
 /* AJUSTES */
@@ -26,11 +26,31 @@ html {
 
 .modal-backdrop {
     opacity: 0.8 !important;
-  }
+}
 
 .modal-body p {
     font-size: 1.2rem;
 }
+
+.carousel-indicators {
+    margin-bottom: 3rem;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #525252;
+}
+
+/* Estilo para o indicador ativo */
+.carousel-indicators .active {
+    background-color: #cacaca;
+}
+
+
+
+
 
 /* VIDEO */
 
@@ -40,7 +60,7 @@ video {
     object-fit: cover;
     width: 100%;
     filter: brightness(0.5);
-    
+
 }
 
 .video-container {
@@ -57,13 +77,21 @@ video {
     left: 0;
     min-width: 100%;
     min-height: 100%;
-    
+
 }
 
 /* CONTEÚDO */
 
 h1 {
     font-size: 3rem;
+
+
+}
+
+.title {
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.3rem;
 }
 
 #scroll-icon {
@@ -78,12 +106,12 @@ h1 {
 
 a {
     text-decoration: none;
-    
+
 }
 
 i.bi {
     color: #455953;
-    
+
 }
 
 .content {
@@ -92,19 +120,19 @@ i.bi {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    
+
 
 }
 
 .content h1 {
     font-size: 4rem;
-    
+
 }
 
 .content p {
     font-size: 2rem;
     font-weight: 300;
-    
+
 }
 
 .modal-footer {
@@ -119,19 +147,19 @@ i.bi {
 /* SOCIALS */
 
 #socials button {
-   border-radius: 0;
-   border: none;
-   font-size: 1.5rem;
-   padding: 1rem;
-   transition: 0.2s ease;
+    border-radius: 0;
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+    transition: 0.2s ease;
 }
 
 #whatsapp {
-    background-color: #24CC63;   
+    background-color: #24CC63;
 }
 
-#whatsapp:hover{
-    background-color: #1daa53; 
+#whatsapp:hover {
+    background-color: #1daa53;
 }
 
 #linkedin {
@@ -227,5 +255,27 @@ i.bi {
         display: none;
     }
 
+    .carousel-indicators [data-bs-target] {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #525252;
+    }
+
+    .carousel-indicators .active {
+        background-color: #cacaca;
+    }
+
+    .carousel-indicators {
+        margin-bottom: 1rem;
+    }
+
 }
 
+@media (min-width: 830px) {
+
+    .carousel-inner img {
+        padding: 0rem 6rem;
+    }
+
+}
