@@ -24,7 +24,9 @@
 
 <body>
 
-    <button id="translate-btn" class="btn btn-outline-info">EN</button>
+    <button id="translate-btn" class="btn">
+        <img id="translate-icon" src="assets/ptbr-flag.png" alt="Language" width="54">
+    </button>
 
     <div class="d-flex video-container">
 
@@ -627,11 +629,13 @@ Pesse was a startup in which we created an application aimed at optimizing opera
         };
 
         const translateBtn = document.getElementById("translate-btn");
+        const translateIcon = document.getElementById("translate-icon");
         let currentLang = "pt";
 
         translateBtn.addEventListener("click", () => {
             currentLang = currentLang === "pt" ? "en" : "pt";
-            translateBtn.textContent = currentLang === "pt" ? "EN" : "PTBR";
+          
+            translateIcon.src = currentLang === "pt" ? "assets/ptbr-flag.png" : "assets/us-flag.png";
 
             // INTRO
             document.querySelector("#greeting").textContent = translations[currentLang].greeting;
