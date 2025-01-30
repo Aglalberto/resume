@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ptbr">
 
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,8 @@
 
 <body>
 
+    <button id="translate-btn" class="btn btn-outline-info">EN</button>
+
     <div class="d-flex video-container">
 
         <video autoplay muted loop id="video-background">
@@ -33,8 +35,8 @@
 
         <div class="d-grid justify-content-center content">
             <div>
-                <h1>Olá, sou o Aglalberto</h1>
-                <p>Trabalho com tecnologia e design desde 2014</p>
+                <h1 id="greeting">Olá, sou o Aglalberto</h1>
+                <p id="greeting-work">Trabalho com tecnologia e design desde 2014</p>
 
             </div>
             <div id="scroll-icon">
@@ -55,7 +57,7 @@
 
     <div id="jumpto-skills" class="container d-grid justify-content-around mt-3 w-100">
 
-        <h1 class="title" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">SKILLS</h1>
+        <h1 id="skills" class="title" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">SKILLS</h1>
 
         <div class="row cols-sm-3 w-100 m-0">
             <div class="col text-center" data-aos="zoom-in">
@@ -97,7 +99,7 @@
             </div>
         </div>
 
-        <h1 class="title mt-5" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">STACKS</h1>
+        <h1 id="stacks" class="title mt-5" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">STACKS</h1>
 
         <div class="row cols-sm-3 w-100 m-0">
 
@@ -116,40 +118,46 @@
 
         </div>
 
-        <p class="container mt-5 fs-5" style="font-weight: 500; margin-bottom: 2rem;" data-aos="zoom-in">Estou em busca de
+        <p id="looking-for" class="container mt-5 fs-5" style="font-weight: 500; margin-bottom: 2rem;"
+            data-aos="zoom-in">Estou em busca
+            de
             oportunidades na área de Frontend, onde posso unir minha experiência em UI & UX Design com minhas
-            habilidades em HTML e CSS.</p>
+            habilidades em HTML, CSS e Javascript.</p>
 
 
         <!-- FORMAÇÃO -->
 
         <div class="mt-5">
-            <h1 class="title" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">FORMAÇÃO
+            <h1 id="education" class="title" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">FORMAÇÃO
             </h1>
         </div>
 
         <div class="container">
 
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2015</span> Bacharel em
-                Audiovisual e Novas Mídias pela <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
+            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2015</span> <span id="edu01">
+                    Bacharel em Audiovisual e Novas Mídias pela
+                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
                         href="https://drive.google.com/file/d/1uTd8JG4PqEnJyi0ezSKpTw3wW55wcSu0/view?usp=sharing"
                         target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">UNIFOR <i
                                 class="bi bi-box-arrow-up-right"></i></span> </a></p>
 
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2018</span> MBA em Design
-                Gráfico e Digital pela <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
+            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2018</span> <span id="edu02">
+                    MBA em Design Gráfico e Digital pela
+                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
                         href="https://drive.google.com/file/d/1LNqebfkpIX25l9nmHFjYHjDReAR_wHkV/view?usp=sharing"
                         target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">UNIFOR <i
                                 class="bi bi-box-arrow-up-right"></i></span> </a></p>
 
-            <p class="fs-4" data-aos="zoom-in"><span class="fs-6" style="color: #a8dacb;">2023</span> Análise e
-                Desenvolvimento de Sistemas pela <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
+            <p class="fs-4" data-aos="zoom-in"><span class="fs-6" style="color: #a8dacb;">2023</span> <span
+                    id="edu03">Análise e Desenvolvimento de Sistemas pela
+                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
                         href="https://drive.google.com/file/d/14MAqqiuoNJYFLv0d0B4a3i1aMgCGWm5Q/view?usp=sharing"
                         target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">ESTÁCIO <i
                                 class="bi bi-box-arrow-up-right"></i></span> </a></p>
 
-            <p class="fs-4" data-aos="zoom-in"><span class="fs-6" style="color: #a8dacb;">2024</span> Fullstack
-                Javascript Developer pela <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
+            <p class="fs-4" data-aos="zoom-in"><span class="fs-6" style="color: #a8dacb;">2024</span> <span id="edu04">
+                    Fullstack Javascript Developer pela
+                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
                         href="https://drive.google.com/file/d/15K-4a7Uixo7L-bV4KhaSlerhxCtfmR0A/view?usp=sharing"
                         target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">YOUTH SPACE <i
                                 class="bi bi-box-arrow-up-right"></i></span> </a></p>
@@ -158,32 +166,50 @@
         <!-- EXP PROFISSIONAL -->
 
         <div class="mt-5" style="overflow-x: hidden;">
-            <h1 class="title txt-reduce" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">EXPERIÊNCIA
+            <h1 id="professional-exp" class="title txt-reduce" style="font-weight: 700; margin-bottom: 2rem;"
+                data-aos="zoom-in">EXPERIÊNCIA
                 PROFISSIONAL
             </h1>
         </div>
 
         <div class="container">
 
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2014-2016</span> Estágio em
-                Tecnologia da Informação e Comunicação (TIC) no <a href="https://vortex.unifor.br/"
-                    target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">VORTEX - UNIFOR
-                        <i class="bi bi-box-arrow-up-right"></i></span></a></p>
+            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2014-2016</span>
+                <span id="exp01">
+                    Estágio em
+                    Tecnologia da Informação e Comunicação (TIC) no
+                </span> <a href="https://vortex.unifor.br/" target="_blank"><span class="exp-link fs-4"
+                        style="font-weight: 700;">VORTEX - UNIFOR
+                        <i class="bi bi-box-arrow-up-right"></i></span></a>
+            </p>
 
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2016-2019</span> Bolsista em
-                Tecnologia da Informação e Comunicação (TIC) na UNIFOR pela <a
-                    href="https://issuu.com/sofiacavalcante/docs/citilab-versao_digital/20" target="_blank"><span
-                        class="exp-link fs-4" style="font-weight: 700;">Fundação de Ciência, Tecnologia e
-                        Inovação de Fortaleza (CITINOVA) <i class="bi bi-box-arrow-up-right"></i></span></a></p>
+            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2016-2019</span>
+                <span id="exp02">
+                    Bolsista em
+                    Tecnologia da Informação e Comunicação (TIC) na UNIFOR pela
+                </span> <a href="https://issuu.com/sofiacavalcante/docs/citilab-versao_digital/20" target="_blank"><span
+                        class="exp-link fs-4" style="font-weight: 700;">
+                        Fundação de Ciência, Tecnologia e
+                        Inovação de Fortaleza (CITINOVA)
+                        <i class="bi bi-box-arrow-up-right"></i></span></a>
+            </p>
 
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2020-2023</span> Sócio
-                Empreendedor com a <a href="https://linktr.ee/pessetech" target="_blank"><span class="exp-link fs-4"
+            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2020-2023</span>
+                <span id="exp03">
+                    Sócio
+                    Empreendedor com a
+                </span> <a href="https://linktr.ee/pessetech" target="_blank"><span class="exp-link fs-4"
                         style="font-weight: 700;">PESSE Tecnologia em Logística <i
-                            class="bi bi-box-arrow-up-right"></i></span></a></p>
+                            class="bi bi-box-arrow-up-right"></i></span></a>
+            </p>
 
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2021-atual</span> Analista de
-                CRM na <a href="https://unifor.br" target="_blank"><span class="exp-link fs-4"
-                        style="font-weight: 700;">UNIFOR <i class="bi bi-box-arrow-up-right"></i></span> </a></p>
+            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2021-atual</span>
+                <span id="exp04">
+                    Analista de
+                    CRM na
+                </span> <a href="https://unifor.br" target="_blank"><span class="exp-link fs-4"
+                        style="font-weight: 700;">UNIFOR <i class="bi bi-box-arrow-up-right"></i></span> </a>
+            </p>
 
         </div>
 
@@ -194,7 +220,7 @@
             <button data-aos="fade-zoom-in" data-aos-easing="ease-in-back" id="journey-modal-btn" type="button"
                 class="btn btn-primary fs-6" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 style="font-weight: 700; letter-spacing: 1px;">
-                <i class="bi bi-card-text"></i> TRAJETÓRIA DETALHADA
+                <i class="bi bi-card-text"></i> <span id="journey">TRAJETÓRIA DETALHADA</span>
             </button>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -202,10 +228,10 @@
                 <div class="modal-dialog">
                     <div class="modal-content" style="background-color: black; border: 2px solid white;">
                         <div class="modal-footer">
-                            <p class="fs-4"><b>Trajetória detalhada</b></p>
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fechar</button>
+                            <p class="fs-4" id="detailed-journey-modal"><b>Trajetória detalhada</b></p>
+                            <button id="close" type="button" class="btn btn-light" data-bs-dismiss="modal">Fechar</button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="journey-text">
                             <p>
                                 Em 2014 iniciei meu primeiro estágio no laboratório de inovação e tecnologia Vortex,
                                 situado na Universidade de Fortaleza.
@@ -217,7 +243,7 @@
                                 ocupado por desenvolvedores. Foi ali que meu fascínio pela tecnologia se solidificou.
                             </p>
 
-                            <img src="https://vortex.unifor.br/assets/novasala6.jpg"
+                            <img src="https://unifor.br/documents/392172/646221/vortex-laboratorio-banner-desktop.jpg/49190eb5-fb73-db86-7c70-ee47dc09bba6?t=1708348185231"
                                 style="width: 100%; margin: 1.2rem 0rem;" alt="">
 
 
@@ -301,7 +327,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light w-100" data-bs-dismiss="modal">Fechar</button>
+                            <button id="close2" type="button" class="btn btn-light w-100"data-bs-dismiss="modal">Fechar</button>
                         </div>
                     </div>
                 </div>
@@ -311,7 +337,7 @@
         <!-- ALGUNS TRABALHOS -->
 
         <div class="mt-5">
-            <h1 class="title txt-reduce" style="font-weight: 700; " data-aos="zoom-in">
+            <h1 id="some-works" class="title txt-reduce" style="font-weight: 700; " data-aos="zoom-in">
                 ALGUNS TRABALHOS
             </h1>
         </div>
@@ -400,6 +426,252 @@
     <script>
         AOS.init();
     </script>
+
+    <script>
+        const translations = {
+            en: {
+                greeting: "Hello, I'm Aglalberto",
+                work: "I have been working with technology and design since 2014",
+                skills: "SKILLS",
+                stacks: "STACKS",
+                lookingFor: "I am looking for opportunities in Frontend development, where i can combine my UI & UX Design experience with my HTML, CSS and Javascript skills.",
+                education: "EDUCATION",
+                edu01: "Bachelor in Audiovisual and New Medias from",
+                edu02: "Graphic and Digital Design MBA from",
+                edu03: "Systems Analysis and Development from",
+                edu04: "Fullstack Javascript Developer from",
+                experience: "PROFESSIONAL EXPERIENCE",
+                exp01: "Internship in Information and Communication Technology (ICT) at",
+                exp02: "Scholarship in Information and Communication Technology (ICT) at UNIFOR for",
+                exp03: "Entrepreneurial Partner with",
+                exp04: "CRM Analyst at",
+                works: "SOME WORKS",
+                detailedJourney: "DETAILED JOURNEY",
+                detailedJourneyModal: `<b>Detailed Journey</b>`,
+                buttonClose: "Close",
+
+                journeyText:
+                    `
+                
+                <p>
+In 2014, i began my first internship at the Vortex innovation and technology laboratory,
+located at the University of Fortaleza.
+</p>
+<p>
+This technological innovation environment, aimed at students in computer science courses,
+was the setting where I began my professional journey. Among the 20 interns, there
+were only me and two others from the communications area, immersed in an environment
+predominantly occupied by developers. It was there that my fascination with technology solidified. </p>
+
+<img src="https://unifor.br/documents/392172/646221/vortex-laboratorio-banner-desktop.jpg/49190eb5-fb73-db86-7c70-ee47dc09bba6?t=1708348185231"
+style="width: 100%; margin: 1.2rem 0rem;" alt="">
+
+<p>
+My main responsibilities included developing user interfaces (UI) and user experience (UX), creating prototypes and interfaces for later implementation by developers. I also took the lead in academic integration projects, facilitating meetings with clients, mostly Master's and Doctoral students at the University, who were looking to bring their ideas to life, providing me with valuable multidisciplinary experience. During this period, I learned about project management, requirements gathering and agile methodologies, improving my technical and managerial skills. In addition, I explored 3D modeling for augmented reality with the project that gave rise to my TCC "Iracema Virtual", and performed several functions related to design, further enriching my professional repertoire. </p>
+
+<img src="assets/iracema.png" style="width: 100%; margin: 1.2rem 0rem;" alt="">
+
+<p>
+In 2016, at the end of the internship, the laboratory coordinator recognized my potential and secured scholarships from the City of Fortaleza so that I could continue contributing as a scholarship holder, also taking on the role of coordinator of the design team. </p>
+<p>
+During my time at the lab, I participated in several challenges, such as
+Hackathons, the Renault Experience Challenge and the Startup Weekend, where I learned a lot
+about entrepreneurship.
+</p>
+
+<p>
+In 2016, a fellow fellow who worked as a developer at the lab invited me
+to participate in one of these challenges, along with two other developers. That was
+when we founded Besalt Design and Technology.
+</p>
+
+<img src="assets/logo-besalt.png" style="width: 100%; margin: 1.2rem 0rem; padding: 2rem;"
+alt="">
+
+<img src="assets/team-besalt.jpg" style="width: 100%; margin-bottom: 1.2rem;" alt="">
+
+<p>
+Besalt was a software house specialized in developing on-demand software. However, in 2019, we faced difficulties in reconciling our jobs with the demands of the company, which culminated in its closure. </p>
+<p>
+In 2020, together with the same colleagues with whom I founded Besalt, we started a new venture: Pesse Tecnologia em Logística, adding two new members with experience in logistics. </p>
+
+<img src="assets/logo-pesse.png" style="width: 100%; padding: 2rem;" alt="">
+
+<img src="assets/team-pesse.jpg" style="width: 100%; margin: 1.2rem 0rem;" alt="">
+
+<p>
+Pesse was a startup in which we created an application aimed at optimizing operations for transport companies.
+                
+                `,
+            },
+            pt: {
+                greeting: "Olá, sou o Aglalberto",
+                work: "Trabalho com tecnologia e design desde 2014",
+                skills: "SKILLS",
+                stacks: "STACKS",
+                lookingFor: "Estou em busca de oportunidades na área de Frontend, onde posso unir minha experiência em UI & UX Design com minhas habilidades em HTML, CSS e Javascript.",
+                education: "FORMAÇÃO",
+                edu01: "Bacharel em Audiovisual e Novas Mídias pela",
+                edu02: "MBA em Design Gráfico e Digital pela",
+                edu03: "Análise e Desenvolvimento de Sistemas pela",
+                edu04: "Fullstack Javascript Developer pela",
+                experience: "EXPERIÊNCIA PROFISSIONAL",
+                exp01: "Estágio em Tecnologia da Informação e Comunicação (TIC) no",
+                exp02: "Bolsista em Tecnologia da Informação e Comunicação (TIC) na UNIFOR pela",
+                exp03: "Sócio Empreendedor com a",
+                exp04: "Analista de CRM na",
+                works: "ALGUNS TRABALHOS",
+                detailedJourney: "TRAJETÓRIA DETALHADA",
+                detailedJourneyModal: `<b>Trajetória Detalhada</b>`,
+                buttonClose: "Fechar",
+
+                journeyText:
+                    `
+                
+                <p>
+                                Em 2014 iniciei meu primeiro estágio no laboratório de inovação e tecnologia Vortex,
+                                situado na Universidade de Fortaleza.
+                            </p>
+                            <p>
+                                Este ambiente de inovação tecnológica, direcionado aos alunos dos cursos de computação,
+                                foi o cenário onde iniciei minha jornada profissional. Entre os 20 estagiários, havia
+                                apenas eu e outros dois da área de comunicação, imersos em um ambiente predominantemente
+                                ocupado por desenvolvedores. Foi ali que meu fascínio pela tecnologia se solidificou.
+                            </p>
+
+                            <img src="https://unifor.br/documents/392172/646221/vortex-laboratorio-banner-desktop.jpg/49190eb5-fb73-db86-7c70-ee47dc09bba6?t=1708348185231"
+                                style="width: 100%; margin: 1.2rem 0rem;" alt="">
+
+
+                            <p>
+                                Minhas principais responsabilidades incluíam o desenvolvimento de interfaces de usuário
+                                (UI) e experiência do usuário (UX), elaborando protótipos e interfaces para posterior
+                                implementação pelos desenvolvedores. Também assumi a liderança em projetos de integração
+                                acadêmica, facilitando reuniões com os clientes, em sua maioria alunos de Mestrado e
+                                Doutorado da Universidade, que buscavam concretizar suas ideias, proporcionando-me uma
+                                valiosa experiência multidisciplinar. Durante esse período, aprendi sobre gestão de
+                                projetos, levantamento de requisitos e metodologias ágeis, aprimorando minhas
+                                competências técnicas e gerenciais. Além disso, explorei a modelagem 3D para realidade
+                                aumentada com o projeto que deu origem ao meu TCC "Iracema Virtual", e desempenhei
+                                diversas funções relacionadas ao design, enriquecendo ainda mais meu repertório
+                                profissional.
+                            </p>
+
+                            <img src="assets/iracema.png" style="width: 100%; margin: 1.2rem 0rem;" alt="">
+
+
+                            <p>
+                                Em 2016, ao término do estágio, o coordenador do laboratório reconheceu meu potencial e
+                                assegurou bolsas da Prefeitura de Fortaleza para que eu continuasse contribuindo como
+                                bolsista, assumindo também o papel de coordenador da equipe de design.
+                            </p>
+                            <p>
+                                Durante minha permanência no laboratório, participei de diversos desafios, como
+                                Hackathons, o Desafio Renault Experience e o Startup Weekend, onde aprendi bastante
+                                sobre empreendedorismo.
+                            </p>
+
+
+                            <p>
+                                Em 2016, um colega bolsista que atuava como desenvolvedor no laboratório me convidou
+                                para participar de um desses desafios, juntamente com outros dois desenvolvedores. Foi
+                                então que fundamos a Besalt Design e Tecnologia.
+                            </p>
+
+                            <img src="assets/logo-besalt.png" style="width: 100%; margin: 1.2rem 0rem; padding: 2rem;"
+                                alt="">
+
+                            <img src="assets/team-besalt.jpg" style="width: 100%; margin-bottom: 1.2rem;" alt="">
+
+
+                            <p>
+                                A Besalt era uma softwarehouse especializada no desenvolvimento de softwares sob
+                                demanda. No entanto, em 2019, enfrentamos dificuldades para conciliar nossos empregos
+                                com as demandas da empresa, o que culminou em seu encerramento.
+                            </p>
+                            <p>
+                                Em 2020, juntamente com os mesmos colegas com quem fundei a Besalt, iniciamos um novo
+                                empreendimento: a Pesse Tecnologia em Logística, agregando dois novos membros com
+                                experiência em logística.
+                            </p>
+
+                            <img src="assets/logo-pesse.png" style="width: 100%; padding: 2rem;" alt="">
+
+                            <img src="assets/team-pesse.jpg" style="width: 100%; margin: 1.2rem 0rem;" alt="">
+
+
+                            <p>
+                                A Pesse era uma startup no qual criamos um aplicativo voltado para otimizar operações de
+                                empresas de transporte, permitindo a redução de custos e a melhoria da performance dos
+                                veículos por meio da análise detalhada dos dados provenientes dos sensores de telemetria
+                                instalados nos veículos.
+                            </p>
+                            <p>
+                                Em 2020 o então coordenador do laboratório Vortex se tornou Diretor de Tecnologia da
+                                Universidade de Fortaleza. No ano seguinte, em 2021, ele me convidou para trabalhar na
+                                Diretoria de Marketing com o novo CRM da Universidade, pois era preciso alguém com certa
+                                experiência em tecnologia e comunicação, aceitei a proposta e estou até hoje trabalhando
+                                como analista de CRM para captação de novos alunos.
+                            </p>
+                            <p style="margin-bottom: 0;">
+                                Em 2023, decidi por deixar a Pesse e concentrar meus esforços no aprimoramento das
+                                minhas habilidades como desenvolvedor. Assumi o compromisso de embarcar em uma jornada
+                                intensiva de estudos com o objetivo de me tornar um profissional exemplar nessa área.
+                                Atualmente,
+                                mantenho-me completamente focado nessa meta, impulsionado pela determinação e pelo
+                                empenho necessários para alcançá-la.
+                            </p>
+                
+                `,
+            }
+        };
+
+        const translateBtn = document.getElementById("translate-btn");
+        let currentLang = "pt";
+
+        translateBtn.addEventListener("click", () => {
+            currentLang = currentLang === "pt" ? "en" : "pt";
+            translateBtn.textContent = currentLang === "pt" ? "EN" : "PTBR";
+
+            // INTRO
+            document.querySelector("#greeting").textContent = translations[currentLang].greeting;
+            document.querySelector("#greeting-work").textContent = translations[currentLang].work;
+
+            // SKILLS + STACKS
+            document.querySelector("#skills").textContent = translations[currentLang].skills;
+            document.querySelector("#stacks").textContent = translations[currentLang].stacks;
+            document.querySelector("#looking-for").textContent = translations[currentLang].lookingFor;
+
+            // EDUCATION
+            document.querySelector("#education").textContent = translations[currentLang].education;
+            document.querySelector("#edu01").textContent = translations[currentLang].edu01;
+            document.querySelector("#edu02").textContent = translations[currentLang].edu02;
+            document.querySelector("#edu03").textContent = translations[currentLang].edu03;
+            document.querySelector("#edu04").textContent = translations[currentLang].edu04;
+
+
+            // PROFESSIONAL EXPERIENCE
+            document.querySelector("#professional-exp").textContent = translations[currentLang].experience;
+            document.querySelector("#exp01").textContent = translations[currentLang].exp01;
+            document.querySelector("#exp02").textContent = translations[currentLang].exp02;
+            document.querySelector("#exp03").textContent = translations[currentLang].exp03;
+            document.querySelector("#exp04").textContent = translations[currentLang].exp04;
+
+
+            // JOURNEY
+            document.querySelector("#journey").textContent = translations[currentLang].detailedJourney;
+            document.querySelector("#detailed-journey-modal").innerHTML = translations[currentLang].detailedJourneyModal;
+            document.querySelector("#close").textContent = translations[currentLang].buttonClose;
+            document.querySelector("#close2").textContent = translations[currentLang].buttonClose;
+            document.querySelector("#journey-text").innerHTML = translations[currentLang].journeyText;
+
+
+
+            document.querySelector("#some-works").textContent = translations[currentLang].works;
+        });
+    </script>
+
+
 </body>
 
 </html>
