@@ -62,9 +62,33 @@ html {
     background-color: #cacaca;
 }
 
+/* CV DOWNLOAD BTN */
 
+#cv-download-btn {
+    border: 2px solid white;
+    background-color: black;
+    transition: 0.2s ease;
+    color: white;
+}
 
+#cv-download-btn:hover i {
+    color: black;
 
+}
+
+#cv-download-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+#cv-download-btn i {
+    color: #a8dacb;
+}
+
+#cv-download-btn:hover i,
+#cv-download-btn:hover span {
+    color: black !important;
+}
 
 /* VIDEO */
 
@@ -155,9 +179,6 @@ i.bi {
 }
 
 
-
-
-
 /* SOCIALS */
 
 #socials button {
@@ -198,6 +219,7 @@ i.bi {
     border: 2px solid white;
     background-color: black;
     transition: 0.2s ease;
+    color: white;
 }
 
 #journey-modal-btn:hover i {
@@ -206,13 +228,19 @@ i.bi {
 }
 
 #journey-modal-btn:hover {
+    background-color: white;
     color: black;
-    background-color: #ffffff;
 }
 
 #journey-modal-btn i {
     color: #a8dacb;
 }
+
+#journey-modal-btn:hover i,
+#journey-modal-btn:hover span {
+    color: black !important;
+}
+
 
 /* LINKS EXP PROFISSIONAL */
 

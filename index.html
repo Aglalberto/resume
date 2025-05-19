@@ -39,6 +39,14 @@
             <div>
                 <h1 id="greeting">Olá, sou o Aglalberto</h1>
                 <p id="greeting-work">Trabalho com tecnologia e design desde 2014</p>
+                <div class="d-flex justify-content-center">
+                    <a id="cv-download-btn"
+                        href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
+                        class="btn btn-primary fs-6" style="font-weight: 700; letter-spacing: 1px;" target="_blank"
+                        rel="noopener">
+                        <span id="cvdownload">CLIQUE AQUI E BAIXE MEU CV</span> <i class="bi bi-download"></i>
+                    </a>
+                </div>
 
             </div>
             <div id="scroll-icon">
@@ -444,7 +452,8 @@
     <script>
         const translations = {
             en: {
-                greeting: "Hello, I'm Aglalberto",
+                greeting: "Hi, i'm Aglalberto",
+                cvdownload: "DOWNLOAD MY CV",
                 work: "I have been working with technology and design since 2014",
                 skills: "SKILLS",
                 stacks: "STACKS",
@@ -537,6 +546,7 @@
             },
             pt: {
                 greeting: "Olá, sou o Aglalberto",
+                cvdownload: "CLIQUE AQUI E BAIXE MEU CV",
                 work: "Trabalho com tecnologia e design desde 2014",
                 skills: "SKILLS",
                 stacks: "STACKS",
@@ -675,6 +685,16 @@
             // INTRO
             document.querySelector("#greeting").textContent = translations[currentLang].greeting;
             document.querySelector("#greeting-work").textContent = translations[currentLang].work;
+            const cvBtn = document.querySelector("#cv-download-btn");
+            const cvText = document.querySelector("#cvdownload");
+
+            cvText.textContent = translations[currentLang].cvdownload;
+
+            // Define o link correto com base no idioma
+            cvBtn.href = currentLang === "pt"
+                ? "https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
+                : "https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download";
+
 
             // SKILLS + STACKS
             document.querySelector("#skills").textContent = translations[currentLang].skills;
