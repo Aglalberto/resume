@@ -1,747 +1,865 @@
 <!DOCTYPE html>
-<html lang="ptbr">
-
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aglal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <title>Aglalberto Silva | UI/UX Designer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Tilt+Warp&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Configurações Customizadas do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#F5F2EB',       /* Fundo creme/pastel */
+                            grid: '#E8E1D5',     /* Linhas da grade geométrica */
+                            dark: '#3E2A1E',     /* Texto principal marrom escuro */
+                            accent: '#D3C4B3',   /* Tom de destaque marrom claro/pastel */
+                            card: '#FCFAF8'      /* Fundo dos cartões */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/source-code.png">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Controle de Idioma via CSS - Extremamente rápido e sem piscar */
+        html[lang="pt-BR"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-pt { display: none !important; }
+
+        /* Classes para o efeito Fade-In ao scrollar */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cursor piscante para o efeito typewriter vintage - 3 piscadas e para */
+        .is-blinking::after {
+            content: '█';
+            margin-left: 4px;
+            color: #3E2A1E;
+            opacity: 0; /* Começa invisível e volta a ficar invisível no fim */
+            animation: blink 0.8s step-start 3;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0; }
+        }
+        .typewriter-text {
+            visibility: hidden;
+        }
+
+        /* Efeitos do Carrossel Vintage */
+        .vintage-frame {
+            box-shadow: inset 0 0 20px rgba(62, 42, 30, 0.8), 6px 6px 0px 0px #3E2A1E;
+        }
+        .crt-scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+        .analog-flash {
+            animation: flashEffect 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes flashEffect {
+            0% { filter: sepia(0) brightness(1) contrast(1); opacity: 1; }
+            30% { filter: sepia(1) brightness(1.5) contrast(2) blur(2px); opacity: 0.5; }
+            50% { filter: sepia(1) brightness(2) contrast(3) blur(4px); opacity: 0; }
+            70% { filter: sepia(1) brightness(1.5) contrast(2) blur(2px); opacity: 0.5; }
+            100% { filter: sepia(0) brightness(1) contrast(1); opacity: 1; }
+        }
+    </style>
 </head>
+<body class="bg-brand-bg text-brand-dark font-sans antialiased overflow-x-hidden selection:bg-brand-dark selection:text-brand-bg">
 
-<body>
+    <!-- Language Toggle Button -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="langToggle" class="font-mono text-sm bg-brand-bg border-2 border-brand-dark px-3 py-1 shadow-[4px_4px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+            <span class="lang-pt font-bold">[ EN ]</span>
+            <span class="lang-en font-bold">[ PT-BR ]</span>
+        </button>
+    </div>
 
-    <button id="translate-btn">
-        <img id="translate-icon" src="assets/ptbr-flag.png" alt="Language" width="54">
-    </button>
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center px-6"
+             style="background-image: linear-gradient(to right, #E8E1D5 1px, transparent 1px), linear-gradient(to bottom, #E8E1D5 1px, transparent 1px); background-size: 4rem 4rem;">
+        
+        <div class="z-10 text-center max-w-3xl fade-in-section is-visible">
+            <p class="font-mono text-sm tracking-widest uppercase mb-4 text-brand-dark/70">
+                <span class="lang-pt">// Olá, sou o</span>
+                <span class="lang-en">// Hello, I am</span>
+            </p>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-brand-dark">Aglalberto Silva.</h1>
+            <h2 class="font-mono text-xl md:text-2xl mb-12 bg-brand-accent/30 inline-block px-4 py-1 border border-brand-dark/20">
+                <span class="lang-pt">UI & UX Designer | IHC Specialist</span>
+                <span class="lang-en">UI & UX Designer | HCI Specialist</span>
+            </h2>
 
-    <div class="d-flex video-container">
+            <!-- CTA -->
+            <a id="downloadCvBtn"
+               href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download" 
+               data-href-pt="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
+               data-href-en="https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download"
+               target="_blank" 
+               class="inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4 
+                      shadow-[6px_6px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E] 
+                      hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200">
+                [ DOWNLOAD CV .PDF ]
+            </a>
+        </div>
+    </section>
 
-        <video autoplay muted loop id="video-background">
-            <source src="assets/videobg.mp4" type="video/mp4">
-        </video>
+    <!-- RESUMO PROFISSIONAL -->
+    <section class="py-24 px-6 md:px-12 max-w-4xl mx-auto">
+        <div class="mb-8 fade-in-section">
+            <h2 class="font-mono text-2xl font-bold mb-2 type-target" data-text-pt=">_ RESUMO_PROFISSIONAL" data-text-en=">_ PROFESSIONAL_SUMMARY"></h2>
+            <div class="h-px w-full bg-brand-dark/20 mt-4"></div>
+        </div>
+        <div class="fade-in-section bg-brand-card border border-brand-dark/20 p-8 shadow-sm">
+            <p class="text-lg leading-relaxed text-brand-dark/90 lang-pt">
+                Profissional com mais de 10 anos de experiência em tecnologia e produtos digitais, com foco central em <strong>UI/UX Design</strong>, <strong>Interação Humano-Computador (IHC)</strong> e <strong>Design de Produto</strong>. Especializado na criação de interfaces intuitivas, acessíveis e focadas no usuário, atuando desde a pesquisa e arquitetura da informação até a entrega de protótipos navegáveis. Possui conhecimento de produto que facilita a ponte entre a visão de design, regras de negócio e viabilidade de implementação pelas equipes de desenvolvimento.
+            </p>
+            <p class="text-lg leading-relaxed text-brand-dark/90 lang-en">
+                A professional with over 10 years of experience in technology and digital products, with a primary focus on <strong>UI/UX Design</strong>, <strong>Human-Computer Interaction (HCI)</strong>, and <strong>Product Design</strong>. Specializes in creating intuitive, accessible, and user-centered interfaces, working on everything from research and information architecture to the delivery of navigable prototypes. Possesses product knowledge that bridges the gap between the design vision, business rules, and the feasibility of implementation by development teams.
+            </p>
+        </div>
+    </section>
 
+    <!-- EXPERIÊNCIA PROFISSIONAL -->
+    <section class="py-12 px-6 md:px-12 max-w-4xl mx-auto">
+        <div class="mb-12 fade-in-section">
+            <h2 class="font-mono text-2xl font-bold mb-2 type-target" data-text-pt=">_ EXPERIÊNCIA_PROFISSIONAL" data-text-en=">_ WORK_EXPERIENCE"></h2>
+            <div class="h-px w-full bg-brand-dark/20 mt-4"></div>
+        </div>
 
-        <div class="d-grid justify-content-center content">
+        <div class="flex flex-col space-y-8">
+
+            <!-- Experiência 1: Jasmin Studio -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8 text-brand-dark/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">Consultor de TI – Jasmin Studio & Advocacia Queiroz Bacelar</span>
+                        <span class="lang-en">IT Consultant – Jasmin Studio & Advocacia Queiroz Bacelar</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Consultoria de sistemas, infraestrutura e Governança de TI – Jun 2026 – Set 2026 | Fortaleza/CE (Híbrido)</span>
+                        <span class="lang-en">Systems, Infrastructure and IT Governance Consulting – Jun 2026 – Sep 2026 | Fortaleza/CE (Hybrid)</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Gestão de conteúdo dos websites.</li>
+                        <li>Gestão de níveis de perfil e credenciais de acesso.</li>
+                        <li>Gestão de infraestrutura de servidores e armazenamento em nuvem.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Website content management.</li>
+                        <li>Management of profile levels and access credentials.</li>
+                        <li>Cloud storage and server infrastructure management.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Experiência 2: ProstaFlush -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">Marketing Digital Direct Response – ProstaFlush</span>
+                        <span class="lang-en">Direct Response Digital Marketing – ProstaFlush</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Editor de conteúdo e copywriter – Ago 2025 – Dez 2025 (Remoto)</span>
+                        <span class="lang-en">Content Editor and Copywriter – Aug 2025 – Dec 2025 (Remote)</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Criação de copys para venda de nutraceuticos (ProstaFlush) na Austrália, EUA, Canadá e Reino Unido.</li>
+                        <li>Criação e edição de VSL’s para venda do ProstaFlush.</li>
+                        <li>Utilização de ferramentas de inteligência artificial para criação e edição de vídeos.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Creation of copy for the sale of nutraceuticals (ProstaFlush) in Australia, USA, Canada, and the UK.</li>
+                        <li>Creation and editing of VSLs for ProstaFlush sales.</li>
+                        <li>Use of artificial intelligence tools for video creation and editing.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Experiência 3: Vortex -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">Universidade de Fortaleza – Vortex</span>
+                        <span class="lang-en">University of Fortaleza – Vortex</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Desenvolvedor Frontend (React) – Fev 2025 – Jun 2025 | Fortaleza/CE (Híbrido)</span>
+                        <span class="lang-en">Frontend Developer (React) – Feb 2025 – Jun 2025 | Fortaleza/CE (Hybrid)</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Desenvolvimento do aplicativo Endoday utilizando React Native, Expo e TypeScript.</li>
+                        <li>Implementação de componentes funcionais com hooks, rotas com React Navigation e gerenciamento de estado com Context API.</li>
+                        <li>Integração com APIs RESTful e aplicação de estratégias de lazy loading e otimização de bundle.</li>
+                        <li>Aplicação de boas práticas de UI/UX e otimização de performance mobile.</li>
+                        <li>Integração com Git e GitHub para versionamento e colaboração em equipe.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Development of the Endoday application using React Native, Expo, and TypeScript.</li>
+                        <li>Implementation of functional components with hooks, routes with React Navigation, and state management with Context API.</li>
+                        <li>Integration with RESTful APIs and application of lazy loading strategies and bundle optimization.</li>
+                        <li>Application of UI/UX best practices and mobile performance optimization.</li>
+                        <li>Integration with Git and GitHub for versioning and team collaboration.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Experiência 4: CRM Marketing -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">Universidade de Fortaleza – Diretoria de Marketing</span>
+                        <span class="lang-en">University of Fortaleza – Marketing Directorate</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Analista de CRM (Dynamics 365) – Fev 2021 – Fev 2025 | Fortaleza/CE (Híbrido)</span>
+                        <span class="lang-en">CRM Analyst (Dynamics 365) – Feb 2021 – Feb 2025 | Fortaleza/CE (Hybrid)</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Gerenciamento de inscrições através do CRM Dynamics 365 da Microsoft.</li>
+                        <li>Customização de formulários com JavaScript e jQuery direto no frontend.</li>
+                        <li>Criação de campanhas automatizadas (email, SMS, ligações) integradas a sistemas internos.</li>
+                        <li>Desenvolvimento de templates responsivos em HTML e CSS com foco em conversão.</li>
+                        <li>Geração de relatórios estratégicos com dados de marketing e performance.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Management of enrollments through Microsoft Dynamics 365 CRM.</li>
+                        <li>Customization of forms with JavaScript and jQuery directly in the frontend.</li>
+                        <li>Creation of automated campaigns (email, SMS, calls) integrated with internal systems.</li>
+                        <li>Development of responsive templates in HTML and CSS focused on conversion.</li>
+                        <li>Generation of strategic reports with marketing and performance data.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Experiência 5: PESSE -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">PESSE – Startup de Logística</span>
+                        <span class="lang-en">PESSE – Logistics Startup</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Sócio-Fundador | Designer de Produto Digital (UI/UX e Frontend) – Set 2020 – Ago 2023 | Fortaleza/CE</span>
+                        <span class="lang-en">Co-Founder | Digital Product Designer (UI/UX and Frontend) – Sep 2020 – Aug 2023 | Fortaleza/CE</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Criação de interfaces para sistemas logísticos e dashboards administrativos utilizando Figma.</li>
+                        <li>Condução de testes de usabilidade, entrevistas e análise de comportamento de usuário.</li>
+                        <li>Participação em eventos como Web Summit 2022 e programas de aceleração regionais.</li>
+                        <li>Gerenciamento de sistema em tecnologia PHP utilizando Laravel.</li>
+                        <li>Liderança na definição de fluxos, jornadas e prototipagem interativa.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Creation of interfaces for logistics systems and administrative dashboards using Figma.</li>
+                        <li>Conduction of usability tests, interviews, and user behavior analysis.</li>
+                        <li>Participation in events like Web Summit 2022 and regional acceleration programs.</li>
+                        <li>Management of a PHP system using Laravel.</li>
+                        <li>Leadership in defining flows, journeys, and interactive prototyping.</li>
+                    </ul>
+                </div>
+            </article>
+            
+            <!-- Experiência 6: Besalt -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">Besalt – Tecnologia e Design</span>
+                        <span class="lang-en">Besalt – Technology and Design</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Sócio-Fundador | Product Owner & UI/UX Designer – Fev 2018 – Jan 2020 | Fortaleza/CE</span>
+                        <span class="lang-en">Co-Founder | Product Owner & UI/UX Designer – Feb 2018 – Jan 2020 | Fortaleza/CE</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Coordenação de backlog, levantamento de requisitos e interação com stakeholders.</li>
+                        <li>Design e redesign de interfaces web/mobile baseados em testes de usabilidade.</li>
+                        <li>Desenvolvimento de protótipos e implementações usando HTML, CSS, JavaScript e jQuery.</li>
+                        <li>Experiência com controle de versão (Git) e organização ágil de tarefas.</li>
+                        <li>Aplicação de conceitos de Design Thinking e UX Strategy em múltiplos projetos.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Backlog coordination, requirements gathering, and interaction with stakeholders.</li>
+                        <li>Design and redesign of web/mobile interfaces based on usability tests.</li>
+                        <li>Development of prototypes and implementations using HTML, CSS, JavaScript, and jQuery.</li>
+                        <li>Experience with version control (Git) and agile task organization.</li>
+                        <li>Application of Design Thinking and UX Strategy concepts across multiple projects.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Experiência 7: Lab Inovação (Líder) -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">Universidade de Fortaleza – Laboratório de Inovação</span>
+                        <span class="lang-en">University of Fortaleza – Innovation Lab</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Líder de Design & Mentor de Produtos Digitais – Ago 2016 – Jan 2020 | Fortaleza/CE</span>
+                        <span class="lang-en">Design Lead & Digital Product Mentor – Aug 2016 – Jan 2020 | Fortaleza/CE</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Liderança de equipes de design e condução de projetos de inovação acadêmica.</li>
+                        <li>Elaboração de design systems e interfaces educacionais centradas no usuário.</li>
+                        <li>Apoio à fundação da Besalt com base em aprendizados práticos de produto.</li>
+                        <li>Participação em discussões técnicas envolvendo tecnologias frontend e prototipação.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Leadership of design teams and conduction of academic innovation projects.</li>
+                        <li>Creation of user-centered design systems and educational interfaces.</li>
+                        <li>Support for the foundation of Besalt based on practical product learnings.</li>
+                        <li>Participation in technical discussions involving frontend technologies and prototyping.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Experiência 8: Lab Inovação (Estagiário) -->
+            <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
+                <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-1">
+                        <span class="lang-pt">Universidade de Fortaleza – Laboratório de Inovação</span>
+                        <span class="lang-en">University of Fortaleza – Innovation Lab</span>
+                    </h3>
+                    <span class="font-mono text-xs uppercase tracking-wider bg-brand-accent/50 px-2 py-1 mb-4 inline-block border border-brand-dark/10">
+                        <span class="lang-pt">Estagiário em UI & UX Design – Set 2014 – Ago 2016 | Fortaleza/CE</span>
+                        <span class="lang-en">UI & UX Design Intern – Sep 2014 – Aug 2016 | Fortaleza/CE</span>
+                    </span>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-pt">
+                        <li>Atuação em projetos de inovação com foco em modelagem 3D, prototipação e UX.</li>
+                        <li>Criação de wireframes e testes de interfaces mobile e web.</li>
+                        <li>Envolvimento com equipes multidisciplinares em pesquisas e projetos científicos.</li>
+                    </ul>
+                    <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
+                        <li>Involvement in innovation projects focused on 3D modeling, prototyping, and UX.</li>
+                        <li>Creation of wireframes and testing of mobile and web interfaces.</li>
+                        <li>Involvement with multidisciplinary teams in research and scientific projects.</li>
+                    </ul>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- FORMAÇÃO, CURSOS E IDIOMAS -->
+    <section class="py-12 px-6 md:px-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <!-- Bloco Esquerdo (Formação Acadêmica) -->
+        <div>
+            <div class="mb-8 fade-in-section">
+                <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ FORMAÇÃO_ACADÊMICA" data-text-en=">_ EDUCATION"></h2>
+                <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
+            </div>
+            <ul class="space-y-4 fade-in-section text-brand-dark/90">
+                <li class="bg-brand-card p-4 border border-brand-dark/20">
+                    <strong>
+                        <span class="lang-pt">MBA em Design Gráfico e Digital</span>
+                        <span class="lang-en">MBA in Graphic and Digital Design</span>
+                    </strong><br>
+                    <span class="text-sm font-mono text-brand-dark/70">Universidade de Fortaleza (UNIFOR)</span>
+                </li>
+                <li class="bg-brand-card p-4 border border-brand-dark/20">
+                    <strong>
+                        <span class="lang-pt">Bacharelado em Audiovisual e Novas Mídias</span>
+                        <span class="lang-en">Bachelor's Degree in Audiovisual and New Media</span>
+                    </strong><br>
+                    <span class="text-sm font-mono text-brand-dark/70">Universidade de Fortaleza (UNIFOR)</span>
+                </li>
+                <li class="bg-brand-card p-4 border border-brand-dark/20">
+                    <strong>
+                        <span class="lang-pt">Análise e Desenvolvimento de Sistemas</span>
+                        <span class="lang-en">Associate Degree in Systems Analysis & Development</span>
+                    </strong><br>
+                    <span class="text-sm font-mono text-brand-dark/70">Estácio</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Bloco Direito (Cursos Complementares & Idiomas) -->
+        <div class="flex flex-col space-y-12">
+            
+            <!-- Cursos Complementares Separados -->
             <div>
-                <h1 id="greeting">Olá, sou o Aglalberto</h1>
-                <p id="greeting-work">Trabalho com tecnologia e design desde 2014</p>
-                <div class="d-flex justify-content-center">
-                    <a id="cv-download-btn"
-                        href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
-                        class="btn btn-primary fs-6" style="font-weight: 700; letter-spacing: 1px;" target="_blank"
-                        rel="noopener">
-                        <span id="cvdownload">CLIQUE AQUI E BAIXE MEU CV</span> <i class="bi bi-download"></i>
+                <div class="mb-8 fade-in-section">
+                    <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ CURSOS_COMPLEMENTARES" data-text-en=">_ ADDITIONAL_COURSES"></h2>
+                    <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
+                </div>
+                <ul class="space-y-4 fade-in-section text-brand-dark/90">
+                    <li class="bg-brand-card p-4 border border-brand-dark/20">
+                        <strong>Fullstack JavaScript Developer</strong><br>
+                        <span class="text-sm font-mono text-brand-dark/70">Youth Space</span>
+                    </li>
+                    <li class="bg-brand-card p-4 border border-brand-dark/20">
+                        <strong>HTML5, CSS3, JavaScript, Git & GitHub</strong><br>
+                        <span class="text-sm font-mono text-brand-dark/70">Rocketseat</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Idiomas com Nomes Completos -->
+            <div>
+                <div class="mb-8 fade-in-section">
+                    <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ IDIOMAS" data-text-en=">_ LANGUAGES"></h2>
+                    <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
+                </div>
+                <ul class="space-y-3 fade-in-section bg-brand-card p-5 border border-brand-dark/20 text-brand-dark/90">
+                    <li class="flex justify-between border-b border-brand-dark/10 pb-2">
+                        <strong class="font-mono text-sm"><span class="lang-pt">Português</span><span class="lang-en">Portuguese</span></strong> 
+                        <span class="text-sm"><span class="lang-pt">Nativo</span><span class="lang-en">Native</span></span>
+                    </li>
+                    <li class="flex justify-between border-b border-brand-dark/10 pb-2">
+                        <strong class="font-mono text-sm"><span class="lang-pt">Inglês</span><span class="lang-en">English</span></strong> 
+                        <span class="text-sm"><span class="lang-pt">Avançado (C1)</span><span class="lang-en">Advanced (C1)</span></span>
+                    </li>
+                    <li class="flex justify-between">
+                        <strong class="font-mono text-sm"><span class="lang-pt">Alemão</span><span class="lang-en">German</span></strong> 
+                        <span class="text-sm text-right"><span class="lang-pt">Básico (A1.2)</span><span class="lang-en">Basic (A1.2)</span> <br><span class="text-xs text-brand-dark/60"><span class="lang-pt">Curso em andamento</span><span class="lang-en">Ongoing course</span></span></span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TRABALHOS REALIZADOS (CARROSSEL VINTAGE) -->
+    <section class="py-16 px-6 md:px-12 max-w-4xl mx-auto overflow-hidden">
+        <div class="mb-8 fade-in-section">
+            <h2 class="font-mono text-2xl font-bold mb-2 type-target" data-text-pt=">_ TRABALHOS_REALIZADOS" data-text-en=">_ FEATURED_WORKS"></h2>
+            <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
+        </div>
+
+        <div class="fade-in-section relative mx-auto max-w-3xl">
+            <!-- Moldura CRT -->
+            <div class="vintage-frame crt-scanlines relative bg-brand-dark p-3 md:p-4 rounded-sm">
+                <!-- Imagem do Carrossel com Link Opção -->
+                <div class="relative overflow-hidden bg-black aspect-video w-full flex items-center justify-center group">
+                    <a id="carousel-img-link" href="#" target="_blank" class="w-full h-full block cursor-default">
+                        <img id="carousel-img" src="https://i.ibb.co/q0XXRzy/superselect.png" alt="SuperSelect" class="object-cover w-full h-full transition-opacity duration-300">
                     </a>
                 </div>
-
-            </div>
-            <div id="scroll-icon">
-                <dotlottie-player id="scroll-desktop"
-                    src="https://lottie.host/640170a8-aa15-471e-b83c-2150990dc810/BvOK6v83Pn.json"
-                    background="transparent" speed="1" style="width: 150px;" loop
-                    autoplay></dotlottie-player>
-                <a href="#jumpto-skills">
-                    <dotlottie-player id="scroll-mobile"
-                        src="https://lottie.host/640170a8-aa15-471e-b83c-2150990dc810/BvOK6v83Pn.json"
-                        background="transparent" speed="1" style="width: 110px; height: 110px;" loop
-                        autoplay></dotlottie-player>
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="jumpto-skills" class="container d-grid justify-content-around mt-3 w-100">
-
-        <h1 id="skills" class="title" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">SKILLS</h1>
-
-        <div class="row cols-sm-3 w-100 m-0">
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color/96/html-5--v1.png" alt="HTML5" />
-                <p>HTML5</p>
-            </div>
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color/96/css3.png" alt="CSS3" />
-                <p>CSS3</p>
-            </div>
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color/96/javascript--v1.png" alt="Javascript" />
-                <p>Javascript</p>
             </div>
 
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color-glass/96/adobe-photoshop.png"
-                    alt="Photoshop" />
-                <p>Photoshop</p>
-            </div>
-
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color-glass/96/adobe-illustrator.png"
-                    alt="Illustrator" />
-                <p>Illustrator</p>
-            </div>
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color/96/figma--v1.png" alt="Figma" />
-                <p>Figma</p>
-            </div>
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/fluency/96/prototype.png" alt="" />
-                <p>UX & UI</p>
-            </div>
-            <div class="col text-center" data-aos="zoom-in">
-                <img style="filter: brightness(1.7);" width="70" height="70"
-                    src="https://img.icons8.com/color/96/dynamics-365.png" alt="" />
-                <p>Dynamics 365</p>
-            </div>
-        </div>
-
-        <h1 id="stacks" class="title mt-5" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">STACKS</h1>
-
-        <div class="row cols-sm-3 w-100 m-0">
-
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color/96/react-native.png" alt="ReactJS" />
-                <p>React</p>
-            </div>
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/fluency/96/node-js.png" alt="NodeJS" />
-                <p>NodeJS</p>
-            </div>
-            <div class="col text-center" data-aos="zoom-in">
-                <img width="70" height="70" src="https://img.icons8.com/color/96/bootstrap--v2.png" alt="Bootstrap" />
-                <p>Bootstrap</p>
-            </div>
-
-        </div>
-
-        <p id="looking-for" class="container mt-5 fs-5" style="font-weight: 500; margin-bottom: 2rem;"
-            data-aos="zoom-in">Estou em busca
-            de
-            oportunidades na área de Frontend, onde posso unir minha experiência em UI & UX Design com minhas
-            habilidades em HTML, CSS e Javascript.</p>
-
-
-        <!-- FORMAÇÃO -->
-
-        <div class="mt-5">
-            <h1 id="education" class="title" style="font-weight: 700; margin-bottom: 2rem;" data-aos="zoom-in">FORMAÇÃO
-            </h1>
-        </div>
-
-        <div class="container">
-
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2015</span> <span id="edu01">
-                    Bacharel em Audiovisual e Novas Mídias pela
-                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
-                        href="https://drive.google.com/file/d/1uTd8JG4PqEnJyi0ezSKpTw3wW55wcSu0/view?usp=sharing"
-                        target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">UNIFOR <i
-                                class="bi bi-box-arrow-up-right"></i></span> </a></p>
-
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2018</span> <span id="edu02">
-                    MBA em Design Gráfico e Digital pela
-                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
-                        href="https://drive.google.com/file/d/1LNqebfkpIX25l9nmHFjYHjDReAR_wHkV/view?usp=sharing"
-                        target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">UNIFOR <i
-                                class="bi bi-box-arrow-up-right"></i></span> </a></p>
-
-            <p class="fs-4" data-aos="zoom-in"><span class="fs-6" style="color: #a8dacb;">2023</span> <span
-                    id="edu03">Análise e Desenvolvimento de Sistemas pela
-                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
-                        href="https://drive.google.com/file/d/14MAqqiuoNJYFLv0d0B4a3i1aMgCGWm5Q/view?usp=sharing"
-                        target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">ESTÁCIO <i
-                                class="bi bi-box-arrow-up-right"></i></span> </a></p>
-
-            <p class="fs-4" data-aos="zoom-in"><span class="fs-6" style="color: #a8dacb;">2024</span> <span id="edu04">
-                    Fullstack Javascript Developer pela
-                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;"><a
-                        href="https://drive.google.com/file/d/15K-4a7Uixo7L-bV4KhaSlerhxCtfmR0A/view?usp=sharing"
-                        target="_blank"><span class="exp-link fs-4" style="font-weight: 700;">YOUTH SPACE <i
-                                class="bi bi-box-arrow-up-right"></i></span> </a></p>
-
-            <p class="fs-4" data-aos="zoom-in"><span class="fs-6" style="color: #a8dacb;">2027</span> <span id="edu05">
-                    Graduação em Inteligência Artificial pela
-                </span> <span class="fs-4" style="color: #a8dacb; font-weight: 700;">PUC-PR </span> </a></p>
-        </div>
-
-        <!-- EXP PROFISSIONAL -->
-
-        <div class="mt-5" style="overflow-x: hidden;">
-            <h1 id="professional-exp" class="title txt-reduce" style="font-weight: 700; margin-bottom: 2rem;"
-                data-aos="zoom-in">EXPERIÊNCIA
-                PROFISSIONAL
-            </h1>
-        </div>
-
-        <div class="container">
-
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2014-2016</span>
-                <span id="exp01">
-                    Estágio em
-                    Tecnologia da Informação e Comunicação (TIC) no
-                </span> <a href="https://vortex.unifor.br/" target="_blank"><span class="exp-link fs-4"
-                        style="font-weight: 700;">VORTEX - UNIFOR
-                        <i class="bi bi-box-arrow-up-right"></i></span></a>
-            </p>
-
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2016-2019</span>
-                <span id="exp02">
-                    Bolsista em
-                    Tecnologia da Informação e Comunicação (TIC) na UNIFOR pela
-                </span> <a href="https://issuu.com/sofiacavalcante/docs/citilab-versao_digital/20" target="_blank"><span
-                        class="exp-link fs-4" style="font-weight: 700;">
-                        Fundação de Ciência, Tecnologia e
-                        Inovação de Fortaleza (CITINOVA)
-                        <i class="bi bi-box-arrow-up-right"></i></span></a>
-            </p>
-
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2020-2023</span>
-                <span id="exp03">
-                    Sócio
-                    Empreendedor com a
-                </span> <a href="https://linktr.ee/pessetech" target="_blank"><span class="exp-link fs-4"
-                        style="font-weight: 700;">PESSE Tecnologia em Logística <i
-                            class="bi bi-box-arrow-up-right"></i></span></a>
-            </p>
-
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2021-2025</span>
-                <span id="exp04">
-                    Analista de
-                    CRM na
-                </span> <a href="https://unifor.br" target="_blank"><span class="exp-link fs-4"
-                        style="font-weight: 700;">UNIFOR <i class="bi bi-box-arrow-up-right"></i></span> </a>
-            </p>
-
-            <p class="fs-4" data-aos="zoom-in"> <span class="fs-6" style="color: #a8dacb;">2025-2025</span>
-                <span id="exp05">
-                    Desenvolvedor Frontend React no
-                </span> <a href="https://vortex.unifor.br/" target="_blank"><span class="exp-link fs-4"
-                        style="font-weight: 700;">VORTEX - UNIFOR <i class="bi bi-box-arrow-up-right"></i></span> </a>
-            </p>
-
-        </div>
-
-        <!-- MODAL -->
-
-
-        <div class="container">
-            <button data-aos="fade-zoom-in" data-aos-easing="ease-in-back" id="journey-modal-btn" type="button"
-                class="btn btn-primary fs-6" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                style="font-weight: 700; letter-spacing: 1px;">
-                <i class="bi bi-card-text"></i> <span id="journey">TRAJETÓRIA DETALHADA</span>
-            </button>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content" style="background-color: black; border: 2px solid white;">
-                        <div class="modal-footer">
-                            <p class="fs-4" id="detailed-journey-modal"><b>Trajetória detalhada</b></p>
-                            <button id="close" type="button" class="btn btn-light"
-                                data-bs-dismiss="modal">Fechar</button>
-                        </div>
-                        <div class="modal-body" id="journey-text">
-                            <p>
-                                Em 2014 iniciei meu primeiro estágio no laboratório de inovação e tecnologia Vortex,
-                                situado na Universidade de Fortaleza.
-                            </p>
-                            <p>
-                                Este ambiente de inovação tecnológica, direcionado aos alunos dos cursos de computação,
-                                foi o cenário onde iniciei minha jornada profissional. Entre os 20 estagiários, havia
-                                apenas eu e outros dois da área de comunicação, imersos em um ambiente predominantemente
-                                ocupado por desenvolvedores. Foi ali que meu fascínio pela tecnologia se solidificou.
-                            </p>
-
-                            <img src="https://unifor.br/documents/392172/646221/vortex-laboratorio-banner-desktop.jpg/49190eb5-fb73-db86-7c70-ee47dc09bba6?t=1708348185231"
-                                style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-
-                            <p>
-                                Minhas principais responsabilidades incluíam o desenvolvimento de interfaces de usuário
-                                (UI) e experiência do usuário (UX), elaborando protótipos e interfaces para posterior
-                                implementação pelos desenvolvedores. Também assumi a liderança em projetos de integração
-                                acadêmica, facilitando reuniões com os clientes, em sua maioria alunos de Mestrado e
-                                Doutorado da Universidade, que buscavam concretizar suas ideias, proporcionando-me uma
-                                valiosa experiência multidisciplinar. Durante esse período, aprendi sobre gestão de
-                                projetos, levantamento de requisitos e metodologias ágeis, aprimorando minhas
-                                competências técnicas e gerenciais. Além disso, explorei a modelagem 3D para realidade
-                                aumentada com o projeto que deu origem ao meu TCC "Iracema Virtual", e desempenhei
-                                diversas funções relacionadas ao design, enriquecendo ainda mais meu repertório
-                                profissional.
-                            </p>
-
-                            <img src="assets/iracema.png" style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-
-                            <p>
-                                Em 2016, ao término do estágio, o coordenador do laboratório reconheceu meu potencial e
-                                assegurou bolsas da Prefeitura de Fortaleza para que eu continuasse contribuindo como
-                                bolsista, assumindo também o papel de coordenador da equipe de design.
-                            </p>
-                            <p>
-                                Durante minha permanência no laboratório, participei de diversos desafios, como
-                                Hackathons, o Desafio Renault Experience e o Startup Weekend, onde aprendi bastante
-                                sobre empreendedorismo.
-                            </p>
-
-
-                            <p>
-                                Em 2016, um colega bolsista que atuava como desenvolvedor no laboratório me convidou
-                                para participar de um desses desafios, juntamente com outros dois desenvolvedores. Foi
-                                então que fundamos a Besalt Design e Tecnologia.
-                            </p>
-
-                            <img src="assets/logo-besalt.png" style="width: 100%; margin: 1.2rem 0rem; padding: 2rem;"
-                                alt="">
-
-                            <img src="assets/team-besalt.jpg" style="width: 100%; margin-bottom: 1.2rem;" alt="">
-
-
-                            <p>
-                                A Besalt era uma softwarehouse especializada no desenvolvimento de softwares sob
-                                demanda. No entanto, em 2019, enfrentamos dificuldades para conciliar nossos empregos
-                                com as demandas da empresa, o que culminou em seu encerramento.
-                            </p>
-                            <p>
-                                Em 2020, juntamente com os mesmos colegas com quem fundei a Besalt, iniciamos um novo
-                                empreendimento: a Pesse Tecnologia em Logística, agregando dois novos membros com
-                                experiência em logística.
-                            </p>
-
-                            <img src="assets/logo-pesse.png" style="width: 100%; padding: 2rem;" alt="">
-
-                            <img src="assets/team-pesse.jpg" style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-
-                            <p>
-                                A Pesse era uma startup no qual criamos um aplicativo voltado para otimizar operações de
-                                empresas de transporte, permitindo a redução de custos e a melhoria da performance dos
-                                veículos por meio da análise detalhada dos dados provenientes dos sensores de telemetria
-                                instalados nos veículos.
-                            </p>
-                            <p>
-                                Em 2020 o então coordenador do laboratório Vortex se tornou Diretor de Tecnologia da
-                                Universidade de Fortaleza. No ano seguinte, em 2021, ele me convidou para trabalhar na
-                                Diretoria de Marketing com o novo CRM da Universidade, pois era preciso alguém com certa
-                                experiência em tecnologia e comunicação, aceitei a proposta e adquiri experiência como
-                                analista de CRM.
-                            </p>
-                            <p style="margin-bottom: 0;">
-                                Em 2023, decidi por deixar a Pesse e concentrar meus esforços no aprimoramento das
-                                minhas habilidades como desenvolvedor. Assumi o compromisso de embarcar em uma jornada
-                                intensiva de estudos com o objetivo de me tornar um profissional exemplar nessa área.
-                                Atualmente,
-                                mantenho-me completamente focado nessa meta, impulsionado pela determinação e pelo
-                                empenho necessários para alcançá-la.
-                            </p>
-                            <p style="margin-bottom: 0;">
-                                Em 2025, iniciei uma Graduação em Inteligência Artificial com o objetivo de me
-                                especializar na área. Acredito que todo profissional de tecnologia deve adquirir
-                                conhecimentos em IA, uma vez que esta já é uma realidade presente e determinante para o
-                                futuro.
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button id="close2" type="button" class="btn btn-light w-100"
-                                data-bs-dismiss="modal">Fechar</button>
-                        </div>
-                    </div>
+            <!-- Controles e Informações do Projeto -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mt-6 font-mono">
+                <div class="text-center sm:text-left">
+                    <h3 id="slide-title" class="text-lg font-bold text-brand-dark">SuperSelect</h3>
+                    <a id="slide-external-link" href="#" target="_blank" class="hidden text-xs text-brand-dark/80 hover:text-brand-dark underline font-bold mt-1 inline-block">
+                        <span class="lang-pt">[ VER PROJETO ↗ ]</span>
+                        <span class="lang-en">[ VIEW PROJECT ↗ ]</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="prevSlide()" class="border-2 border-brand-dark px-4 py-2 hover:bg-brand-dark hover:text-brand-bg transition-colors text-sm">
+                        [ <span class="lang-pt">Anterior</span><span class="lang-en">Prev</span> ]
+                    </button>
+                    <span id="slide-indicator" class="text-sm font-bold text-brand-dark/80 min-w-[60px] text-center">01 / 06</span>
+                    <button onclick="nextSlide()" class="border-2 border-brand-dark px-4 py-2 hover:bg-brand-dark hover:text-brand-bg transition-colors text-sm">
+                        [ <span class="lang-pt">Próximo</span><span class="lang-en">Next</span> ]
+                    </button>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- ALGUNS TRABALHOS -->
-
-        <div class="mt-5">
-            <h1 id="some-works" class="title txt-reduce" style="font-weight: 700; " data-aos="zoom-in">
-                ALGUNS TRABALHOS
-            </h1>
+    <!-- IMPRENSA (PRESS COVERAGE) -->
+    <section class="py-12 px-6 md:px-12 max-w-4xl mx-auto">
+        <div class="mb-8 fade-in-section">
+            <h2 class="font-mono text-2xl font-bold mb-2 type-target" data-text-pt=">_ IMPRENSA" data-text-en=">_ PRESS_COVERAGE"></h2>
+            <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
         </div>
 
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in-section">
+            <!-- Link 1 -->
+            <a href="https://g1.globo.com/ceara/especial-publicitario/unifor/ensinando-e-aprendendo/noticia/2017/03/unifor-apresenta-aplicativo-de-mobilizacao-social-contra-dengue-zika-e-chikungunya.html" 
+               target="_blank" 
+               class="block bg-brand-card border border-brand-dark/20 p-5 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 group shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-brand-dark/60 bg-brand-accent/30 px-2 py-0.5 border border-brand-dark/10">G1 / Globo</span>
+                    <span class="font-mono text-xs text-brand-dark/80 group-hover:translate-x-1 transition-transform">[ ↗ ]</span>
+                </div>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-pt">
+                    Unifor apresenta aplicativo de mobilização social contra dengue, zika e chikungunya
+                </p>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-en">
+                    Unifor presents social mobilization app against dengue, zika, and chikungunya
+                </p>
+            </a>
 
-    <div id="works" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#works" data-bs-slide-to="0" class="active" aria-current="true"
-                aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#works" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#works" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#works" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#works" data-bs-slide-to="4" aria-label="Slide 5"></button>
-            <button type="button" data-bs-target="#works" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <!-- Link 2 -->
+            <a href="https://g1.globo.com/ceara/especial-publicitario/unifor/ensinando-e-aprendendo/noticia/2015/12/alunos-da-unifor-recriam-em-3d-personagem-de-jose-de-alencar.html" 
+               target="_blank" 
+               class="block bg-brand-card border border-brand-dark/20 p-5 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 group shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-brand-dark/60 bg-brand-accent/30 px-2 py-0.5 border border-brand-dark/10">G1 / Globo</span>
+                    <span class="font-mono text-xs text-brand-dark/80 group-hover:translate-x-1 transition-transform">[ ↗ ]</span>
+                </div>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-pt">
+                    Alunos da Unifor recriam em 3D personagem de José de Alencar
+                </p>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-en">
+                    Unifor students recreate 3D character from José de Alencar
+                </p>
+            </a>
+
+            <!-- Link 3 -->
+            <a href="https://g1.globo.com/ceara/especial-publicitario/unifor/noticia/2017/08/universidade-desenvolve-aplicativo-voltado-para-doentes-renais.html" 
+               target="_blank" 
+               class="block bg-brand-card border border-brand-dark/20 p-5 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 group shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-brand-dark/60 bg-brand-accent/30 px-2 py-0.5 border border-brand-dark/10">G1 / Globo</span>
+                    <span class="font-mono text-xs text-brand-dark/80 group-hover:translate-x-1 transition-transform">[ ↗ ]</span>
+                </div>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-pt">
+                    Universidade desenvolve aplicativo voltado para doentes renais
+                </p>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-en">
+                    University develops app focused on kidney disease patients
+                </p>
+            </a>
+
+            <!-- Link 4 -->
+            <a href="https://g1.globo.com/ceara/especial-publicitario/unifor/ensinando-e-aprendendo/noticia/2017/05/alunos-da-unifor-sao-finalistas-do-desafio-renault-experience-20.html" 
+               target="_blank" 
+               class="block bg-brand-card border border-brand-dark/20 p-5 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 group shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-brand-dark/60 bg-brand-accent/30 px-2 py-0.5 border border-brand-dark/10">G1 / Globo</span>
+                    <span class="font-mono text-xs text-brand-dark/80 group-hover:translate-x-1 transition-transform">[ ↗ ]</span>
+                </div>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-pt">
+                    Alunos da Unifor são finalistas do Desafio Renault Experience 2.0
+                </p>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-en">
+                    Unifor students reach finals in Renault Experience 2.0 Challenge
+                </p>
+            </a>
+
+            <!-- Link 5 -->
+            <a href="https://g1.globo.com/ceara/especial-publicitario/unifor/ensinando-e-aprendendo/noticia/2016/06/projecao-holografica-da-india-iracema-pode-ser-visitada-na-praia-de-iracema.html" 
+               target="_blank" 
+               class="block bg-brand-card border border-brand-dark/20 p-5 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 group shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-brand-dark/60 bg-brand-accent/30 px-2 py-0.5 border border-brand-dark/10">G1 / Globo</span>
+                    <span class="font-mono text-xs text-brand-dark/80 group-hover:translate-x-1 transition-transform">[ ↗ ]</span>
+                </div>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-pt">
+                    Projeção holográfica da índia Iracema pode ser visitada na Praia de Iracema
+                </p>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-en">
+                    Holographic projection of Indian Iracema can be visited at Iracema Beach
+                </p>
+            </a>
+
+            <!-- Link 6 -->
+            <a href="https://g1.globo.com/ce/ceara/especial-publicitario/unifor/ensinando-e-aprendendo/noticia/2021/11/03/o-ceu-e-o-limite-para-as-startups.ghtml" 
+               target="_blank" 
+               class="block bg-brand-card border border-brand-dark/20 p-5 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 group shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-brand-dark/60 bg-brand-accent/30 px-2 py-0.5 border border-brand-dark/10">G1 / Globo</span>
+                    <span class="font-mono text-xs text-brand-dark/80 group-hover:translate-x-1 transition-transform">[ ↗ ]</span>
+                </div>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-pt">
+                    O céu é o limite para as startups
+                </p>
+                <p class="text-sm md:text-base font-semibold text-brand-dark group-hover:underline decoration-brand-dark underline-offset-4 lang-en">
+                    The sky is the limit for startups
+                </p>
+            </a>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="4000">
-                <img src="https://i.ibb.co/q0XXRzy/superselect.png" class="d-block w-100"
-                    alt="SuperSelect - CRUD Project">
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-            <div class="carousel-item" data-bs-interval="4000">
-                <img src="https://i.ibb.co/7YhNGHZ/BIT-MED.png" class="d-block w-100" alt="Bitmed">
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-            <div class="carousel-item">
-                <a href="https://isanex.com.br/" target="_blank"><img src="https://i.ibb.co/TKKQwXf/isanex.png"
-                        class="d-block w-100" alt="Isanex"></a>
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-            <div class="carousel-item">
-                <a href="https://marvelapp.com/442h1b6" target="_blank"><img src="https://i.ibb.co/zJkCtmC/Miva.png"
-                        class="d-block w-100" alt="Miva"></a>
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://i.ibb.co/4FFhzdb/Resta1.png" class="d-block w-100" alt="Resta1">
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-            <div class="carousel-item">
-                <a href="https://marvelapp.com/70j4acg" target="_blank"><img src="https://i.ibb.co/qxMDChF/telecall.png"
-                        class="d-block w-100" alt="Telecall"></a>
-                <div class="carousel-caption d-none d-md-block"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-brand-dark/20 py-12 mt-12 bg-brand-bg fade-in-section">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <p class="font-mono text-sm text-brand-dark/70 mb-6 md:mb-0">© 2026 Aglalberto Silva.</p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 font-mono text-sm">
+                <a href="mailto:aglalfilho@gmail.com" class="hover:underline decoration-brand-dark underline-offset-4">E-mail</a>
+                <a href="https://wa.me/5585997740061" target="_blank" class="hover:underline decoration-brand-dark underline-offset-4">WhatsApp</a>
+                <a href="https://linkedin.com/in/aglalberto-silva" target="_blank" class="hover:underline decoration-brand-dark underline-offset-4">LinkedIn</a>
+                <a href="https://github.com/aglalberto" target="_blank" class="hover:underline decoration-brand-dark underline-offset-4">GitHub</a>
             </div>
         </div>
-        <button id="carousel-prev-btn" class="carousel-control-prev" type="button" data-bs-target="#works"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button id="carousel-next-btn" class="carousel-control-next" type="button" data-bs-target="#works"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+    </footer>
 
-    <div class="d-grid" id="socials">
-        <div class="btn-group row row-cols-3 m-0" role="group" aria-label="Basic example">
-            <div class="col p-0">
-                <a href="https://wa.me/5585997740061" target="_blank"><button id="whatsapp" type="button"
-                        class="btn btn-primary w-100"><i class="bi bi-whatsapp" style="color: white;"></i>
-                        WhatsApp</button></a>
-            </div>
-
-            <div class="col p-0">
-                <a href="https://www.linkedin.com/in/aglalberto-silva/" target="_blank"><button id="linkedin"
-                        type="button" class="btn btn-primary w-100"><i class="bi bi-linkedin" style="color: white;"></i>
-                        Linkedin</button></a>
-            </div>
-
-            <div class="col p-0">
-                <a href="https://github.com/aglalberto" target="_blank"><button id="github" type="button"
-                        class="btn btn-primary w-100"><i class="bi bi-github" style="color: white;"></i>
-                        Github</button></a>
-            </div>
-        </div>
-    </div>
-
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <!-- SCRIPT GERAL -->
     <script>
-        AOS.init();
-    </script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // --- 1. LÓGICA DE IDIOMA ---
+            const langToggleBtn = document.getElementById('langToggle');
+            const htmlTag = document.documentElement;
+            const cvBtn = document.getElementById('downloadCvBtn');
 
-    <script>
-        const translations = {
-            en: {
-                greeting: "Hi, i'm Aglalberto",
-                cvdownload: "DOWNLOAD MY CV",
-                work: "I have been working with technology and design since 2014",
-                skills: "SKILLS",
-                stacks: "STACKS",
-                lookingFor: "I am looking for opportunities in Frontend development, where i can combine my UI & UX Design experience with my HTML, CSS and Javascript skills.",
-                education: "EDUCATION",
-                edu01: "Bachelor in Audiovisual and New Medias from",
-                edu02: "Graphic and Digital Design MBA from",
-                edu03: "Systems Analysis and Development from",
-                edu04: "Fullstack Javascript Developer from",
-                edu05: "Graduation in Artificial Intelligence from",
-                experience: "PROFESSIONAL EXPERIENCE",
-                exp01: "Internship in Information and Communication Technology (ICT) at",
-                exp02: "Scholarship in Information and Communication Technology (ICT) at UNIFOR for",
-                exp03: "Entrepreneurial Partner with",
-                exp04: "CRM Analyst at",
-                exp05: "React Frontend Developer at",
-                works: "SOME WORKS",
-                detailedJourney: "DETAILED JOURNEY",
-                detailedJourneyModal: `<b>Detailed Journey</b>`,
-                buttonClose: "Close",
-
-                journeyText:
-                    `
-                
-                <p>
-                    In 2014, i began my first internship at the Vortex innovation and technology laboratory,
-                    located at the University of Fortaleza.
-                </p>
-                <p>
-                    This technological innovation environment, aimed at students in computer science courses,
-                    was the setting where i began my professional journey. Among the 20 interns, there
-                    were only me and two others from the communications area, immersed in an environment
-                    predominantly occupied by developers. It was there that my fascination with technology solidified.
-                </p>
-
-                <img src="https://unifor.br/documents/392172/646221/vortex-laboratorio-banner-desktop.jpg/49190eb5-fb73-db86-7c70-ee47dc09bba6?t=1708348185231"
-                style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-                <p>
-                    My main responsibilities included developing user interfaces (UI) and user experience (UX), creating prototypes and interfaces for later implementation by developers. I also took the lead in academic integration projects, facilitating meetings with clients, mostly Master's and Doctoral students at the University, who were looking to bring their ideas to life, providing me with valuable multidisciplinary experience. During this period, i learned about project management, requirements gathering and agile methodologies, improving my technical and managerial skills. In addition, I explored 3D modeling for augmented reality with the project that gave rise to my final course work "Virtual Iracema", and performed several functions related to design, further enriching my professional repertoire.
-                </p>
-
-                <img src="assets/iracema.png" style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-                <p>
-                    In 2016, at the end of the internship, the laboratory coordinator recognized my potential and secured scholarships from the City of Fortaleza so that i could continue contributing as a scholarship holder, also taking on the role of coordinator of the design team. </p>
-                    <p>
-                    During my time at the lab, i participated in several challenges, such as
-                    Hackathons, the Renault Experience Challenge and the Startup Weekend, where I learned a lot
-                    about entrepreneurship.
-                </p>
-
-                <p>
-                    In 2016, a fellow fellow who worked as a developer at the lab invited me
-                    to participate in one of these challenges, along with two other developers. That was
-                    when we founded Besalt Design and Technology.
-                </p>
-
-                <img src="assets/logo-besalt.png" style="width: 100%; margin: 1.2rem 0rem; padding: 2rem;"
-                alt="">
-
-                <img src="assets/team-besalt.jpg" style="width: 100%; margin-bottom: 1.2rem;" alt="">
-
-                <p>
-                    Besalt was a software house specialized in developing on-demand software. However, in 2019, we faced difficulties in reconciling our jobs with the demands of the company, which culminated in its closure.
-                </p>
-
-                <p>
-                    In 2020, together with the same colleagues with whom i founded Besalt, we started a new venture: Pesse Logistics Technology, adding two new members with experience in logistics.
-                </p>
-
-                <img src="assets/logo-pesse.png" style="width: 100%; padding: 2rem;" alt="">
-
-                <img src="assets/team-pesse.jpg" style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-                <p>
-                    Pesse was a startup in which we created an application aimed at optimizing operations for transport companies.
-                </p>
-
-                <p>
-                   In 2020, the then-coordinator of the Vortex Lab became the Chief Technology Officer at the University of Fortaleza. The following year, in 2021, he invited me to join the University's Marketing Department to work with the new CRM system, as they needed someone with experience in both technology and communication. I accepted the offer and gained valuable experience as a CRM analyst.
-                </p>
-                <p>
-                   In 2023, I decided to leave Pesse and focus my efforts on improving my skills as a developer. I committed to embarking on an intensive study journey with the goal of becoming an exemplary professional in this area. Currently, i remain completely focused on this goal, driven by the determination and commitment needed to achieve it.
-                </p>
-                <p style="margin-bottom: 0;">
-                    In 2025, I began a Bachelor's degree in Artificial Intelligence with the goal of specializing in the field. I believe that every technology professional should gain knowledge in AI, as it is already a present reality and a key driver of the industry's future.
-                </p>
-                
-                `,
-            },
-            pt: {
-                greeting: "Olá, sou o Aglalberto",
-                cvdownload: "CLIQUE AQUI E BAIXE MEU CV",
-                work: "Trabalho com tecnologia e design desde 2014",
-                skills: "SKILLS",
-                stacks: "STACKS",
-                lookingFor: "Estou em busca de oportunidades na área de Frontend, onde posso unir minha experiência em UI & UX Design com minhas habilidades em HTML, CSS e Javascript.",
-                education: "FORMAÇÃO",
-                edu01: "Bacharel em Audiovisual e Novas Mídias pela",
-                edu02: "MBA em Design Gráfico e Digital pela",
-                edu03: "Análise e Desenvolvimento de Sistemas pela",
-                edu04: "Fullstack Javascript Developer pela",
-                edu05: "Graduação em Inteligência Artificial pela",
-                experience: "EXPERIÊNCIA PROFISSIONAL",
-                exp01: "Estágio em Tecnologia da Informação e Comunicação (TIC) no",
-                exp02: "Bolsista em Tecnologia da Informação e Comunicação (TIC) na UNIFOR pela",
-                exp03: "Sócio Empreendedor com a",
-                exp04: "Analista de CRM na",
-                exp05: "Desenvolvedor Frontend React no",
-                works: "ALGUNS TRABALHOS",
-                detailedJourney: "TRAJETÓRIA DETALHADA",
-                detailedJourneyModal: `<b>Trajetória Detalhada</b>`,
-                buttonClose: "Fechar",
-
-                journeyText:
-                    `
-                
-                <p>
-                                Em 2014 iniciei meu primeiro estágio no laboratório de inovação e tecnologia Vortex,
-                                situado na Universidade de Fortaleza.
-                            </p>
-                            <p>
-                                Este ambiente de inovação tecnológica, direcionado aos alunos dos cursos de computação,
-                                foi o cenário onde iniciei minha jornada profissional. Entre os 20 estagiários, havia
-                                apenas eu e outros dois da área de comunicação, imersos em um ambiente predominantemente
-                                ocupado por desenvolvedores. Foi ali que meu fascínio pela tecnologia se solidificou.
-                            </p>
-
-                            <img src="https://unifor.br/documents/392172/646221/vortex-laboratorio-banner-desktop.jpg/49190eb5-fb73-db86-7c70-ee47dc09bba6?t=1708348185231"
-                                style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-
-                            <p>
-                                Minhas principais responsabilidades incluíam o desenvolvimento de interfaces de usuário
-                                (UI) e experiência do usuário (UX), elaborando protótipos e interfaces para posterior
-                                implementação pelos desenvolvedores. Também assumi a liderança em projetos de integração
-                                acadêmica, facilitando reuniões com os clientes, em sua maioria alunos de Mestrado e
-                                Doutorado da Universidade, que buscavam concretizar suas ideias, proporcionando-me uma
-                                valiosa experiência multidisciplinar. Durante esse período, aprendi sobre gestão de
-                                projetos, levantamento de requisitos e metodologias ágeis, aprimorando minhas
-                                competências técnicas e gerenciais. Além disso, explorei a modelagem 3D para realidade
-                                aumentada com o projeto que deu origem ao meu TCC "Iracema Virtual", e desempenhei
-                                diversas funções relacionadas ao design, enriquecendo ainda mais meu repertório
-                                profissional.
-                            </p>
-
-                            <img src="assets/iracema.png" style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-
-                            <p>
-                                Em 2016, ao término do estágio, o coordenador do laboratório reconheceu meu potencial e
-                                assegurou bolsas da Prefeitura de Fortaleza para que eu continuasse contribuindo como
-                                bolsista, assumindo também o papel de coordenador da equipe de design.
-                            </p>
-                            <p>
-                                Durante minha permanência no laboratório, participei de diversos desafios, como
-                                Hackathons, o Desafio Renault Experience e o Startup Weekend, onde aprendi bastante
-                                sobre empreendedorismo.
-                            </p>
-
-
-                            <p>
-                                Em 2016, um colega bolsista que atuava como desenvolvedor no laboratório me convidou
-                                para participar de um desses desafios, juntamente com outros dois desenvolvedores. Foi
-                                então que fundamos a Besalt Design e Tecnologia.
-                            </p>
-
-                            <img src="assets/logo-besalt.png" style="width: 100%; margin: 1.2rem 0rem; padding: 2rem;"
-                                alt="">
-
-                            <img src="assets/team-besalt.jpg" style="width: 100%; margin-bottom: 1.2rem;" alt="">
-
-
-                            <p>
-                                A Besalt era uma softwarehouse especializada no desenvolvimento de softwares sob
-                                demanda. No entanto, em 2019, enfrentamos dificuldades para conciliar nossos empregos
-                                com as demandas da empresa, o que culminou em seu encerramento.
-                            </p>
-                            <p>
-                                Em 2020, juntamente com os mesmos colegas com quem fundei a Besalt, iniciamos um novo
-                                empreendimento: a Pesse Tecnologia em Logística, agregando dois novos membros com
-                                experiência em logística.
-                            </p>
-
-                            <img src="assets/logo-pesse.png" style="width: 100%; padding: 2rem;" alt="">
-
-                            <img src="assets/team-pesse.jpg" style="width: 100%; margin: 1.2rem 0rem;" alt="">
-
-
-                            <p>
-                                A Pesse era uma startup no qual criamos um aplicativo voltado para otimizar operações de
-                                empresas de transporte, permitindo a redução de custos e a melhoria da performance dos
-                                veículos por meio da análise detalhada dos dados provenientes dos sensores de telemetria
-                                instalados nos veículos.
-                            </p>
-                            <p>
-                                 Em 2020 o então coordenador do laboratório Vortex se tornou Diretor de Tecnologia da
-                                Universidade de Fortaleza. No ano seguinte, em 2021, ele me convidou para trabalhar na
-                                Diretoria de Marketing com o novo CRM da Universidade, pois era preciso alguém com certa
-                                experiência em tecnologia e comunicação, aceitei a proposta e adquiri experiência como analista de CRM.
-                            </p>
-                            <p>
-                                Em 2023, decidi por deixar a Pesse e concentrar meus esforços no aprimoramento das
-                                minhas habilidades como desenvolvedor. Assumi o compromisso de embarcar em uma jornada
-                                intensiva de estudos com o objetivo de me tornar um profissional exemplar nessa área.
-                                Atualmente,
-                                mantenho-me completamente focado nessa meta, impulsionado pela determinação e pelo
-                                empenho necessários para alcançá-la.
-                            </p>
-                            <p style="margin-bottom: 0;">
-                                Em 2025, iniciei uma Graduação em Inteligência Artificial com o objetivo de me
-                                especializar na área. Acredito que todo profissional de tecnologia deve adquirir
-                                conhecimentos em IA, uma vez que esta já é uma realidade presente e determinante para o
-                                futuro.
-                            </p>
-                
-                `,
+            function updateCvLink(lang) {
+                if (cvBtn) {
+                    cvBtn.href = lang === 'en' ? cvBtn.getAttribute('data-href-en') : cvBtn.getAttribute('data-href-pt');
+                }
             }
-        };
 
-        const translateBtn = document.getElementById("translate-btn");
-        const translateIcon = document.getElementById("translate-icon");
-        let currentLang = "pt";
+            langToggleBtn.addEventListener('click', () => {
+                const currentLang = htmlTag.getAttribute('lang');
+                const newLang = currentLang === 'pt-BR' ? 'en' : 'pt-BR';
+                htmlTag.setAttribute('lang', newLang);
 
-        translateBtn.addEventListener("click", () => {
-            currentLang = currentLang === "pt" ? "en" : "pt";
+                updateCvLink(newLang);
 
-            translateIcon.src = currentLang === "pt" ? "assets/ptbr-flag.png" : "assets/us-flag.png";
+                // Refaz a animação de typewriter dos títulos visíveis
+                document.querySelectorAll('.type-target').forEach(el => {
+                    const text = el.getAttribute(`data-text-${newLang === 'pt-BR' ? 'pt' : 'en'}`);
+                    
+                    if (el.classList.contains('typed')) {
+                        el.classList.remove('typed');
+                        typeWriter(el, text);
+                    }
+                });
+            });
 
-            // INTRO
-            document.querySelector("#greeting").textContent = translations[currentLang].greeting;
-            document.querySelector("#greeting-work").textContent = translations[currentLang].work;
-            const cvBtn = document.querySelector("#cv-download-btn");
-            const cvText = document.querySelector("#cvdownload");
+            // --- 2. EFEITO TYPEWRITER E FADE IN ---
+            function typeWriter(element, text, i = 0) {
+                if (i === 0) {
+                    element.innerHTML = '';
+                    element.classList.remove('typewriter-text');
+                    element.classList.remove('is-blinking');
+                    element.classList.add('typed');
+                }
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    setTimeout(() => typeWriter(element, text, i + 1), 35);
+                } else {
+                    // Aciona o cursor para piscar 3x ao terminar de digitar
+                    triggerBlink(element);
+                }
+            }
 
-            cvText.textContent = translations[currentLang].cvdownload;
+            // Função para resetar e iniciar os 3 blinks do cursor
+            function triggerBlink(element) {
+                element.classList.remove('is-blinking');
+                void element.offsetWidth; // Força reflow no navegador
+                element.classList.add('is-blinking');
+            }
 
-            // Define o link correto com base no idioma
-            cvBtn.href = currentLang === "pt"
-                ? "https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
-                : "https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download";
+            // Ativa o piscar do cursor ao passar o mouse ou tocar na seção
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                const handleInteraction = () => {
+                    const typeTarget = section.querySelector('.type-target');
+                    if (typeTarget && typeTarget.classList.contains('typed')) {
+                        triggerBlink(typeTarget);
+                    } else if (section.classList.contains('type-target') && section.classList.contains('typed')) {
+                        triggerBlink(section);
+                    }
+                };
+                
+                // Desktop: Mouse Enter
+                section.addEventListener('mouseenter', handleInteraction);
+                // Mobile: Touch (Início do scroll/toque)
+                section.addEventListener('touchstart', handleInteraction, {passive: true});
+            });
 
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.15 
+            };
 
-            // SKILLS + STACKS
-            document.querySelector("#skills").textContent = translations[currentLang].skills;
-            document.querySelector("#stacks").textContent = translations[currentLang].stacks;
-            document.querySelector("#looking-for").textContent = translations[currentLang].lookingFor;
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        
+                        // Busca títulos dentro da seção
+                        const typeTarget = entry.target.querySelector('.type-target');
+                        if (typeTarget && !typeTarget.classList.contains('typed')) {
+                            const currentLang = htmlTag.getAttribute('lang');
+                            const textToType = typeTarget.getAttribute(`data-text-${currentLang === 'pt-BR' ? 'pt' : 'en'}`);
+                            typeWriter(typeTarget, textToType);
+                        }
 
-            // EDUCATION
-            document.querySelector("#education").textContent = translations[currentLang].education;
-            document.querySelector("#edu01").textContent = translations[currentLang].edu01;
-            document.querySelector("#edu02").textContent = translations[currentLang].edu02;
-            document.querySelector("#edu03").textContent = translations[currentLang].edu03;
-            document.querySelector("#edu04").textContent = translations[currentLang].edu04;
-            document.querySelector("#edu05").textContent = translations[currentLang].edu05;
+                        // Se o próprio elemento for um título
+                        if (entry.target.classList.contains('type-target') && !entry.target.classList.contains('typed')) {
+                            const currentLang = htmlTag.getAttribute('lang');
+                            const textToType = entry.target.getAttribute(`data-text-${currentLang === 'pt-BR' ? 'pt' : 'en'}`);
+                            typeWriter(entry.target, textToType);
+                        }
 
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
 
-            // PROFESSIONAL EXPERIENCE
-            document.querySelector("#professional-exp").textContent = translations[currentLang].experience;
-            document.querySelector("#exp01").textContent = translations[currentLang].exp01;
-            document.querySelector("#exp02").textContent = translations[currentLang].exp02;
-            document.querySelector("#exp03").textContent = translations[currentLang].exp03;
-            document.querySelector("#exp04").textContent = translations[currentLang].exp04;
-            document.querySelector("#exp05").textContent = translations[currentLang].exp05;
+            document.querySelectorAll('.fade-in-section, .type-target').forEach(el => {
+                if (el.classList.contains('type-target')) {
+                    el.classList.add('typewriter-text'); 
+                }
+                if(!el.classList.contains('is-visible')) {
+                    observer.observe(el);
+                }
+            });
+        });
 
+        // --- 3. LÓGICA DO CARROSSEL VINTAGE ---
+        const slides = [
+            {
+                title: "SuperSelect",
+                img: "https://i.ibb.co/q0XXRzy/superselect.png",
+                link: null
+            },
+            {
+                title: "BIT MED",
+                img: "https://i.ibb.co/7YhNGHZ/BIT-MED.png",
+                link: null
+            },
+            {
+                title: "Isanex",
+                img: "https://i.ibb.co/TKKQwXf/isanex.png",
+                link: "https://isanex.com.br/"
+            },
+            {
+                title: "Miva",
+                img: "https://i.ibb.co/zJkCtmC/Miva.png",
+                link: "https://marvelapp.com/442h1b6"
+            },
+            {
+                title: "Resta1 Futebol",
+                img: "https://i.ibb.co/4FFhzdb/Resta1.png",
+                link: null
+            },
+            {
+                title: "Telecall",
+                img: "https://i.ibb.co/qxMDChF/telecall.png",
+                link: "https://marvelapp.com/70j4acg"
+            }
+        ];
 
-            // JOURNEY
-            document.querySelector("#journey").textContent = translations[currentLang].detailedJourney;
-            document.querySelector("#detailed-journey-modal").innerHTML = translations[currentLang].detailedJourneyModal;
-            document.querySelector("#close").textContent = translations[currentLang].buttonClose;
-            document.querySelector("#close2").textContent = translations[currentLang].buttonClose;
-            document.querySelector("#journey-text").innerHTML = translations[currentLang].journeyText;
+        let currentSlide = 0;
+        const imgElement = document.getElementById('carousel-img');
+        const imgLinkElement = document.getElementById('carousel-img-link');
+        const titleElement = document.getElementById('slide-title');
+        const extLinkElement = document.getElementById('slide-external-link');
+        const indicator = document.getElementById('slide-indicator');
 
+        function updateSlideData() {
+            const slide = slides[currentSlide];
+            if (imgElement) {
+                imgElement.src = slide.img;
+                imgElement.alt = slide.title;
+            }
+            if (titleElement) {
+                titleElement.innerText = slide.title;
+            }
+            if (indicator) {
+                indicator.innerText = `${String(currentSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+            }
 
+            if (slide.link) {
+                if (imgLinkElement) {
+                    imgLinkElement.href = slide.link;
+                    imgLinkElement.classList.remove('cursor-default');
+                    imgLinkElement.classList.add('cursor-pointer');
+                    imgLinkElement.setAttribute('target', '_blank');
+                }
+                if (extLinkElement) {
+                    extLinkElement.href = slide.link;
+                    extLinkElement.classList.remove('hidden');
+                }
+            } else {
+                if (imgLinkElement) {
+                    imgLinkElement.removeAttribute('href');
+                    imgLinkElement.classList.remove('cursor-pointer');
+                    imgLinkElement.classList.add('cursor-default');
+                    imgLinkElement.removeAttribute('target');
+                }
+                if (extLinkElement) {
+                    extLinkElement.classList.add('hidden');
+                }
+            }
+        }
 
-            document.querySelector("#some-works").textContent = translations[currentLang].works;
+        function triggerFlashAndChange(newIndex) {
+            // Adiciona a classe de flash/glitch (definida no CSS)
+            if (imgElement) {
+                imgElement.classList.remove('analog-flash');
+                void imgElement.offsetWidth; // Força reflow para reiniciar animação
+                imgElement.classList.add('analog-flash');
+            }
+
+            // Troca a imagem no meio do flash (qnd a opacidade cai)
+            setTimeout(() => {
+                currentSlide = newIndex;
+                updateSlideData();
+            }, 250); 
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            triggerFlashAndChange(next);
+        }
+
+        function prevSlide() {
+            let prev = (currentSlide - 1 + slides.length) % slides.length;
+            triggerFlashAndChange(prev);
+        }
+
+        // Inicializa dados do slide no carregamento
+        document.addEventListener("DOMContentLoaded", function() {
+            updateSlideData();
         });
     </script>
-
-
 </body>
-
 </html>
