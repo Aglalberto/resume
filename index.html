@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
+    <!-- STREAMING_CHUNK:Configuring document head and styling... -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aglalberto Silva | UI/UX Designer</title>
     
+    <!-- Favicon para Currículo / Portfólio -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📁</text></svg>">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -58,7 +62,7 @@
             content: '█';
             margin-left: 4px;
             color: #3E2A1E;
-            opacity: 0; /* Começa invisível e volta a ficar invisível no fim */
+            opacity: 0;
             animation: blink 0.8s step-start 3;
         }
         @keyframes blink {
@@ -83,8 +87,8 @@
             right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
             z-index: 2;
-            background-size: 100% 4px, 3px 100%;
             pointer-events: none;
+            background-size: 100% 4px, 3px 100%;
         }
         .analog-flash {
             animation: flashEffect 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -96,18 +100,22 @@
             70% { filter: sepia(1) brightness(1.5) contrast(2) blur(2px); opacity: 0.5; }
             100% { filter: sepia(0) brightness(1) contrast(1); opacity: 1; }
         }
+
+        /* Modal Lightbox Animation */
+        .modal-open { overflow: hidden; }
     </style>
 </head>
 <body class="bg-brand-bg text-brand-dark font-sans antialiased overflow-x-hidden selection:bg-brand-dark selection:text-brand-bg">
 
     <!-- Language Toggle Button -->
-    <div class="fixed top-6 right-6 z-50">
+    <div class="fixed top-6 right-6 z-40">
         <button id="langToggle" class="font-mono text-sm bg-brand-bg border-2 border-brand-dark px-3 py-1 shadow-[4px_4px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
             <span class="lang-pt font-bold">[ EN ]</span>
             <span class="lang-en font-bold">[ PT-BR ]</span>
         </button>
     </div>
 
+    <!-- STREAMING_CHUNK:Rendering Hero section... -->
     <!-- HERO SECTION -->
     <section class="relative min-h-screen flex flex-col items-center justify-center px-6"
              style="background-image: linear-gradient(to right, #E8E1D5 1px, transparent 1px), linear-gradient(to bottom, #E8E1D5 1px, transparent 1px); background-size: 4rem 4rem;">
@@ -137,6 +145,7 @@
         </div>
     </section>
 
+    <!-- STREAMING_CHUNK:Rendering Resumo Profissional... -->
     <!-- RESUMO PROFISSIONAL -->
     <section class="py-24 px-6 md:px-12 max-w-4xl mx-auto">
         <div class="mb-8 fade-in-section">
@@ -153,6 +162,7 @@
         </div>
     </section>
 
+    <!-- STREAMING_CHUNK:Rendering Experiência Profissional... -->
     <!-- EXPERIÊNCIA PROFISSIONAL -->
     <section class="py-12 px-6 md:px-12 max-w-4xl mx-auto">
         <div class="mb-12 fade-in-section">
@@ -301,18 +311,18 @@
                     </ul>
                     <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
                         <li>Creation of interfaces for logistics systems and administrative dashboards using Figma.</li>
-                        <li>Conduction of usability tests, interviews, and user behavior analysis.</li>
-                        <li>Participation in events like Web Summit 2022 and regional acceleration programs.</li>
-                        <li>Management of a PHP system using Laravel.</li>
+                        <li>Conducting usability testing, interviews, and analyzing user behavior.</li>
+                        <li>Participation in events such as Web Summit 2022 and regional acceleration programs.</li>
+                        <li>System management in PHP technology using Laravel.</li>
                         <li>Leadership in defining flows, journeys, and interactive prototyping.</li>
                     </ul>
                 </div>
             </article>
-            
+
             <!-- Experiência 6: Besalt -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
                 <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                 </div>
                 <div>
                     <h3 class="text-xl md:text-2xl font-bold mb-1">
@@ -331,19 +341,19 @@
                         <li>Aplicação de conceitos de Design Thinking e UX Strategy em múltiplos projetos.</li>
                     </ul>
                     <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
-                        <li>Backlog coordination, requirements gathering, and interaction with stakeholders.</li>
-                        <li>Design and redesign of web/mobile interfaces based on usability tests.</li>
+                        <li>Backlog coordination, requirements gathering, and stakeholder interaction.</li>
+                        <li>Design and redesign of web/mobile interfaces based on usability testing.</li>
                         <li>Development of prototypes and implementations using HTML, CSS, JavaScript, and jQuery.</li>
                         <li>Experience with version control (Git) and agile task organization.</li>
-                        <li>Application of Design Thinking and UX Strategy concepts across multiple projects.</li>
+                        <li>Application of Design Thinking concepts and UX Strategy across multiple projects.</li>
                     </ul>
                 </div>
             </article>
 
-            <!-- Experiência 7: Lab Inovação (Líder) -->
+            <!-- Experiência 7: Lab Liderança -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
                 <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </div>
                 <div>
                     <h3 class="text-xl md:text-2xl font-bold mb-1">
@@ -361,18 +371,18 @@
                         <li>Participação em discussões técnicas envolvendo tecnologias frontend e prototipação.</li>
                     </ul>
                     <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
-                        <li>Leadership of design teams and conduction of academic innovation projects.</li>
-                        <li>Creation of user-centered design systems and educational interfaces.</li>
-                        <li>Support for the foundation of Besalt based on practical product learnings.</li>
+                        <li>Leadership of design teams and management of academic innovation projects.</li>
+                        <li>Creation of design systems and user-centered educational interfaces.</li>
+                        <li>Support in founding Besalt based on practical product learnings.</li>
                         <li>Participation in technical discussions involving frontend technologies and prototyping.</li>
                     </ul>
                 </div>
             </article>
 
-            <!-- Experiência 8: Lab Inovação (Estagiário) -->
+            <!-- Experiência 8: Lab Estágio -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
                 <div class="flex-shrink-0 w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                 </div>
                 <div>
                     <h3 class="text-xl md:text-2xl font-bold mb-1">
@@ -389,9 +399,9 @@
                         <li>Envolvimento com equipes multidisciplinares em pesquisas e projetos científicos.</li>
                     </ul>
                     <ul class="list-disc list-outside ml-4 space-y-2 text-brand-dark/80 text-sm md:text-base lang-en">
-                        <li>Involvement in innovation projects focused on 3D modeling, prototyping, and UX.</li>
-                        <li>Creation of wireframes and testing of mobile and web interfaces.</li>
-                        <li>Involvement with multidisciplinary teams in research and scientific projects.</li>
+                        <li>Involvement in innovation projects focusing on 3D modeling, prototyping, and UX.</li>
+                        <li>Creation of wireframes and interface testing for mobile and web.</li>
+                        <li>Collaboration with multidisciplinary teams on research and scientific projects.</li>
                     </ul>
                 </div>
             </article>
@@ -399,126 +409,496 @@
         </div>
     </section>
 
+    <!-- STREAMING_CHUNK:Rendering Formação, Cursos e Idiomas... -->
     <!-- FORMAÇÃO, CURSOS E IDIOMAS -->
     <section class="py-12 px-6 md:px-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         
-        <!-- Bloco Esquerdo (Formação Acadêmica) -->
+        <!-- Bloco Esquerdo (Formação e Idiomas) -->
         <div>
             <div class="mb-8 fade-in-section">
-                <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ FORMAÇÃO_ACADÊMICA" data-text-en=">_ EDUCATION"></h2>
+                <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ FORMAÇÃO_ACADÊMICA" data-text-en=">_ ACADEMIC_EDUCATION"></h2>
                 <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
             </div>
             <ul class="space-y-4 fade-in-section text-brand-dark/90">
                 <li class="bg-brand-card p-4 border border-brand-dark/20">
-                    <strong>
-                        <span class="lang-pt">MBA em Design Gráfico e Digital</span>
-                        <span class="lang-en">MBA in Graphic and Digital Design</span>
-                    </strong><br>
+                    <strong class="lang-pt">MBA em Design Gráfico e Digital</strong>
+                    <strong class="lang-en">MBA in Graphic and Digital Design</strong><br>
                     <span class="text-sm font-mono text-brand-dark/70">Universidade de Fortaleza (UNIFOR)</span>
                 </li>
                 <li class="bg-brand-card p-4 border border-brand-dark/20">
-                    <strong>
-                        <span class="lang-pt">Bacharelado em Audiovisual e Novas Mídias</span>
-                        <span class="lang-en">Bachelor's Degree in Audiovisual and New Media</span>
-                    </strong><br>
+                    <strong class="lang-pt">Bacharelado em Audiovisual e Novas Mídias</strong>
+                    <strong class="lang-en">Bachelor's Degree in Audiovisual and New Media</strong><br>
                     <span class="text-sm font-mono text-brand-dark/70">Universidade de Fortaleza (UNIFOR)</span>
                 </li>
                 <li class="bg-brand-card p-4 border border-brand-dark/20">
-                    <strong>
-                        <span class="lang-pt">Análise e Desenvolvimento de Sistemas</span>
-                        <span class="lang-en">Associate Degree in Systems Analysis & Development</span>
-                    </strong><br>
+                    <strong class="lang-pt">Análise e Desenvolvimento de Sistemas</strong>
+                    <strong class="lang-en">Associate Degree in Systems Analysis & Development</strong><br>
                     <span class="text-sm font-mono text-brand-dark/70">Estácio</span>
+                </li>
+            </ul>
+
+            <div class="mt-12 mb-8 fade-in-section">
+                <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ IDIOMAS" data-text-en=">_ LANGUAGES"></h2>
+                <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
+            </div>
+            <ul class="space-y-2 fade-in-section bg-brand-card p-4 border border-brand-dark/20 text-brand-dark/90">
+                <li>
+                    <strong class="font-mono text-sm lang-pt">Português:</strong> 
+                    <strong class="font-mono text-sm lang-en">Portuguese:</strong> 
+                    <span class="lang-pt">Nativo</span><span class="lang-en">Native</span>
+                </li>
+                <li>
+                    <strong class="font-mono text-sm lang-pt">Inglês:</strong> 
+                    <strong class="font-mono text-sm lang-en">English:</strong> 
+                    <span class="lang-pt">Avançado (C1)</span><span class="lang-en">Advanced (C1)</span>
+                </li>
+                <li>
+                    <strong class="font-mono text-sm lang-pt">Alemão:</strong> 
+                    <strong class="font-mono text-sm lang-en">German:</strong> 
+                    <span class="lang-pt">Curso em andamento</span><span class="lang-en">Course in progress</span>
                 </li>
             </ul>
         </div>
 
-        <!-- Bloco Direito (Cursos Complementares & Idiomas) -->
-        <div class="flex flex-col space-y-12">
-            
-            <!-- Cursos Complementares Separados -->
-            <div>
-                <div class="mb-8 fade-in-section">
-                    <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ CURSOS_COMPLEMENTARES" data-text-en=">_ ADDITIONAL_COURSES"></h2>
-                    <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
-                </div>
-                <ul class="space-y-4 fade-in-section text-brand-dark/90">
-                    <li class="bg-brand-card p-4 border border-brand-dark/20">
-                        <strong>Fullstack JavaScript Developer</strong><br>
-                        <span class="text-sm font-mono text-brand-dark/70">Youth Space</span>
-                    </li>
-                    <li class="bg-brand-card p-4 border border-brand-dark/20">
-                        <strong>HTML5, CSS3, JavaScript, Git & GitHub</strong><br>
-                        <span class="text-sm font-mono text-brand-dark/70">Rocketseat</span>
-                    </li>
-                </ul>
+        <!-- Bloco Direito (Cursos Complementares) -->
+        <div>
+            <div class="mb-8 fade-in-section">
+                <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ CURSOS_COMPLEMENTARES" data-text-en=">_ ADDITIONAL_COURSES"></h2>
+                <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
             </div>
-
-            <!-- Idiomas com Nomes Completos -->
-            <div>
-                <div class="mb-8 fade-in-section">
-                    <h2 class="font-mono text-xl font-bold mb-2 type-target" data-text-pt=">_ IDIOMAS" data-text-en=">_ LANGUAGES"></h2>
-                    <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
-                </div>
-                <ul class="space-y-3 fade-in-section bg-brand-card p-5 border border-brand-dark/20 text-brand-dark/90">
-                    <li class="flex justify-between border-b border-brand-dark/10 pb-2">
-                        <strong class="font-mono text-sm"><span class="lang-pt">Português</span><span class="lang-en">Portuguese</span></strong> 
-                        <span class="text-sm"><span class="lang-pt">Nativo</span><span class="lang-en">Native</span></span>
-                    </li>
-                    <li class="flex justify-between border-b border-brand-dark/10 pb-2">
-                        <strong class="font-mono text-sm"><span class="lang-pt">Inglês</span><span class="lang-en">English</span></strong> 
-                        <span class="text-sm"><span class="lang-pt">Avançado (C1)</span><span class="lang-en">Advanced (C1)</span></span>
-                    </li>
-                    <li class="flex justify-between">
-                        <strong class="font-mono text-sm"><span class="lang-pt">Alemão</span><span class="lang-en">German</span></strong> 
-                        <span class="text-sm text-right"><span class="lang-pt">Básico (A1.2)</span><span class="lang-en">Basic (A1.2)</span> <br><span class="text-xs text-brand-dark/60"><span class="lang-pt">Curso em andamento</span><span class="lang-en">Ongoing course</span></span></span>
-                    </li>
-                </ul>
-            </div>
-
+            <ul class="space-y-4 fade-in-section text-brand-dark/90">
+                <!-- Curso 1 -->
+                <li class="bg-brand-card p-4 border border-brand-dark/20">
+                    <strong>Fullstack JavaScript Developer</strong><br>
+                    <span class="text-sm font-mono text-brand-dark/70">Youth Space</span>
+                </li>
+                <!-- Curso 2.1 -->
+                <li class="bg-brand-card p-4 border border-brand-dark/20">
+                    <strong>HTML5 & CSS3</strong><br>
+                    <span class="text-sm font-mono text-brand-dark/70">Rocketseat</span>
+                </li>
+                <!-- Curso 2.2 -->
+                <li class="bg-brand-card p-4 border border-brand-dark/20">
+                    <strong>JavaScript</strong><br>
+                    <span class="text-sm font-mono text-brand-dark/70">Rocketseat</span>
+                </li>
+                <!-- Curso 2.3 -->
+                <li class="bg-brand-card p-4 border border-brand-dark/20">
+                    <strong>Git & GitHub</strong><br>
+                    <span class="text-sm font-mono text-brand-dark/70">Rocketseat</span>
+                </li>
+            </ul>
         </div>
+
     </section>
 
+    <!-- STREAMING_CHUNK:Rendering Trabalhos Realizados section... -->
     <!-- TRABALHOS REALIZADOS (CARROSSEL VINTAGE) -->
-    <section class="py-16 px-6 md:px-12 max-w-4xl mx-auto overflow-hidden">
+    <section class="py-12 px-6 md:px-12 max-w-5xl mx-auto">
         <div class="mb-8 fade-in-section">
-            <h2 class="font-mono text-2xl font-bold mb-2 type-target" data-text-pt=">_ TRABALHOS_REALIZADOS" data-text-en=">_ FEATURED_WORKS"></h2>
+            <h2 class="font-mono text-2xl font-bold mb-2 type-target" data-text-pt=">_ TRABALHOS_REALIZADOS" data-text-en=">_ RECENT_PROJECTS"></h2>
             <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
         </div>
 
-        <div class="fade-in-section relative mx-auto max-w-3xl">
-            <!-- Moldura CRT -->
-            <div class="vintage-frame crt-scanlines relative bg-brand-dark p-3 md:p-4 rounded-sm">
-                <!-- Imagem do Carrossel com Link Opção -->
-                <div class="relative overflow-hidden bg-black aspect-video w-full flex items-center justify-center group">
-                    <a id="carousel-img-link" href="#" target="_blank" class="w-full h-full block cursor-default">
-                        <img id="carousel-img" src="https://i.ibb.co/q0XXRzy/superselect.png" alt="SuperSelect" class="object-cover w-full h-full transition-opacity duration-300">
+        <div class="fade-in-section">
+            <!-- Moldura Vintage -->
+            <div class="relative bg-brand-card border-4 border-brand-dark p-2 md:p-4 shadow-[8px_8px_0px_0px_#3E2A1E]">
+                
+                <!-- Tela do Carrossel (Aspecto Landscape) -->
+                <div class="relative w-full aspect-video bg-[#121010] overflow-hidden vintage-frame">
+                    
+                    <!-- Scanlines effect -->
+                    <div class="crt-scanlines"></div>
+                    
+                    <!-- Imagem do Slide com fallback de click -->
+                    <a id="carousel-img-link" class="block w-full h-full relative cursor-default" target="_blank">
+                        <img id="carousel-img" src="" alt="Projeto" class="object-cover w-full h-full opacity-90 mix-blend-screen transition-all duration-300">
                     </a>
-                </div>
-            </div>
 
-            <!-- Controles e Informações do Projeto -->
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mt-6 font-mono">
-                <div class="text-center sm:text-left">
-                    <h3 id="slide-title" class="text-lg font-bold text-brand-dark">SuperSelect</h3>
-                    <a id="slide-external-link" href="#" target="_blank" class="hidden text-xs text-brand-dark/80 hover:text-brand-dark underline font-bold mt-1 inline-block">
-                        <span class="lang-pt">[ VER PROJETO ↗ ]</span>
-                        <span class="lang-en">[ VIEW PROJECT ↗ ]</span>
-                    </a>
+                    <!-- Overlay UI retro -->
+                    <div id="slide-title" class="absolute bottom-4 left-4 font-mono text-sm md:text-lg text-white font-bold bg-brand-dark/80 px-2 py-1 border border-white/20 pointer-events-none">
+                        Nome do Projeto
+                    </div>
                 </div>
-                <div class="flex items-center gap-4">
-                    <button onclick="prevSlide()" class="border-2 border-brand-dark px-4 py-2 hover:bg-brand-dark hover:text-brand-bg transition-colors text-sm">
-                        [ <span class="lang-pt">Anterior</span><span class="lang-en">Prev</span> ]
-                    </button>
-                    <span id="slide-indicator" class="text-sm font-bold text-brand-dark/80 min-w-[60px] text-center">01 / 06</span>
-                    <button onclick="nextSlide()" class="border-2 border-brand-dark px-4 py-2 hover:bg-brand-dark hover:text-brand-bg transition-colors text-sm">
-                        [ <span class="lang-pt">Próximo</span><span class="lang-en">Next</span> ]
-                    </button>
+                
+                <!-- Botões de Controle e Informações -->
+                <div class="flex items-center justify-between mt-4">
+                    <div class="flex space-x-2">
+                        <button onclick="prevSlide()" class="font-mono text-sm md:text-base font-bold bg-brand-accent/50 border-2 border-brand-dark px-4 py-2 shadow-[2px_2px_0px_0px_#3E2A1E] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0px_0px_#3E2A1E] transition-all active:bg-brand-accent active:scale-95">
+                            <span class="lang-pt">&lt; ANTERIOR</span>
+                            <span class="lang-en">&lt; PREV</span>
+                        </button>
+                        <button onclick="nextSlide()" class="font-mono text-sm md:text-base font-bold bg-brand-accent/50 border-2 border-brand-dark px-4 py-2 shadow-[2px_2px_0px_0px_#3E2A1E] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0px_0px_#3E2A1E] transition-all active:bg-brand-accent active:scale-95">
+                            <span class="lang-pt">PRÓXIMO &gt;</span>
+                            <span class="lang-en">NEXT &gt;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <a id="slide-external-link" href="#" target="_blank" class="hidden font-mono text-xs md:text-sm font-bold text-brand-dark hover:underline decoration-brand-dark underline-offset-4 transition-all">
+                            <span class="lang-pt">[ VER PROJETO ↗ ]</span>
+                            <span class="lang-en">[ VIEW PROJECT ↗ ]</span>
+                        </a>
+                        <span id="slide-indicator" class="font-mono text-sm font-bold text-brand-dark/70">
+                            01 / 06
+                        </span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
+    <!-- STREAMING_CHUNK:Rendering Certificações e Diplomas section... -->
+    <!-- CERTIFICAÇÕES (CERTIFICATIONS) -->
+    <section class="py-12 px-6 md:px-12 max-w-6xl mx-auto">
+        <div class="mb-8 fade-in-section">
+            <h2 class="font-mono text-2xl font-bold mb-2 type-target" data-text-pt=">_ CERTIFICAÇÕES_E_DIPLOMAS" data-text-en=">_ CERTIFICATIONS_&_DIPLOMAS"></h2>
+            <div class="h-px w-full bg-brand-dark/20 mt-2"></div>
+        </div>
+
+        <!-- Grade de certificados -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 fade-in-section">
+            
+            <!-- --- DIPLOMAS (DESTAQUE PRIORITÁRIO) --- -->
+
+            <!-- 1. Diploma ADS Estácio (2022) -->
+            <div onclick="openCert('https://i.ibb.co/yJSgH61/Diploma-2022-ADS-Estacio.png')" class="bg-brand-accent/10 border-2 border-brand-dark/50 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.5)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-bg border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ DIPLOMA ]</span><span class="lang-en">[ DEGREE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/yJSgH61/Diploma-2022-ADS-Estacio.png" alt="Diploma ADS Estacio" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Diploma ADS Estácio">Diploma ADS Estácio</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2022</p>
+                </div>
+            </div>
+
+            <!-- 2. Diploma MBA (2019) -->
+            <div onclick="openCert('https://i.ibb.co/gZSnGk1p/Diploma-2019-MBA.jpg')" class="bg-brand-accent/10 border-2 border-brand-dark/50 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.5)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-bg border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ DIPLOMA ]</span><span class="lang-en">[ DEGREE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/gZSnGk1p/Diploma-2019-MBA.jpg" alt="Diploma MBA" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Diploma MBA">Diploma MBA</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2019</p>
+                </div>
+            </div>
+
+            <!-- 3. Diploma Audiovisual (2016) -->
+            <div onclick="openCert('https://i.ibb.co/vCQghCvv/Diploma-2016-Audiovisual.jpg')" class="bg-brand-accent/10 border-2 border-brand-dark/50 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.5)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-bg border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ DIPLOMA ]</span><span class="lang-en">[ DEGREE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/vCQghCvv/Diploma-2016-Audiovisual.jpg" alt="Diploma Audiovisual" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Diploma Audiovisual">Diploma Audiovisual</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2016</p>
+                </div>
+            </div>
+
+
+            <!-- --- CERTIFICADOS (ORDEM DECRESCENTE DE ANO) --- -->
+
+            <!-- 2025 Rocketseat Git e Github básico -->
+            <div onclick="openCert('https://i.ibb.co/KxrL7sH6/Certificado-2025-Rocketseat-Git-e-Github-ba-sico.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/KxrL7sH6/Certificado-2025-Rocketseat-Git-e-Github-ba-sico.png" alt="Rocketseat Git e Github básico" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Git e GitHub básico">Git & GitHub básico</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2025</p>
+                </div>
+            </div>
+
+            <!-- 2025 Rocketseat Javascript -->
+            <div onclick="openCert('https://i.ibb.co/S4cf6SF4/Certificado-2025-Rocketseat-Javascript.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/S4cf6SF4/Certificado-2025-Rocketseat-Javascript.png" alt="Rocketseat Javascript" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Rocketseat JavaScript">JavaScript Rocketseat</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2025</p>
+                </div>
+            </div>
+
+            <!-- 2024 Rocketseat HTML e CSS -->
+            <div onclick="openCert('https://i.ibb.co/hJZt0pns/Certificado-2024-Rocketseat-HTML-e-CSS.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/hJZt0pns/Certificado-2024-Rocketseat-HTML-e-CSS.png" alt="Rocketseat HTML e CSS" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="HTML e CSS Rocketseat">HTML & CSS Rocketseat</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2024</p>
+                </div>
+            </div>
+
+            <!-- 2022 Programa corredores digitais -->
+            <div onclick="openCert('https://i.ibb.co/gFgDbGFB/Certificado-2022-Programa-corredores-digitais.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/gFgDbGFB/Certificado-2022-Programa-corredores-digitais.png" alt="Programa corredores digitais" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Programa corredores digitais">Programa Corredores Digitais</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2022</p>
+                </div>
+            </div>
+
+            <!-- 2021 Pesse Corredores Digitais -->
+            <div onclick="openCert('https://i.ibb.co/xtr5D8pq/Certificado-2021-Pesse-programa-Corredores-Digitais.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/xtr5D8pq/Certificado-2021-Pesse-programa-Corredores-Digitais.png" alt="Pesse Programa Corredores Digitais" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Pesse Corredores Digitais">Pesse Corredores Digitais</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2021</p>
+                </div>
+            </div>
+
+            <!-- 2021 Workshop Figma Deploy -->
+            <div onclick="openCert('https://i.ibb.co/WNsjdNdF/Certificado-2021-Workshop-Figma-Deploy.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/WNsjdNdF/Certificado-2021-Workshop-Figma-Deploy.png" alt="Workshop Figma Deploy" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Workshop Figma Deploy">Workshop Figma Deploy</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2021</p>
+                </div>
+            </div>
+
+            <!-- 2020 Docker -->
+            <div onclick="openCert('https://i.ibb.co/hR1JVwSb/Certificado-2020-Docker.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/hR1JVwSb/Certificado-2020-Docker.png" alt="Docker" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Docker">Docker</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2020</p>
+                </div>
+            </div>
+
+            <!-- 2020 Kubernetes -->
+            <div onclick="openCert('https://i.ibb.co/NdFZHGQr/Certificado-2020-Kubernetes.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/NdFZHGQr/Certificado-2020-Kubernetes.png" alt="Kubernetes" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Kubernetes">Kubernetes</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2020</p>
+                </div>
+            </div>
+
+            <!-- 2020 Cisco Cybersecurity -->
+            <div onclick="openCert('https://i.ibb.co/Tq4PFWqG/Certificado-2020-Cisco-Cybersecurity.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/Tq4PFWqG/Certificado-2020-Cisco-Cybersecurity.png" alt="Cisco Cybersecurity" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Cisco Cybersecurity">Cisco Cybersecurity</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2020</p>
+                </div>
+            </div>
+
+            <!-- 2020 Nodestudio CSS Flexbox -->
+            <div onclick="openCert('https://i.ibb.co/Tqc74Y2T/Certificado-2020-Nodestudio-CSS-Flexbox.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/Tqc74Y2T/Certificado-2020-Nodestudio-CSS-Flexbox.png" alt="Nodestudio CSS Flexbox" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Nodestudio CSS Flexbox">Nodestudio CSS Flexbox</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2020</p>
+                </div>
+            </div>
+
+            <!-- 2019 ISN WCN Renal Health 01 -->
+            <div onclick="openCert('https://i.ibb.co/HpTJMr5w/Certificado-2019-ISN-WCN-Renal-Health-01.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/HpTJMr5w/Certificado-2019-ISN-WCN-Renal-Health-01.png" alt="ISN WCN Renal Health 01" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="ISN WCN Renal Health 01">ISN WCN Renal Health 01</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2019</p>
+                </div>
+            </div>
+
+            <!-- 2019 ISN WCN Renal Health 02 -->
+            <div onclick="openCert('https://i.ibb.co/TM06dpJh/Certificado-2019-ISN-WCN-Renal-Health-02.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/TM06dpJh/Certificado-2019-ISN-WCN-Renal-Health-02.png" alt="ISN WCN Renal Health 02" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="ISN WCN Renal Health 02">ISN WCN Renal Health 02</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2019</p>
+                </div>
+            </div>
+
+            <!-- 2018 CBIS Aplicativo AEDES -->
+            <div onclick="openCert('https://i.ibb.co/h18hWK3n/Certificado-2018-CBIS-Aplicativo-AEDES.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/h18hWK3n/Certificado-2018-CBIS-Aplicativo-AEDES.png" alt="CBIS Aplicativo AEDES" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="CBIS Aplicativo AEDES">CBIS Aplicativo AEDES</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2018</p>
+                </div>
+            </div>
+
+            <!-- 2017 Encontros Científicos UNIFOR -->
+            <div onclick="openCert('https://i.ibb.co/k2k33M0t/Certificado-2017-Encontros-Cientificos-UNIFOR.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/k2k33M0t/Certificado-2017-Encontros-Cientificos-UNIFOR.png" alt="Encontros Cientificos UNIFOR" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Encontros Científicos UNIFOR">Encontros Científicos</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2017</p>
+                </div>
+            </div>
+
+            <!-- 2017 Renault Experience -->
+            <div onclick="openCert('https://i.ibb.co/FkR2MK12/Certificado-2017-Renault-Experience.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/FkR2MK12/Certificado-2017-Renault-Experience.png" alt="Renault Experience" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Renault Experience">Renault Experience</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2017</p>
+                </div>
+            </div>
+
+            <!-- 2017 Startup Weekend -->
+            <div onclick="openCert('https://i.ibb.co/3tZsFBK/Certificado-2017-Startup-Weekend.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/3tZsFBK/Certificado-2017-Startup-Weekend.png" alt="Startup Weekend" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Startup Weekend">Startup Weekend</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2017</p>
+                </div>
+            </div>
+
+            <!-- 2017 Treinamento Analise de requisitos UNIFOR -->
+            <div onclick="openCert('https://i.ibb.co/VndtTVH/Certificado-2017-Treinamento-Analise-de-requisitos-UNIFOR.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/VndtTVH/Certificado-2017-Treinamento-Analise-de-requisitos-UNIFOR.png" alt="Análise de Requisitos UNIFOR" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Análise de Requisitos UNIFOR">Análise de Requisitos</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2017</p>
+                </div>
+            </div>
+
+            <!-- 2016 CASE SP -->
+            <div onclick="openCert('https://i.ibb.co/73kTsFY/Certificado-2016-CASE-SP.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/73kTsFY/Certificado-2016-CASE-SP.png" alt="CASE SP" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="CASE SP">CASE SP</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2016</p>
+                </div>
+            </div>
+
+            <!-- 2015 Encontros Científicos UNIFOR -->
+            <div onclick="openCert('https://i.ibb.co/WNkZxZKg/Certificado-2015-Encontros-Cientificos-UNIFOR.png')" class="bg-brand-card border border-brand-dark/20 p-3 hover:border-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(62,42,30,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(62,42,30,0.3)] group block cursor-pointer">
+                <div class="relative w-full aspect-[4/3] bg-brand-accent/30 border border-brand-dark/10 mb-3 overflow-hidden flex items-center justify-center">
+                    <div class="absolute top-2 right-2 z-10 bg-brand-dark/80 text-brand-bg font-mono text-[10px] px-2 py-0.5 shadow-sm">
+                        <span class="lang-pt">[ CERTIFICADO ]</span><span class="lang-en">[ CERTIFICATE ]</span>
+                    </div>
+                    <img src="https://i.ibb.co/WNkZxZKg/Certificado-2015-Encontros-Cientificos-UNIFOR.png" alt="Encontros Cientificos UNIFOR" class="object-cover w-full h-full transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                <div class="text-center font-mono">
+                    <h3 class="text-sm font-bold text-brand-dark line-clamp-1" title="Encontros Científicos UNIFOR">Encontros Científicos</h3>
+                    <p class="text-xs text-brand-dark/70 mt-1">2015</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STREAMING_CHUNK:Rendering Imprensa section... -->
     <!-- IMPRENSA (PRESS COVERAGE) -->
     <section class="py-12 px-6 md:px-12 max-w-4xl mx-auto">
         <div class="mb-8 fade-in-section">
@@ -625,18 +1005,25 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- STREAMING_CHUNK:Rendering Footer and Lightbox Modal... -->
+    <!-- FOOTER MINIMALISTA -->
     <footer class="border-t border-brand-dark/20 py-12 mt-12 bg-brand-bg fade-in-section">
         <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
             <p class="font-mono text-sm text-brand-dark/70 mb-6 md:mb-0">© 2026 Aglalberto Silva.</p>
             <div class="flex flex-wrap justify-center gap-4 md:gap-6 font-mono text-sm">
-                <a href="mailto:ux@aglalberto.com" class="hover:underline decoration-brand-dark underline-offset-4">E-mail</a>
+                <a href="mailto:aglalfilho@gmail.com" class="hover:underline decoration-brand-dark underline-offset-4">E-mail</a>
                 <a href="https://wa.me/5585997740061" target="_blank" class="hover:underline decoration-brand-dark underline-offset-4">WhatsApp</a>
                 <a href="https://linkedin.com/in/aglalberto-silva" target="_blank" class="hover:underline decoration-brand-dark underline-offset-4">LinkedIn</a>
                 <a href="https://github.com/aglalberto" target="_blank" class="hover:underline decoration-brand-dark underline-offset-4">GitHub</a>
             </div>
         </div>
     </footer>
+
+    <!-- LIGHTBOX / MODAL PARA CERTIFICADOS -->
+    <div id="cert-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-brand-bg/95 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 cursor-zoom-out" onclick="closeCert()">
+        <img id="cert-modal-img" src="" alt="Certificado Ampliado" class="max-w-[90vw] max-h-[90vh] object-contain shadow-[12px_12px_0px_0px_#3E2A1E] border-4 border-brand-dark scale-95 transition-transform duration-300">
+        <button class="absolute top-6 right-6 font-mono text-brand-dark font-bold text-xl hover:scale-110 transition-transform hidden md:block">[ X ]</button>
+    </div>
 
     <!-- SCRIPT GERAL -->
     <script>
@@ -657,13 +1044,11 @@
                 const currentLang = htmlTag.getAttribute('lang');
                 const newLang = currentLang === 'pt-BR' ? 'en' : 'pt-BR';
                 htmlTag.setAttribute('lang', newLang);
-
                 updateCvLink(newLang);
 
                 // Refaz a animação de typewriter dos títulos visíveis
                 document.querySelectorAll('.type-target').forEach(el => {
                     const text = el.getAttribute(`data-text-${newLang === 'pt-BR' ? 'pt' : 'en'}`);
-                    
                     if (el.classList.contains('typed')) {
                         el.classList.remove('typed');
                         typeWriter(el, text);
@@ -683,19 +1068,16 @@
                     element.innerHTML += text.charAt(i);
                     setTimeout(() => typeWriter(element, text, i + 1), 35);
                 } else {
-                    // Aciona o cursor para piscar 3x ao terminar de digitar
                     triggerBlink(element);
                 }
             }
 
-            // Função para resetar e iniciar os 3 blinks do cursor
             function triggerBlink(element) {
                 element.classList.remove('is-blinking');
                 void element.offsetWidth; // Força reflow no navegador
                 element.classList.add('is-blinking');
             }
 
-            // Ativa o piscar do cursor ao passar o mouse ou tocar na seção
             document.querySelectorAll('.fade-in-section').forEach(section => {
                 const handleInteraction = () => {
                     const typeTarget = section.querySelector('.type-target');
@@ -705,10 +1087,7 @@
                         triggerBlink(section);
                     }
                 };
-                
-                // Desktop: Mouse Enter
                 section.addEventListener('mouseenter', handleInteraction);
-                // Mobile: Touch (Início do scroll/toque)
                 section.addEventListener('touchstart', handleInteraction, {passive: true});
             });
 
@@ -723,7 +1102,6 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                         
-                        // Busca títulos dentro da seção
                         const typeTarget = entry.target.querySelector('.type-target');
                         if (typeTarget && !typeTarget.classList.contains('typed')) {
                             const currentLang = htmlTag.getAttribute('lang');
@@ -731,7 +1109,6 @@
                             typeWriter(typeTarget, textToType);
                         }
 
-                        // Se o próprio elemento for um título
                         if (entry.target.classList.contains('type-target') && !entry.target.classList.contains('typed')) {
                             const currentLang = htmlTag.getAttribute('lang');
                             const textToType = entry.target.getAttribute(`data-text-${currentLang === 'pt-BR' ? 'pt' : 'en'}`);
@@ -755,36 +1132,12 @@
 
         // --- 3. LÓGICA DO CARROSSEL VINTAGE ---
         const slides = [
-            {
-                title: "SuperSelect",
-                img: "https://i.ibb.co/q0XXRzy/superselect.png",
-                link: null
-            },
-            {
-                title: "BIT MED",
-                img: "https://i.ibb.co/7YhNGHZ/BIT-MED.png",
-                link: null
-            },
-            {
-                title: "Isanex",
-                img: "https://i.ibb.co/TKKQwXf/isanex.png",
-                link: "https://isanex.com.br/"
-            },
-            {
-                title: "Miva",
-                img: "https://i.ibb.co/zJkCtmC/Miva.png",
-                link: "https://marvelapp.com/442h1b6"
-            },
-            {
-                title: "Resta1 Futebol",
-                img: "https://i.ibb.co/4FFhzdb/Resta1.png",
-                link: null
-            },
-            {
-                title: "Telecall",
-                img: "https://i.ibb.co/qxMDChF/telecall.png",
-                link: "https://marvelapp.com/70j4acg"
-            }
+            { title: "SuperSelect", img: "https://i.ibb.co/q0XXRzy/superselect.png", link: null },
+            { title: "BIT MED", img: "https://i.ibb.co/7YhNGHZ/BIT-MED.png", link: null },
+            { title: "Isanex", img: "https://i.ibb.co/TKKQwXf/isanex.png", link: "https://isanex.com.br/" },
+            { title: "Miva", img: "https://i.ibb.co/zJkCtmC/Miva.png", link: "https://marvelapp.com/442h1b6" },
+            { title: "Resta1 Futebol", img: "https://i.ibb.co/4FFhzdb/Resta1.png", link: null },
+            { title: "Telecall", img: "https://i.ibb.co/qxMDChF/telecall.png", link: "https://marvelapp.com/70j4acg" }
         ];
 
         let currentSlide = 0;
@@ -832,14 +1185,11 @@
         }
 
         function triggerFlashAndChange(newIndex) {
-            // Adiciona a classe de flash/glitch (definida no CSS)
             if (imgElement) {
                 imgElement.classList.remove('analog-flash');
-                void imgElement.offsetWidth; // Força reflow para reiniciar animação
+                void imgElement.offsetWidth;
                 imgElement.classList.add('analog-flash');
             }
-
-            // Troca a imagem no meio do flash (qnd a opacidade cai)
             setTimeout(() => {
                 currentSlide = newIndex;
                 updateSlideData();
@@ -856,7 +1206,33 @@
             triggerFlashAndChange(prev);
         }
 
-        // Inicializa dados do slide no carregamento
+        // --- 4. LÓGICA DO LIGHTBOX DE CERTIFICADOS ---
+        const modal = document.getElementById('cert-modal');
+        const modalImg = document.getElementById('cert-modal-img');
+
+        function openCert(src) {
+            modalImg.src = src;
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+            
+            setTimeout(() => {
+                modalImg.classList.remove('scale-95');
+                modalImg.classList.add('scale-100');
+            }, 10);
+            
+            document.body.classList.add('modal-open');
+        }
+
+        function closeCert() {
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            
+            modalImg.classList.remove('scale-100');
+            modalImg.classList.add('scale-95');
+            
+            document.body.classList.remove('modal-open');
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             updateSlideData();
         });
