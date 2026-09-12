@@ -40,6 +40,8 @@
         }
     </script>
 
+    <script>document.documentElement.classList.add('js');</script>
+
     <style>
         /* Controle de Idioma via CSS - Extremamente rápido e sem piscar */
         html[lang="pt-BR"] .lang-en { display: none !important; }
@@ -81,9 +83,65 @@
 
         /* Modal Lightbox Animation */
         .modal-open { overflow: hidden; }
+
+        /* Grade de fundo global: cobre o site inteiro e some aos poucos até o rodapé */
+        #grid-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+            background-image:
+                linear-gradient(to right, #E8E1D5 1px, transparent 1px),
+                linear-gradient(to bottom, #E8E1D5 1px, transparent 1px);
+            background-size: 4rem 4rem;
+            -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 12%, rgba(0,0,0,.55) 40%, rgba(0,0,0,.22) 70%, rgba(0,0,0,0) 100%);
+                    mask-image: linear-gradient(to bottom, #000 0%, #000 12%, rgba(0,0,0,.55) 40%, rgba(0,0,0,.22) 70%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Camada da cobrinha: mesma geometria da grade, mas sem a máscara do degradê,
+           para ela (e as linhas que ela revela) aparecerem também no fim da página */
+        #grid-fx {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* "Cobrinha" que caminha pelas linhas da grade */
+        .grid-snake {
+            position: absolute;
+            pointer-events: none;
+            overflow: visible;
+            will-change: opacity;
+        }
+
+        /* Typewriter do hero: sem flash antes do JS, e sem pulo de layout */
+        .hero-type { min-height: 1.2em; }
+        /* o hero não pisca o cursor no fim de cada texto */
+        .hero-type.is-blinking::after { content: none; }
+        html.js .hero-type:not(.typed) { visibility: hidden; }
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1);
+        }
+        html:not(.js) .hero-cta,
+        .hero-cta.hero-cta-in { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-cta { opacity: 1; transform: none; transition: none; }
+            html.js .hero-type:not(.typed) { visibility: visible; }
+        }
     </style>
 </head>
-<body class="bg-brand-bg text-brand-dark font-sans antialiased overflow-x-hidden selection:bg-brand-dark selection:text-brand-bg">
+<body class="relative bg-brand-bg text-brand-dark font-sans antialiased overflow-x-hidden selection:bg-brand-dark selection:text-brand-bg">
+
+    <!-- Grade de fundo que percorre o site inteiro (com degradê que some no rodapé) -->
+    <div id="grid-bg" aria-hidden="true"></div>
+    <!-- Camada da "cobrinha": sem o degradê, para ela aparecer até no fim da página -->
+    <div id="grid-fx" aria-hidden="true"></div>
 
     <!-- Language Toggle Button -->
     <div class="fixed top-6 right-6 z-40">
@@ -95,19 +153,15 @@
 
     <!-- STREAMING_CHUNK:Rendering Hero section... -->
     <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex flex-col items-center justify-center px-6"
-             style="background-image: linear-gradient(to right, #E8E1D5 1px, transparent 1px), linear-gradient(to bottom, #E8E1D5 1px, transparent 1px); background-size: 4rem 4rem;">
+    <section class="relative min-h-screen flex flex-col items-center justify-center px-6">
         
         <div class="z-10 text-center max-w-3xl fade-in-section is-visible">
-            <p class="font-mono text-sm tracking-widest uppercase mb-4 text-brand-dark/70">
-                <span class="lang-pt">// Olá, sou o</span>
-                <span class="lang-en">// Hello, I am</span>
-            </p>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-brand-dark">Aglalberto Silva.</h1>
-            <h2 class="font-mono text-xl md:text-2xl mb-12 bg-brand-accent/30 inline-block px-4 py-1 border border-brand-dark/20">
-                <span class="lang-pt">UI & UX Designer | Especialista em IHC</span>
-                <span class="lang-en">UI & UX Designer | HCI Specialist</span>
-            </h2>
+            <p class="hero-type font-mono text-sm tracking-widest uppercase mb-4 text-brand-dark/70"
+               data-text-pt="// Olá, sou o" data-text-en="// Hello, I am">// Olá, sou o</p>
+            <h1 class="hero-type text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-brand-dark"
+                data-text-pt="Aglalberto Silva." data-text-en="Aglalberto Silva.">Aglalberto Silva.</h1>
+            <h2 class="hero-type font-mono text-xl md:text-2xl mb-12 bg-brand-accent/30 inline-block px-4 py-1 border border-brand-dark/20"
+                data-text-pt="UI &amp; UX Designer | Especialista em IHC" data-text-en="UI &amp; UX Designer | HCI Specialist">UI &amp; UX Designer | Especialista em IHC</h2>
 
             <!-- CTA -->
             <a id="downloadCvBtn"
@@ -115,7 +169,7 @@
                data-href-pt="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
                data-href-en="https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download"
                target="_blank" 
-               class="inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4 
+               class="hero-cta inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4 
                       shadow-[6px_6px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E] 
                       hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200">
                 [ DOWNLOAD CV .PDF ]
@@ -179,14 +233,14 @@
 
             <!-- Experiência 2: ProstaFlush -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
-                <div class="flex flex-row md:flex-col gap-2 flex-shrink-0 items-start">
+                <div class="flex flex-row md:flex-col items-center justify-between md:justify-start gap-2 w-full md:w-auto flex-shrink-0">
                     <div class="w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
                     </div>
                     <button type="button" onclick="openChallenge('prostaflush')"
-                            class="w-16 h-8 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
+                            class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
                             title="Ver principais desafios" aria-label="Ver principais desafios">
-                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </button>
                 </div>
                 <div>
@@ -213,14 +267,14 @@
 
             <!-- Experiência 3: Vortex -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
-                <div class="flex flex-row md:flex-col gap-2 flex-shrink-0 items-start">
+                <div class="flex flex-row md:flex-col items-center justify-between md:justify-start gap-2 w-full md:w-auto flex-shrink-0">
                     <div class="w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                     </div>
                     <button type="button" onclick="openChallenge('vortex')"
-                            class="w-16 h-8 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
+                            class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
                             title="Ver principais desafios" aria-label="Ver principais desafios">
-                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </button>
                 </div>
                 <div>
@@ -251,14 +305,14 @@
 
             <!-- Experiência 4: CRM Marketing -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
-                <div class="flex flex-row md:flex-col gap-2 flex-shrink-0 items-start">
+                <div class="flex flex-row md:flex-col items-center justify-between md:justify-start gap-2 w-full md:w-auto flex-shrink-0">
                     <div class="w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     </div>
                     <button type="button" onclick="openChallenge('crm')"
-                            class="w-16 h-8 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
+                            class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
                             title="Ver principais desafios" aria-label="Ver principais desafios">
-                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </button>
                 </div>
                 <div>
@@ -289,14 +343,14 @@
 
             <!-- Experiência 5: PESSE -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
-                <div class="flex flex-row md:flex-col gap-2 flex-shrink-0 items-start">
+                <div class="flex flex-row md:flex-col items-center justify-between md:justify-start gap-2 w-full md:w-auto flex-shrink-0">
                     <div class="w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <button type="button" onclick="openChallenge('pesse')"
-                            class="w-16 h-8 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
+                            class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
                             title="Ver principais desafios" aria-label="Ver principais desafios">
-                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </button>
                 </div>
                 <div>
@@ -327,14 +381,14 @@
 
             <!-- Experiência 6: Besalt -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
-                <div class="flex flex-row md:flex-col gap-2 flex-shrink-0 items-start">
+                <div class="flex flex-row md:flex-col items-center justify-between md:justify-start gap-2 w-full md:w-auto flex-shrink-0">
                     <div class="w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                     </div>
                     <button type="button" onclick="openChallenge('besalt')"
-                            class="w-16 h-8 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
+                            class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
                             title="Ver principais desafios" aria-label="Ver principais desafios">
-                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </button>
                 </div>
                 <div>
@@ -365,14 +419,14 @@
 
             <!-- Experiência 7: Lab Liderança -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
-                <div class="flex flex-row md:flex-col gap-2 flex-shrink-0 items-start">
+                <div class="flex flex-row md:flex-col items-center justify-between md:justify-start gap-2 w-full md:w-auto flex-shrink-0">
                     <div class="w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     </div>
                     <button type="button" onclick="openChallenge('labLider')"
-                            class="w-16 h-8 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
+                            class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
                             title="Ver principais desafios" aria-label="Ver principais desafios">
-                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </button>
                 </div>
                 <div>
@@ -401,14 +455,14 @@
 
             <!-- Experiência 8: Lab Estágio -->
             <article class="w-full bg-brand-card border border-brand-dark/20 p-6 md:p-8 flex flex-col md:flex-row gap-6 fade-in-section hover:border-brand-dark transition-colors duration-300">
-                <div class="flex flex-row md:flex-col gap-2 flex-shrink-0 items-start">
+                <div class="flex flex-row md:flex-col items-center justify-between md:justify-start gap-2 w-full md:w-auto flex-shrink-0">
                     <div class="w-16 h-16 bg-brand-accent/40 border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-dark/60">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                     </div>
                     <button type="button" onclick="openChallenge('labEstagiario')"
-                            class="w-16 h-8 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
+                            class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/30 border border-brand-dark/20 hover:bg-brand-accent/60 hover:border-brand-dark transition-colors"
                             title="Ver principais desafios" aria-label="Ver principais desafios">
-                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-dark/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </button>
                 </div>
                 <div>
@@ -1377,8 +1431,8 @@
         <div class="relative bg-brand-card border-4 border-brand-dark shadow-[12px_12px_0px_0px_#3E2A1E] max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
             <button onclick="closeChallenge()" class="absolute top-4 right-4 font-mono text-brand-dark font-bold text-xl hover:scale-110 transition-transform">[ X ]</button>
             <h3 class="font-mono text-lg md:text-xl font-bold text-brand-dark mb-1 pr-8">
-                <span class="lang-pt">Principais desafios, problemas que resolvi e como resolvi</span>
-                <span class="lang-en">Key challenges, problems I solved and how I solved them</span>
+                <span class="lang-pt">Desafios e problemas que resolvi</span>
+                <span class="lang-en">Challenges and problems I solved</span>
             </h3>
             <p id="challenge-modal-subtitle" class="font-mono text-sm text-brand-dark/70 mb-4"></p>
             <p id="challenge-modal-body" class="text-brand-dark/90 leading-relaxed"></p>
@@ -1423,10 +1477,13 @@
                 if (openChallengeId) {
                     renderChallengeText(openChallengeId);
                 }
+
+                // Redigita o hero no novo idioma
+                runHeroSequence();
             });
 
             // --- 2. EFEITO TYPEWRITER E FADE IN ---
-            function typeWriter(element, text, i = 0) {
+            function typeWriter(element, text, i = 0, onDone = null, speed = 35) {
                 if (i === 0) {
                     element.innerHTML = '';
                     element.classList.remove('typewriter-text');
@@ -1435,9 +1492,10 @@
                 }
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
-                    setTimeout(() => typeWriter(element, text, i + 1), 35);
+                    setTimeout(() => typeWriter(element, text, i + 1, onDone, speed), speed);
                 } else {
                     triggerBlink(element);
+                    if (onDone) onDone();
                 }
             }
 
@@ -1446,6 +1504,44 @@
                 void element.offsetWidth; // Força reflow no navegador
                 element.classList.add('is-blinking');
             }
+
+            // --- 2b. TYPEWRITER DO HERO (em sequência) ---
+            const heroTypeEls = Array.from(document.querySelectorAll('.hero-type'));
+            const heroCta = document.querySelector('.hero-cta');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function runHeroSequence() {
+                const key = htmlTag.getAttribute('lang') === 'pt-BR' ? 'pt' : 'en';
+
+                if (prefersReducedMotion) {
+                    heroTypeEls.forEach(el => {
+                        el.classList.add('typed');
+                        el.textContent = el.getAttribute('data-text-' + key) || '';
+                    });
+                    if (heroCta) heroCta.classList.add('hero-cta-in');
+                    return;
+                }
+
+                heroTypeEls.forEach(el => {
+                    el.textContent = '';
+                    el.classList.remove('typed', 'is-blinking');
+                });
+                if (heroCta) heroCta.classList.remove('hero-cta-in');
+
+                let idx = 0;
+                const typeNext = () => {
+                    if (idx >= heroTypeEls.length) {
+                        if (heroCta) heroCta.classList.add('hero-cta-in');
+                        return;
+                    }
+                    const el = heroTypeEls[idx++];
+                    const text = el.getAttribute('data-text-' + key) || '';
+                    typeWriter(el, text, 0, () => setTimeout(typeNext, 120), 22);
+                };
+                typeNext();
+            }
+
+            runHeroSequence();
 
             document.querySelectorAll('.fade-in-section').forEach(section => {
                 const handleInteraction = () => {
@@ -1666,8 +1762,199 @@
             openChallengeId = null;
         }
 
+        // --- "COBRINHA" CAMINHANDO PELAS LINHAS DA GRADE ---
+        function startGridSnakes() {
+            const gridFx = document.getElementById('grid-fx');
+            if (!gridFx) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const GRID = 64;  // 4rem, igual ao background-size da grade
+            const SVG_NS = 'http://www.w3.org/2000/svg';
+            const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]];  // direita, baixo, esquerda, cima
+
+            // Monta um caminho que anda de esquina em esquina da grade,
+            // virando 90° de vez em quando (nunca dá meia-volta).
+            function buildPath(scrollY, vw, vh) {
+                const maxCol = Math.max(1, Math.floor(vw / GRID));
+                const topRow = Math.ceil(scrollY / GRID);
+                const botRow = Math.floor((scrollY + vh) / GRID);
+                if (botRow - topRow < 3) return null;
+
+                let col = Math.floor(Math.random() * (maxCol + 1));
+                let row = topRow + Math.floor(Math.random() * (botRow - topRow + 1));
+                let dir = Math.floor(Math.random() * 4);
+
+                const pts = [[col * GRID, row * GRID]];
+                const steps = 7 + Math.floor(Math.random() * 7);  // 7..13 trechos
+
+                for (let s = 0; s < steps; s++) {
+                    if (Math.random() < 0.42) {
+                        dir = (dir + (Math.random() < 0.5 ? 1 : 3)) % 4;  // vira p/ um lado
+                    }
+                    // se o próximo passo sair da área visível, procura outra direção
+                    let nc, nr, tries = 0;
+                    for (; tries < 4; tries++) {
+                        nc = col + DIRS[dir][0];
+                        nr = row + DIRS[dir][1];
+                        if (nc >= 0 && nc <= maxCol && nr >= topRow && nr <= botRow) break;
+                        dir = (dir + 1) % 4;
+                    }
+                    if (tries >= 4) break;
+                    col = nc;
+                    row = nr;
+                    pts.push([col * GRID, row * GRID]);
+                }
+                return pts.length >= 3 ? pts : null;
+            }
+
+            function spawnSnake() {
+                if (document.hidden) return;
+
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                const scrollY = window.scrollY || window.pageYOffset || 0;
+
+                const pts = buildPath(scrollY, vw, vh);
+                if (!pts) return;
+
+                const xs = pts.map(p => p[0]);
+                const ys = pts.map(p => p[1]);
+                const pad = 120;  // espaço para o halo de grade revelada ao redor do caminho
+                const minX = Math.min.apply(null, xs) - pad;
+                const minY = Math.max(0, Math.min.apply(null, ys) - pad);
+                const w = Math.max.apply(null, xs) + pad - minX;
+                const h = Math.max.apply(null, ys) + pad - minY;
+
+                const uid = 'sn' + Math.random().toString(36).slice(2, 9);
+                const svg = document.createElementNS(SVG_NS, 'svg');
+                svg.setAttribute('class', 'grid-snake');
+                svg.setAttribute('width', w);
+                svg.setAttribute('height', h);
+                svg.style.left = minX + 'px';
+                svg.style.top = minY + 'px';
+
+                const d = 'M ' + pts.map(p => (p[0] - minX) + ' ' + (p[1] - minY)).join(' L ');
+
+                function mkPath(stroke, width) {
+                    const p = document.createElementNS(SVG_NS, 'path');
+                    p.setAttribute('d', d);
+                    p.setAttribute('fill', 'none');
+                    p.setAttribute('stroke', stroke);
+                    p.setAttribute('stroke-width', width);
+                    p.setAttribute('stroke-linecap', 'round');
+                    p.setAttribute('stroke-linejoin', 'round');
+                    return p;
+                }
+
+                // --- máscara: o mesmo caminho, bem grosso e borrado, que caminha junto ---
+                const defs = document.createElementNS(SVG_NS, 'defs');
+                const filter = document.createElementNS(SVG_NS, 'filter');
+                filter.setAttribute('id', 'blur-' + uid);
+                filter.setAttribute('x', '-50%');
+                filter.setAttribute('y', '-50%');
+                filter.setAttribute('width', '200%');
+                filter.setAttribute('height', '200%');
+                const blur = document.createElementNS(SVG_NS, 'feGaussianBlur');
+                blur.setAttribute('stdDeviation', '28');
+                filter.appendChild(blur);
+
+                const mask = document.createElementNS(SVG_NS, 'mask');
+                mask.setAttribute('id', 'mask-' + uid);
+                mask.setAttribute('maskUnits', 'userSpaceOnUse');
+                mask.setAttribute('x', '0');
+                mask.setAttribute('y', '0');
+                mask.setAttribute('width', w);
+                mask.setAttribute('height', h);
+                const maskPath = mkPath('#fff', '150');
+                maskPath.setAttribute('filter', 'url(#blur-' + uid + ')');
+                mask.appendChild(maskPath);
+
+                defs.appendChild(filter);
+                defs.appendChild(mask);
+                svg.appendChild(defs);
+
+                // --- grade local, revelada só onde a cobrinha está passando ---
+                const gridGroup = document.createElementNS(SVG_NS, 'g');
+                gridGroup.setAttribute('mask', 'url(#mask-' + uid + ')');
+                gridGroup.setAttribute('stroke', '#E8E1D5');
+                gridGroup.setAttribute('stroke-width', '1');
+                const firstX = Math.ceil(minX / GRID) * GRID;
+                const firstY = Math.ceil(minY / GRID) * GRID;
+                for (let X = firstX; X <= minX + w; X += GRID) {
+                    const ln = document.createElementNS(SVG_NS, 'line');
+                    ln.setAttribute('x1', X - minX); ln.setAttribute('y1', 0);
+                    ln.setAttribute('x2', X - minX); ln.setAttribute('y2', h);
+                    gridGroup.appendChild(ln);
+                }
+                for (let Y = firstY; Y <= minY + h; Y += GRID) {
+                    const ln = document.createElementNS(SVG_NS, 'line');
+                    ln.setAttribute('x1', 0); ln.setAttribute('y1', Y - minY);
+                    ln.setAttribute('x2', w); ln.setAttribute('y2', Y - minY);
+                    gridGroup.appendChild(ln);
+                }
+                svg.appendChild(gridGroup);
+
+                // rastro: destaca sutilmente a linha por onde a cobrinha passou
+                const trail = mkPath('rgba(62,42,30,.15)', '2');
+                // cabeça: o trecho mais forte, que caminha
+                const head = mkPath('rgba(62,42,30,.45)', '2');
+                svg.appendChild(trail);
+                svg.appendChild(head);
+
+                gridFx.appendChild(svg);
+
+                const total = head.getTotalLength();
+                if (!total) { svg.remove(); return; }
+
+                const dash = Math.min(100, total * 0.3);
+                const maskDash = Math.min(260, total * 0.55);  // halo um pouco maior que a cabeça
+                const speed = 120 + Math.random() * 60;        // px por segundo (bem devagar)
+                const dur = ((total + dash) / speed) * 1000;
+
+                trail.style.strokeDasharray = total + ' ' + total;
+                trail.style.strokeDashoffset = total;
+                head.style.strokeDasharray = dash + ' ' + (total + dash);
+                head.style.strokeDashoffset = dash;
+                maskPath.style.strokeDasharray = maskDash + ' ' + (total + maskDash);
+                maskPath.style.strokeDashoffset = maskDash;
+
+                // o rastro é revelado no mesmo ritmo da ponta da cabeça
+                trail.animate(
+                    [{ strokeDashoffset: total }, { strokeDashoffset: 0 }],
+                    { duration: dur * (total / (total + dash)), easing: 'linear', fill: 'forwards' }
+                );
+
+                // o halo de grade caminha junto, um pouco atrás da cabeça
+                maskPath.animate(
+                    [{ strokeDashoffset: maskDash }, { strokeDashoffset: -total }],
+                    { duration: dur, easing: 'linear', fill: 'forwards' }
+                );
+
+                const headAnim = head.animate(
+                    [{ strokeDashoffset: dash }, { strokeDashoffset: -total }],
+                    { duration: dur, easing: 'linear', fill: 'forwards' }
+                );
+
+                headAnim.onfinish = () => {
+                    const fade = svg.animate(
+                        [{ opacity: 1 }, { opacity: 0 }],
+                        { duration: 1100, easing: 'ease-out', fill: 'forwards' }
+                    );
+                    fade.onfinish = () => svg.remove();
+                };
+            }
+
+            (function scheduleNext() {
+                setTimeout(() => {
+                    spawnSnake();
+                    scheduleNext();
+                }, 2800 + Math.random() * 3400);
+            })();
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             updateProjCounter();
+            startGridSnakes();
         });
     </script>
 </body>
