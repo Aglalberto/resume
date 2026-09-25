@@ -166,17 +166,29 @@
                 <h2 class="hero-type font-mono text-xl md:text-2xl mb-12 bg-brand-accent/30 inline-block px-4 py-1 border border-brand-dark/20"
                     data-text-pt="UI &amp; UX Designer | Especialista em IHC" data-text-en="UI &amp; UX Designer | HCI Specialist">UI &amp; UX Designer | Especialista em IHC</h2>
 
-                <!-- CTA -->
-                <a id="downloadCvBtn"
-                   href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
-                   data-href-pt="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
-                   data-href-en="https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download"
-                   target="_blank"
-                   class="hero-cta inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4
-                          shadow-[6px_6px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E]
-                          hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200">
-                    [ DOWNLOAD CV .PDF ]
-                </a>
+                <!-- CTAs -->
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <a id="downloadCvBtn"
+                       href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
+                       data-href-pt="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
+                       data-href-en="https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download"
+                       target="_blank"
+                       class="hero-cta inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4
+                              shadow-[6px_6px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E]
+                              hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200">
+                        [ DOWNLOAD CV .PDF ]
+                    </a>
+
+                    <a id="behavioralProfileBtnMobile"
+                       href="https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing"
+                       target="_blank" rel="noopener"
+                       class="hero-cta md:hidden inline-block font-mono text-sm font-bold text-brand-bg bg-brand-dark border-2 border-brand-dark px-6 py-3
+                              shadow-[4px_4px_0px_0px_#D3C4B3] hover:shadow-[2px_2px_0px_0px_#D3C4B3]
+                              hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200">
+                        <span class="lang-pt">[ PERFIL COMPORTAMENTAL ]</span>
+                        <span class="lang-en">[ BEHAVIORAL PROFILE ]</span>
+                    </a>
+                </div>
             </div>
 
             <!-- Coluna de vídeo (placeholder - aguardando link do YouTube) -->
@@ -210,6 +222,16 @@
                         </div>
                     </div>
                 </div>
+
+                <a id="behavioralProfileBtnDesktop"
+                   href="https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing"
+                   target="_blank" rel="noopener"
+                   class="hero-cta hidden md:block text-center mt-4 font-mono text-sm font-bold text-brand-bg bg-brand-dark border-2 border-brand-dark px-6 py-3
+                          shadow-[4px_4px_0px_0px_#D3C4B3] hover:shadow-[2px_2px_0px_0px_#D3C4B3]
+                          hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200">
+                    <span class="lang-pt">[ PERFIL COMPORTAMENTAL ]</span>
+                    <span class="lang-en">[ BEHAVIORAL PROFILE ]</span>
+                </a>
 
             </div>
 
@@ -1581,7 +1603,7 @@
 
             // --- 2b. TYPEWRITER DO HERO (em sequência) ---
             const heroTypeEls = Array.from(document.querySelectorAll('.hero-type'));
-            const heroCta = document.querySelector('.hero-cta');
+            const heroCtaEls = Array.from(document.querySelectorAll('.hero-cta'));
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             let heroSeqId = 0;
@@ -1595,7 +1617,7 @@
                         el.classList.add('typed');
                         el.textContent = el.getAttribute('data-text-' + key) || '';
                     });
-                    if (heroCta) heroCta.classList.add('hero-cta-in');
+                    heroCtaEls.forEach(el => el.classList.add('hero-cta-in'));
                     return;
                 }
 
@@ -1603,13 +1625,13 @@
                     el.textContent = '';
                     el.classList.remove('typed', 'is-blinking');
                 });
-                if (heroCta) heroCta.classList.remove('hero-cta-in');
+                heroCtaEls.forEach(el => el.classList.remove('hero-cta-in'));
 
                 let idx = 0;
                 const typeNext = () => {
                     if (seqId !== heroSeqId) return;   // sequência substituída
                     if (idx >= heroTypeEls.length) {
-                        if (heroCta) heroCta.classList.add('hero-cta-in');
+                        heroCtaEls.forEach(el => el.classList.add('hero-cta-in'));
                         return;
                     }
                     const el = heroTypeEls[idx++];
