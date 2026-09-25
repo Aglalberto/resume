@@ -1792,7 +1792,7 @@
                 if (!img || !id) return;
                 const provider = el.getAttribute('data-provider') || 'youtube';
                 if (provider === 'vimeo') {
-                    fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + id))
+                    fetch('https://vimeo.com/api/oembed.json?width=1080&url=' + encodeURIComponent('https://vimeo.com/' + id))
                         .then(function (r) { return r.json(); })
                         .then(function (data) { if (data && data.thumbnail_url) img.src = data.thumbnail_url; })
                         .catch(function () {});
