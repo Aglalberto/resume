@@ -154,26 +154,65 @@
     <!-- STREAMING_CHUNK:Rendering Hero section... -->
     <!-- HERO SECTION -->
     <section class="relative min-h-screen flex flex-col items-center justify-center px-6">
-        
-        <div class="z-10 text-center max-w-3xl fade-in-section is-visible">
-            <p class="hero-type font-mono text-sm tracking-widest uppercase mb-4 text-brand-dark/70"
-               data-text-pt="// Olá, sou o" data-text-en="// Hello, I am">// Olá, sou o</p>
-            <h1 class="hero-type text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-brand-dark"
-                data-text-pt="Aglalberto Silva." data-text-en="Aglalberto Silva.">Aglalberto Silva.</h1>
-            <h2 class="hero-type font-mono text-xl md:text-2xl mb-12 bg-brand-accent/30 inline-block px-4 py-1 border border-brand-dark/20"
-                data-text-pt="UI &amp; UX Designer | Especialista em IHC" data-text-en="UI &amp; UX Designer | HCI Specialist">UI &amp; UX Designer | Especialista em IHC</h2>
 
-            <!-- CTA -->
-            <a id="downloadCvBtn"
-               href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download" 
-               data-href-pt="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
-               data-href-en="https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download"
-               target="_blank" 
-               class="hero-cta inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4 
-                      shadow-[6px_6px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E] 
-                      hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200">
-                [ DOWNLOAD CV .PDF ]
-            </a>
+        <div class="z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
+
+            <!-- Coluna de texto -->
+            <div class="order-2 md:order-1 text-center md:text-left max-w-3xl fade-in-section is-visible">
+                <p class="hero-type font-mono text-sm tracking-widest uppercase mb-4 text-brand-dark/70"
+                   data-text-pt="// Olá, sou o" data-text-en="// Hello, I am">// Olá, sou o</p>
+                <h1 class="hero-type text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-brand-dark"
+                    data-text-pt="Aglalberto Silva." data-text-en="Aglalberto Silva.">Aglalberto Silva.</h1>
+                <h2 class="hero-type font-mono text-xl md:text-2xl mb-12 bg-brand-accent/30 inline-block px-4 py-1 border border-brand-dark/20"
+                    data-text-pt="UI &amp; UX Designer | Especialista em IHC" data-text-en="UI &amp; UX Designer | HCI Specialist">UI &amp; UX Designer | Especialista em IHC</h2>
+
+                <!-- CTA -->
+                <a id="downloadCvBtn"
+                   href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
+                   data-href-pt="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
+                   data-href-en="https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download"
+                   target="_blank"
+                   class="hero-cta inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4
+                          shadow-[6px_6px_0px_0px_#3E2A1E] hover:shadow-[2px_2px_0px_0px_#3E2A1E]
+                          hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200">
+                    [ DOWNLOAD CV .PDF ]
+                </a>
+            </div>
+
+            <!-- Coluna de vídeo (placeholder - aguardando link do YouTube) -->
+            <div class="order-1 md:order-2 w-[90%] md:w-2/5 max-w-xs md:max-w-sm shrink-0 mt-20 md:mt-0 fade-in-section is-visible">
+
+                <!-- PT-BR -->
+                <!-- Teste: Vimeo (VSL AGLALBERTO). Pra voltar pro YouTube, troque data-provider="youtube" e data-video-id="1rMulFAB404" -->
+                <div class="lang-pt">
+                    <div class="hero-video-facade group relative w-full aspect-[9/16] rounded-2xl border border-black/10 shadow-xl overflow-hidden cursor-pointer bg-brand-dark"
+                         data-provider="vimeo" data-video-id="1230085372" onclick="playHeroVideo(this)">
+                        <img class="hero-video-poster absolute inset-0 w-full h-full object-cover" alt="" loading="lazy">
+                        <div class="absolute inset-0 bg-brand-dark/25 group-hover:bg-brand-dark/10 transition-colors"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <svg class="w-6 h-6 md:w-7 md:h-7 text-brand-dark translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EN -->
+                <div class="lang-en">
+                    <!-- TODO: paste the YouTube video ID here (EN video) — mirror the .lang-pt block above once the EN video is sent -->
+                    <div class="relative w-full aspect-[9/16] rounded-2xl bg-neutral-300 border border-black/10 shadow-xl overflow-hidden flex items-center justify-center">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-md flex items-center justify-center">
+                            <svg class="w-6 h-6 md:w-7 md:h-7 text-brand-dark translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
@@ -1459,6 +1498,15 @@
 
     <!-- SCRIPT GERAL -->
     <script>
+        // Idioma compartilhado com /aboutme: ?lang= > última escolha > pt-BR
+        (function () {
+            var q = new URLSearchParams(location.search).get('lang'); var s = null;
+            try { s = localStorage.getItem('aglalberto.lang'); } catch (e) {}
+            var l = q ? (q === 'en' ? 'en' : 'pt-BR') : (s === 'en' ? 'en' : 'pt-BR');
+            document.documentElement.setAttribute('lang', l);
+            if (q) { try { localStorage.setItem('aglalberto.lang', l); } catch (e) {} }
+        })();
+
         document.addEventListener("DOMContentLoaded", function() {
             
             // --- 1. LÓGICA DE IDIOMA ---
@@ -1470,7 +1518,10 @@
                 if (cvBtn) {
                     cvBtn.href = lang === 'en' ? cvBtn.getAttribute('data-href-en') : cvBtn.getAttribute('data-href-pt');
                 }
+                try { localStorage.setItem('aglalberto.lang', lang); } catch (e) {}
             }
+            updateCvLink(htmlTag.getAttribute('lang'));
+            loadHeroVideoPosters();
 
             langToggleBtn.addEventListener('click', () => {
                 const currentLang = htmlTag.getAttribute('lang');
@@ -1685,6 +1736,47 @@
             }, 10);
 
             document.body.classList.add('modal-open');
+        }
+
+        // Vídeo da Hero: troca a thumbnail + botão de play custom pelo iframe (YouTube ou Vimeo) ao clicar
+        function playHeroVideo(facadeEl) {
+            const provider = facadeEl.getAttribute('data-provider') || 'youtube';
+            const id = facadeEl.getAttribute('data-video-id');
+            if (!id) return;
+            const iframe = document.createElement('iframe');
+            iframe.className = 'absolute inset-0 w-full h-full';
+            iframe.title = 'Vídeo de apresentação';
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = true;
+            if (provider === 'vimeo') {
+                iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479&color=3E2A1E&title=0&byline=0&portrait=0';
+                iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+            } else {
+                iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            }
+            facadeEl.innerHTML = '';
+            facadeEl.appendChild(iframe);
+            facadeEl.classList.remove('cursor-pointer', 'group', 'hero-video-facade');
+            facadeEl.onclick = null;
+        }
+
+        // Carrega a thumbnail real de cada vídeo da Hero (YouTube via URL direta, Vimeo via oEmbed)
+        function loadHeroVideoPosters() {
+            document.querySelectorAll('.hero-video-facade').forEach(function (el) {
+                const img = el.querySelector('.hero-video-poster');
+                const id = el.getAttribute('data-video-id');
+                if (!img || !id) return;
+                const provider = el.getAttribute('data-provider') || 'youtube';
+                if (provider === 'vimeo') {
+                    fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + id))
+                        .then(function (r) { return r.json(); })
+                        .then(function (data) { if (data && data.thumbnail_url) img.src = data.thumbnail_url; })
+                        .catch(function () {});
+                } else {
+                    img.src = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
+                }
+            });
         }
 
         function openCert(id) {
