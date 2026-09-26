@@ -182,6 +182,8 @@
 
                     <a id="behavioralProfileBtnMobile"
                        href="https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing"
+                       data-href-pt="https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing"
+                       data-href-en="https://drive.google.com/file/d/1gEN4hi2sJ0onx8FnzJ1vTMzRbw12fx4c/view?usp=sharing"
                        target="_blank" rel="noopener"
                        class="hero-cta md:hidden inline-block font-mono text-sm font-bold text-brand-bg bg-brand-dark border-2 border-brand-dark px-6 py-3
                               shadow-[4px_4px_0px_0px_#D3C4B3] hover:shadow-[2px_2px_0px_0px_#D3C4B3]
@@ -226,6 +228,8 @@
 
                 <a id="behavioralProfileBtnDesktop"
                    href="https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing"
+                   data-href-pt="https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing"
+                   data-href-en="https://drive.google.com/file/d/1gEN4hi2sJ0onx8FnzJ1vTMzRbw12fx4c/view?usp=sharing"
                    target="_blank" rel="noopener"
                    class="hero-cta hidden md:block text-center mt-4 font-mono text-sm font-bold text-brand-bg bg-brand-dark border-2 border-brand-dark px-6 py-3
                           shadow-[4px_4px_0px_0px_#D3C4B3] hover:shadow-[2px_2px_0px_0px_#D3C4B3]
@@ -1535,12 +1539,11 @@
             // --- 1. LÓGICA DE IDIOMA ---
             const langToggleBtn = document.getElementById('langToggle');
             const htmlTag = document.documentElement;
-            const cvBtn = document.getElementById('downloadCvBtn');
 
             function updateCvLink(lang) {
-                if (cvBtn) {
-                    cvBtn.href = lang === 'en' ? cvBtn.getAttribute('data-href-en') : cvBtn.getAttribute('data-href-pt');
-                }
+                document.querySelectorAll('[data-href-pt]').forEach(function (el) {
+                    el.href = lang === 'en' ? el.getAttribute('data-href-en') : el.getAttribute('data-href-pt');
+                });
                 try { localStorage.setItem('aglalberto.lang', lang); } catch (e) {}
             }
             updateCvLink(htmlTag.getAttribute('lang'));
