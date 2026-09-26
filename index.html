@@ -184,6 +184,13 @@
         }
         .hero-video-pip-host { transform: none !important; will-change: auto !important; }
 
+        /* Navegadores antigos (ex. webOS das TVs LG, Chromium < 88) não suportam
+           aspect-ratio; como tudo dentro do vídeo é absolute, a caixa colapsava
+           pra altura 0. Fallback clássico: padding-top proporcional (16/9 = 177.78%). */
+        @supports not (aspect-ratio: 1 / 1) {
+            .aspect-\[9\/16\]::before { content: ""; display: block; padding-top: 177.78%; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .hero-cta { opacity: 1; transform: none; transition: none; }
             html.js .hero-type:not(.typed) { visibility: visible; }
