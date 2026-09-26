@@ -130,6 +130,60 @@
         html:not(.js) .hero-cta,
         .hero-cta.hero-cta-in { opacity: 1; transform: translateY(0); }
 
+        /* Mini-player (PiP) do vídeo da Hero: dock/undock ao rolar */
+        .hero-video-pip {
+            position: fixed !important;
+            top: auto !important;
+            left: auto !important;
+            bottom: 1rem !important;
+            right: 1rem !important;
+            width: 10rem !important;
+            height: auto !important;
+            max-width: 55vw !important;
+            margin: 0 !important;
+            z-index: 45;
+            box-shadow: 0 8px 24px -4px rgba(0,0,0,0.35);
+        }
+        @media (min-width: 768px) {
+            .hero-video-pip { width: 15rem !important; bottom: 1.5rem !important; right: 1.5rem !important; }
+        }
+        /* Tamanhos ajustáveis pelos botões [ - ] / [ + ] da miniatura (padrão = sem modificador) */
+        .hero-video-pip.hero-video-pip-size-sm { width: 7rem !important; }
+        @media (min-width: 768px) {
+            .hero-video-pip.hero-video-pip-size-sm { width: 11rem !important; }
+        }
+        .hero-video-pip.hero-video-pip-size-lg { width: 13rem !important; }
+        @media (min-width: 768px) {
+            .hero-video-pip.hero-video-pip-size-lg { width: 20rem !important; }
+        }
+        .hero-video-pip.hero-video-pip-size-xl { width: 16rem !important; }
+        @media (min-width: 768px) {
+            .hero-video-pip.hero-video-pip-size-xl { width: 25rem !important; }
+        }
+        /* Botões [ - ]/[ + ]/[ X ] da miniatura: escondidos sempre por padrão (inclusive
+           enquanto o vídeo toca inline, não dockado) — só aparecem no hover em telas
+           com mouse (desktop) ou ao tocar no vídeo em touch (mobile, via
+           .hero-video-pip-controls-visible alternado no clique do tap-catcher). */
+        .hero-video-pip-close,
+        .hero-video-pip-controls { display: none; }
+        @media (hover: hover) {
+            .hero-video-pip:hover .hero-video-pip-close { display: block; }
+            .hero-video-pip:hover .hero-video-pip-controls { display: flex; }
+        }
+        .hero-video-pip.hero-video-pip-controls-visible .hero-video-pip-close { display: block; }
+        .hero-video-pip.hero-video-pip-controls-visible .hero-video-pip-controls { display: flex; }
+        /* Captura o toque no vídeo (o iframe do Vimeo, sendo cross-origin, não deixa
+           o clique "vazar" pro elemento pai) só em dispositivos sem hover (touch) e
+           só até o primeiro toque — depois disso o JS libera (pointer-events:none)
+           pra deixar o toque seguinte chegar nos controles nativos do Vimeo (pausar,
+           etc.). No desktop (hover:hover) nunca fica ativo: clicar no vídeo sempre
+           vai direto pro player, os botões [ - ]/[ + ]/[ X ] aparecem só via :hover. */
+        .hero-video-pip-tap-catcher { pointer-events: none; }
+        @media (hover: none) {
+            .hero-video-pip .hero-video-pip-tap-catcher { pointer-events: auto; }
+        }
+        .hero-video-pip-host { transform: none !important; will-change: auto !important; }
+
         @media (prefers-reduced-motion: reduce) {
             .hero-cta { opacity: 1; transform: none; transition: none; }
             html.js .hero-type:not(.typed) { visibility: visible; }
@@ -201,7 +255,7 @@
                 <!-- Teste: Vimeo (VSL AGLALBERTO). Pra voltar pro YouTube, troque data-provider="youtube" e data-video-id="1rMulFAB404" -->
                 <div class="lang-pt">
                     <div class="hero-video-facade group relative w-full aspect-[9/16] rounded-2xl border border-black/10 shadow-xl overflow-hidden cursor-pointer bg-brand-dark"
-                         data-provider="vimeo" data-video-id="1230262043" onclick="playHeroVideo(this)">
+                         data-provider="vimeo" data-video-id="1230262043" data-hero-video="true" onclick="playHeroVideo(this)">
                         <img class="hero-video-poster absolute inset-0 w-full h-full object-cover" alt="" loading="lazy">
                         <div class="absolute inset-0 bg-brand-dark/25 group-hover:bg-brand-dark/10 transition-colors"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -217,7 +271,8 @@
                 <!-- EN -->
                 <div class="lang-en">
                     <!-- TODO: paste the YouTube video ID here (EN video) — mirror the .lang-pt block above once the EN video is sent -->
-                    <div class="relative w-full aspect-[9/16] rounded-2xl bg-neutral-300 border border-black/10 shadow-xl overflow-hidden flex items-center justify-center">
+                    <div class="relative w-full aspect-[9/16] rounded-2xl bg-neutral-300 border border-black/10 shadow-xl overflow-hidden flex items-center justify-center"
+                         data-hero-video="true">
                         <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-md flex items-center justify-center">
                             <svg class="w-6 h-6 md:w-7 md:h-7 text-brand-dark translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M8 5v14l11-7z"/>
@@ -1823,7 +1878,7 @@
             iframe.frameBorder = '0';
             iframe.allowFullscreen = true;
             if (provider === 'vimeo') {
-                iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479&color=3E2A1E&title=0&byline=0&portrait=0';
+                iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479&color=D3C4B3&title=0&byline=0&portrait=0';
                 iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
             } else {
                 iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
@@ -1833,6 +1888,63 @@
             facadeEl.appendChild(iframe);
             facadeEl.classList.remove('cursor-pointer', 'group', 'hero-video-facade');
             facadeEl.onclick = null;
+
+            // Captura o toque no vídeo pra mostrar os botões no mobile — o iframe
+            // do Vimeo é cross-origin, então um clique nele nunca borbulha pro
+            // elemento pai. Só fica "ativo" (pointer-events) enquanto dockado (CSS).
+            const tapCatcher = document.createElement('div');
+            tapCatcher.className = 'hero-video-pip-tap-catcher absolute inset-0 z-[6]';
+            tapCatcher.onclick = function (e) { e.stopPropagation(); toggleHeroVideoPipControls(facadeEl); };
+            facadeEl.appendChild(tapCatcher);
+
+            // Botão de fechar do mini-player (PiP) — só faz sentido existir depois
+            // que o vídeo está tocando; innerHTML='' acima já limpou qualquer cópia
+            // estática anterior, então é recriado aqui.
+            const closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
+            closeBtn.className = 'hero-video-pip-close absolute top-1 right-1 z-10 font-mono font-bold text-xs text-white bg-brand-dark/70 rounded px-1.5 py-0.5 hover:scale-110 transition-transform';
+            closeBtn.textContent = '[ X ]';
+            closeBtn.onclick = closeHeroVideoPip;
+            facadeEl.appendChild(closeBtn);
+
+            // Botões de aumentar/diminuir a miniatura (só aparecem no hover/toque)
+            const resizeWrap = document.createElement('div');
+            resizeWrap.className = 'hero-video-pip-controls absolute top-1 left-1 z-10 gap-1';
+            resizeWrap.innerHTML =
+                '<button type="button" data-pip-resize="down" class="font-mono font-bold text-xs text-white bg-brand-dark/70 rounded px-1.5 py-0.5 hover:scale-110 transition-transform">[ - ]</button>' +
+                '<button type="button" data-pip-resize="up" class="font-mono font-bold text-xs text-white bg-brand-dark/70 rounded px-1.5 py-0.5 hover:scale-110 transition-transform">[ + ]</button>';
+            resizeWrap.querySelector('[data-pip-resize="down"]').onclick = function (e) { e.stopPropagation(); resizeHeroVideoPip(facadeEl, -1); };
+            resizeWrap.querySelector('[data-pip-resize="up"]').onclick = function (e) { e.stopPropagation(); resizeHeroVideoPip(facadeEl, 1); };
+            facadeEl.appendChild(resizeWrap);
+        }
+
+        // Mostra/esconde os botões [ - ]/[ + ]/[ X ] no toque (mobile, sem hover).
+        // Mostra os botões [ - ]/[ + ]/[ X ] no primeiro toque (mobile) e libera o
+        // toque seguinte pro vídeo em si (controles nativos do Vimeo, ex. pausar) —
+        // some sozinho depois de 3s, quando o "capturador" volta a ficar ativo pra
+        // um próximo toque poder mostrar os botões de novo.
+        let _heroPipControlsTimer = null;
+        function toggleHeroVideoPipControls(el) {
+            const tapCatcher = el.querySelector('.hero-video-pip-tap-catcher');
+            el.classList.add('hero-video-pip-controls-visible');
+            if (tapCatcher) tapCatcher.style.pointerEvents = 'none';
+            clearTimeout(_heroPipControlsTimer);
+            _heroPipControlsTimer = setTimeout(function () {
+                el.classList.remove('hero-video-pip-controls-visible');
+                if (tapCatcher) tapCatcher.style.pointerEvents = '';
+            }, 3000);
+        }
+
+        // Tamanhos disponíveis pra miniatura (PiP); "md" é o padrão ao dockar.
+        const HERO_PIP_SIZES = ['sm', 'md', 'lg', 'xl'];
+        function resizeHeroVideoPip(el, direction) {
+            const current = el.getAttribute('data-pip-size') || 'md';
+            let idx = HERO_PIP_SIZES.indexOf(current) + direction;
+            idx = Math.max(0, Math.min(HERO_PIP_SIZES.length - 1, idx));
+            const newSize = HERO_PIP_SIZES[idx];
+            el.setAttribute('data-pip-size', newSize);
+            el.classList.remove('hero-video-pip-size-sm', 'hero-video-pip-size-lg', 'hero-video-pip-size-xl');
+            if (newSize !== 'md') el.classList.add('hero-video-pip-size-' + newSize);
         }
 
         // Carrega a thumbnail real de cada vídeo da Hero (YouTube via URL direta, Vimeo via oEmbed)
@@ -1852,6 +1964,119 @@
                 }
             });
         }
+
+        // --- Mini-player (PiP) do vídeo da Hero: dock ao sair da viewport, undock ao voltar ---
+        function getHeroVideoEl() {
+            // Os dois blocos (.lang-pt e .lang-en) têm data-hero-video; só um está
+            // visível por vez (troca de idioma esconde o wrapper .lang-pt/.lang-en
+            // via CSS, não o próprio facade — então tem que checar o display do
+            // wrapper, não do elemento em si, senão sempre "visível" ele mesmo).
+            // Não usar offsetParent aqui — também é null pra position:fixed (o
+            // estado "dockado"), não só pra display:none, o que quebraria o [X].
+            const candidates = document.querySelectorAll('[data-hero-video="true"]');
+            for (const el of candidates) {
+                const wrapper = el.closest('.lang-pt, .lang-en');
+                if (!wrapper || getComputedStyle(wrapper).display !== 'none') return el;
+            }
+            return null;
+        }
+
+        function dockHeroVideoPip() {
+            const el = getHeroVideoEl();
+            if (!el) return;
+            if (!el.querySelector('iframe')) return; // nunca dock antes do play / placeholder EN
+            el.classList.add('hero-video-pip');
+            // O ancestral .fade-in-section usa will-change:transform (e .is-visible
+            // aplica transform: translateY(0)) — qualquer um dos dois cria um
+            // "containing block" pra descendentes position:fixed, fazendo a
+            // miniatura ficar presa relativa a essa coluna em vez da tela inteira.
+            // Neutraliza isso só enquanto estiver dockado.
+            const host = el.closest('.fade-in-section');
+            if (host) host.classList.add('hero-video-pip-host');
+        }
+
+        function undockHeroVideoPip() {
+            document.querySelectorAll('.hero-video-pip').forEach(function (el) {
+                el.classList.remove('hero-video-pip', 'hero-video-pip-controls-visible');
+            });
+            document.querySelectorAll('.hero-video-pip-host').forEach(function (host) {
+                host.classList.remove('hero-video-pip-host');
+            });
+        }
+
+        function closeHeroVideoPip(evt) {
+            if (evt) evt.stopPropagation();
+            const el = getHeroVideoEl();
+            if (el) resetHeroVideoFacade(el);
+        }
+
+        // Reconstrói o facade original (poster + play) e reativa o clique. Sem SDK
+        // do Vimeo carregado não existe pause() limpo — destruir o iframe é o único
+        // "parar" disponível.
+        function resetHeroVideoFacade(el) {
+            const provider = el.getAttribute('data-provider') || 'youtube';
+            const id = el.getAttribute('data-video-id');
+            el.classList.remove('hero-video-pip', 'hero-video-pip-controls-visible');
+            el.innerHTML =
+                '<img class="hero-video-poster absolute inset-0 w-full h-full object-cover" alt="" loading="lazy">' +
+                '<div class="absolute inset-0 bg-brand-dark/25 group-hover:bg-brand-dark/10 transition-colors"></div>' +
+                '<div class="absolute inset-0 flex items-center justify-center">' +
+                    '<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform">' +
+                        '<svg class="w-6 h-6 md:w-7 md:h-7 text-brand-dark translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
+                            '<path d="M8 5v14l11-7z"/>' +
+                        '</svg>' +
+                    '</div>' +
+                '</div>';
+            el.classList.add('hero-video-facade', 'group', 'cursor-pointer');
+            el.onclick = function () { playHeroVideo(el); };
+            const img = el.querySelector('.hero-video-poster');
+            if (img && id) {
+                if (provider === 'vimeo') {
+                    fetch('https://vimeo.com/api/oembed.json?width=1080&url=' + encodeURIComponent('https://vimeo.com/' + id))
+                        .then(function (r) { return r.json(); })
+                        .then(function (data) { if (data && data.thumbnail_url) img.src = data.thumbnail_url; })
+                        .catch(function () {});
+                } else {
+                    img.src = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
+                }
+            }
+        }
+
+        // Observa a coluna inteira do vídeo (nunca fica fixed, ao contrário do
+        // facade lá dentro) — repetível, sem unobserve, precisa disparar toda vez.
+        // Checagem direta via scroll (não IntersectionObserver): o IO tem uma folga
+        // de agendamento própria do navegador (pode chegar a 1-2s de atraso em
+        // páginas com bastante JS rodando, como esta) — ler getBoundingClientRect
+        // direto no evento de scroll (barato, sem forçar reflow extra) dá reação
+        // praticamente instantânea. Guarda o estado (isDocked) pra só chamar
+        // dock/undock quando realmente muda, evitando trabalho desnecessário.
+        (function setupHeroVideoPipScrollCheck() {
+            const anyHeroVideoEl = document.querySelector('[data-hero-video="true"]');
+            const heroVideoColumn = anyHeroVideoEl ? anyHeroVideoEl.closest('.fade-in-section') : null;
+            if (!heroVideoColumn) return;
+
+            let isDocked = false;
+            function checkHeroVideoPipVisibility() {
+                const rect = heroVideoColumn.getBoundingClientRect();
+                const outOfView = rect.bottom <= 0 || rect.top >= window.innerHeight;
+                if (outOfView && !isDocked) {
+                    isDocked = true;
+                    dockHeroVideoPip();
+                } else if (!outOfView && isDocked) {
+                    isDocked = false;
+                    undockHeroVideoPip();
+                }
+            }
+
+            window.addEventListener('scroll', checkHeroVideoPipVisibility, { passive: true });
+            // Rede de segurança (mesmo padrão da cobrinha) pra casos em que o
+            // scroll não dispara evento (ex.: mudança de layout sem rolagem).
+            setInterval(function () {
+                if (document.hidden) return;
+                checkHeroVideoPipVisibility();
+            }, 300);
+            checkHeroVideoPipVisibility();
+        })();
 
         function openCert(id) {
             const full = getCertFull()[id];
