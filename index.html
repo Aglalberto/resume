@@ -295,17 +295,6 @@
 
                 <!-- CTAs -->
                 <div class="flex flex-col items-center md:items-start gap-4">
-                    <a id="downloadCvBtn"
-                       href="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
-                       data-href-pt="https://drive.usercontent.google.com/u/0/uc?id=1iGHTWhWo1q802ihx5KFLP5bre9PiVM8X&export=download"
-                       data-href-en="https://drive.usercontent.google.com/u/0/uc?id=1G99grWDutQkA5nEERA8ph7ffrQivzzS6&export=download"
-                       target="_blank"
-                       class="hero-cta inline-block font-mono font-bold text-brand-dark bg-brand-accent border-2 border-brand-dark px-8 py-4
-                              shadow-[6px_6px_0px_0px_rgb(var(--c-shadow))] hover:shadow-[2px_2px_0px_0px_rgb(var(--c-shadow))]
-                              hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200">
-                        <span class="lang-pt">[ CURRÍCULO.PDF ]</span>
-                        <span class="lang-en">[ DOWNLOAD CV .PDF ]</span>
-                    </a>
 
                     <a id="behavioralProfileBtnMobile"
                        href="https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing"
@@ -1905,7 +1894,7 @@
                 <p><strong>Responsável:</strong> Aglalberto Silva — <a href="mailto:ux@aglalberto.com" class="underline underline-offset-4">ux@aglalberto.com</a>.</p>
                 <p><strong>O que é coletado:</strong> com o seu consentimento, o Hotjar (Contentsquare) registra dados de navegação — páginas vistas, cliques, rolagem, movimentos do mouse, tipo de dispositivo e navegador, resolução de tela e localização aproximada — e grava sessões de forma anônima. Este site não tem formulários e não pede nome, e-mail ou outros dados de identificação.</p>
                 <p><strong>Para quê:</strong> apenas para entender como o portfólio é usado e melhorar a experiência. Os dados não são vendidos nem usados para publicidade.</p>
-                <p><strong>Estatísticas sem cookies:</strong> o Umami conta visitas e cliques nos botões (ex.: currículo, "Ver projeto") de forma agregada e anônima, sem cookies e sem identificar quem visita. Ele funciona independentemente da sua escolha acima.</p>
+                <p><strong>Estatísticas sem cookies:</strong> o Umami conta visitas e cliques nos botões (ex.: "Ver projeto", "Perfil comportamental") de forma agregada e anônima, sem cookies e sem identificar quem visita. Ele funciona independentemente da sua escolha acima.</p>
                 <p><strong>Base legal:</strong> consentimento (art. 7º, I, da LGPD) para o Hotjar, que só carrega se você aceitar; legítimo interesse (art. 7º, IX) para as estatísticas anônimas do Umami.</p>
                 <p><strong>Armazenamento local:</strong> o navegador guarda suas escolhas de idioma, tema (claro/escuro) e privacidade. Ao aceitar, o Hotjar cria cookies próprios de análise. Ao tocar o vídeo, o player do Vimeo pode usar cookies próprios.</p>
                 <p><strong>Seus direitos:</strong> você pode mudar sua escolha a qualquer momento aqui ou pelo link "Privacidade" no rodapé, e pode pedir acesso, correção ou exclusão de dados pelo e-mail acima (art. 18 da LGPD).</p>
@@ -1914,7 +1903,7 @@
                 <p><strong>Controller:</strong> Aglalberto Silva — <a href="mailto:ux@aglalberto.com" class="underline underline-offset-4">ux@aglalberto.com</a>.</p>
                 <p><strong>What is collected:</strong> with your consent, Hotjar (Contentsquare) records browsing data — pages viewed, clicks, scrolling, mouse movements, device and browser type, screen resolution and approximate location — and records sessions anonymously. This site has no forms and never asks for your name, e-mail or other identifying data.</p>
                 <p><strong>Why:</strong> only to understand how the portfolio is used and improve the experience. Data is not sold or used for advertising.</p>
-                <p><strong>Cookieless statistics:</strong> Umami counts visits and button clicks (e.g. CV, "View project") in an aggregated, anonymous way, with no cookies and without identifying visitors. It runs regardless of your choice above.</p>
+                <p><strong>Cookieless statistics:</strong> Umami counts visits and button clicks (e.g. "View project", "Behavioral profile") in an aggregated, anonymous way, with no cookies and without identifying visitors. It runs regardless of your choice above.</p>
                 <p><strong>Legal basis:</strong> consent (LGPD art. 7, I) for Hotjar, which only loads if you accept; legitimate interest (art. 7, IX) for Umami's anonymous statistics.</p>
                 <p><strong>Local storage:</strong> your browser keeps your language, theme (light/dark) and privacy choices. If you accept, Hotjar sets its own analytics cookies. When you play the video, the Vimeo player may use its own cookies.</p>
                 <p><strong>Your rights:</strong> you can change your choice at any time here or via the "Privacy" link in the footer, and you can request access, correction or deletion of data through the e-mail above (LGPD art. 18).</p>
@@ -2002,7 +1991,6 @@
             var href = el.getAttribute('href') || '';
             var card = el.closest('.proj-card');
 
-            if (el.id === 'downloadCvBtn') return trackEvent('curriculo');
             if (el.id && el.id.indexOf('behavioralProfileBtn') === 0) return trackEvent('perfil-comportamental');
             if (el.id === 'langToggle') return trackEvent('idioma-alterado');
             if (card && (href.indexOf('figma.com') !== -1 || /openGallery\(/.test(el.getAttribute('onclick') || ''))) {
