@@ -68,8 +68,8 @@
     <!-- /i18n:dict -->
     <script>
         // --- i18n: textos em locales/<idioma>.json; o HTML já vem renderizado no idioma da página ---
-        // "/" = português, "/en/" = inglês. Na raiz, a primeira visita segue a escolha salva
-        // ou o idioma do navegador. Quem entra direto numa URL vê aquele idioma.
+        // "/" = português (sempre o padrão ao acessar), "/en/" = inglês. Quem entra direto
+        // numa URL vê aquele idioma; só o link antigo "/?lang=en" leva para /en/.
         (function () {
             var html = document.documentElement;
             var PATHS = { 'pt-BR': '/', 'en': '/en/' };
@@ -82,11 +82,7 @@
 
             if (pageLang === 'pt-BR') {
                 var q = new URLSearchParams(location.search).get('lang');
-                var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'pt').toLowerCase();
-                var want = q ? (q === 'en' ? 'en' : 'pt-BR')
-                             : (stored() || (nav.indexOf('pt') === 0 ? 'pt-BR' : 'en'));
-                if (q) store(want);
-                if (want === 'en' && PATHS.en) {
+                if (q === 'en' && PATHS.en) {
                     redirecting = true;
                     html.style.visibility = 'hidden';  // evita piscar o PT antes do redirecionamento
                     location.replace(PATHS.en + location.hash);
