@@ -1,0 +1,400 @@
+{
+  "_idioma": "pt-BR",
+  "nav": {
+    "trocarIdioma": "[ EN ]"
+  },
+  "hero": {
+    "perfilComportamental": "[ PERFIL COMPORTAMENTAL ]",
+    "saudacao": "// Olá, sou o",
+    "nome": "Aglalberto Silva.",
+    "cargo": "Product Designer | Especialista em IHC"
+  },
+  "resumo": {
+    "profissionalComMaisDe": "Profissional com mais de 10 anos de experiência em tecnologia e produtos digitais, com foco central em <strong>UI/UX Design</strong>, <strong>Interação Humano-Computador (IHC)</strong> e <strong>Design de Produto</strong>. Especializado na criação de interfaces intuitivas, acessíveis e focadas no usuário, atuando desde a pesquisa e arquitetura da informação até a entrega de protótipos navegáveis. Possui conhecimento de produto que facilita a ponte entre a visão de design, regras de negócio e viabilidade de implementação pelas equipes de desenvolvimento.",
+    "titulo": ">_ RESUMO_PROFISSIONAL"
+  },
+  "experiencia": {
+    "jasminStudio": {
+      "titulo": "Consultor de TI – Jasmin Studio & Advocacia Queiroz Bacelar",
+      "periodo": "Consultoria de sistemas, infraestrutura e Governança de TI – Jun 2026 – Set 2026 | Fortaleza/CE (Híbrido)",
+      "atividades": [
+        "Gestão de conteúdo dos websites.",
+        "Gestão de níveis de perfil e credenciais de acesso.",
+        "Gestão de infraestrutura de servidores e armazenamento em nuvem."
+      ]
+    },
+    "prostaflush": {
+      "titulo": "Marketing Digital Direct Response – ProstaFlush",
+      "periodo": "Editor de conteúdo e copywriter – Ago 2025 – Dez 2025 (Remoto)",
+      "atividades": [
+        "Criação de copys para venda de nutraceuticos (ProstaFlush) na Austrália, EUA, Canadá e Reino Unido.",
+        "Criação e edição de VSL’s para venda do ProstaFlush.",
+        "Utilização de ferramentas de inteligência artificial para criação e edição de vídeos."
+      ]
+    },
+    "desafiosEProblemasResolvidos": "[ DESAFIOS E PROBLEMAS RESOLVIDOS ]",
+    "vortex": {
+      "titulo": "Universidade de Fortaleza – Vortex",
+      "periodo": "Desenvolvedor Frontend (React) – Fev 2025 – Jun 2025 | Fortaleza/CE (Híbrido)",
+      "atividades": [
+        "Desenvolvimento do aplicativo Endoday utilizando React Native, Expo e TypeScript.",
+        "Implementação de componentes funcionais com hooks, rotas com Expo e gerenciamento de estado com Context API.",
+        "Integração com APIs RESTful e aplicação de estratégias de lazy loading e otimização de bundle.",
+        "Aplicação de boas práticas de UI/UX e otimização de performance mobile.",
+        "Integração com Git e GitHub para versionamento e colaboração em equipe."
+      ]
+    },
+    "crmMarketing": {
+      "titulo": "Universidade de Fortaleza – Diretoria de Marketing",
+      "periodo": "Analista de CRM (Dynamics 365) – Fev 2021 – Fev 2025 | Fortaleza/CE (Híbrido)",
+      "atividades": [
+        "Gerenciamento de inscrições através do CRM Dynamics 365 da Microsoft.",
+        "Customização de formulários com JavaScript e jQuery direto no frontend.",
+        "Criação de campanhas automatizadas (email, SMS, ligações) integradas a sistemas internos.",
+        "Desenvolvimento de templates responsivos em HTML e CSS com foco em conversão.",
+        "Geração de relatórios estratégicos com dados de marketing e performance."
+      ]
+    },
+    "pesse": {
+      "titulo": "PESSE – Startup de Logística",
+      "periodo": "Sócio-Fundador | Designer de Produto Digital (UI/UX e Frontend) – Set 2020 – Ago 2023 | Fortaleza/CE",
+      "atividades": [
+        "Criação de interfaces para sistemas logísticos e dashboards administrativos utilizando Figma.",
+        "Condução de testes de usabilidade, entrevistas e análise de comportamento de usuário.",
+        "Participação em eventos como Web Summit 2022 e programas de aceleração regionais.",
+        "Gerenciamento de sistema em tecnologia PHP utilizando Laravel.",
+        "Liderança na definição de fluxos, jornadas e prototipagem interativa."
+      ]
+    },
+    "besalt": {
+      "titulo": "Besalt – Tecnologia e Design",
+      "periodo": "Sócio-Fundador | Product Owner & UI/UX Designer – Out 2017 – Jan 2020 | Fortaleza/CE",
+      "atividades": [
+        "Coordenação de backlog, levantamento de requisitos e interação com stakeholders.",
+        "Design e redesign de interfaces web/mobile baseados em testes de usabilidade.",
+        "Desenvolvimento de protótipos e implementações usando HTML, CSS, JavaScript e jQuery.",
+        "Experiência com controle de versão (Git) e organização ágil de tarefas.",
+        "Aplicação de conceitos de Design Thinking e UX Strategy em múltiplos projetos."
+      ]
+    },
+    "universidadeDeFortalezaLaboratorio": "Universidade de Fortaleza – Laboratório de Inovação",
+    "labLideranca": {
+      "periodo": "Líder de Design & Mentor de Produtos Digitais – Ago 2016 – Jan 2020 | Fortaleza/CE",
+      "atividades": [
+        "Liderança de equipes de design e condução de projetos de inovação acadêmica.",
+        "Elaboração de design systems e interfaces educacionais centradas no usuário.",
+        "Apoio à fundação da Besalt com base em aprendizados práticos de produto.",
+        "Participação em discussões técnicas envolvendo tecnologias frontend e prototipação."
+      ]
+    },
+    "labEstagio": {
+      "periodo": "Estagiário em UI & UX Design – Set 2014 – Ago 2016 | Fortaleza/CE",
+      "atividades": [
+        "Atuação em projetos de inovação com foco em modelagem 3D, prototipação e UX.",
+        "Criação de wireframes e testes de interfaces mobile e web.",
+        "Envolvimento com equipes multidisciplinares em pesquisas e projetos científicos."
+      ]
+    },
+    "titulo": ">_ EXPERIÊNCIA_PROFISSIONAL"
+  },
+  "formacao": {
+    "mbaEmDesignGrafico": "MBA em Design Gráfico e Digital",
+    "bachareladoEmAudiovisualE": "Bacharelado em Audiovisual e Novas Mídias",
+    "analiseEDesenvolvimentoDe": "Análise e Desenvolvimento de Sistemas",
+    "portugues": "Português:",
+    "nativo": "Nativo",
+    "ingles": "Inglês:",
+    "avancadoC1": "Avançado (C1)",
+    "alemao": "Alemão:",
+    "cursoEmAndamento": "Curso em andamento",
+    "tituloFormacao": ">_ FORMAÇÃO_ACADÊMICA",
+    "tituloIdiomas": ">_ IDIOMAS",
+    "tituloCursos": ">_ CURSOS_COMPLEMENTARES"
+  },
+  "portfolio": {
+    "bitmed": {
+      "tag": "Plataforma Web B2B · Healthtech",
+      "contexto": "Plataforma de gestão do ciclo de guias médicas (Consulta, SADT e Honorários): envio, pendências, inconsistências, faturamento e recurso de glosa, com perfis Admin e Cliente.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Prototipação hi-fi navegável",
+        "Design de interação: fluxos de tarefa e estados de UI",
+        "Testes de usabilidade e iteração",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "atividadesRealizadas": "Atividades realizadas",
+    "verProjeto": "[ VER PROJETO ↗ ]",
+    "mivaEasyParkApp": {
+      "tag": "App Mobile iOS/Android · Mobilidade",
+      "contexto": "App de reserva de estacionamento para eventos: o usuário escolhe o evento e reserva a vaga pelo celular.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Product Owner: backlog e priorização",
+        "Arquitetura da informação e fluxos de navegação",
+        "Prototipação mid e hi-fi",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "planoDiretor": {
+      "nome": "Plano Diretor",
+      "tag": "Plataforma Web GovTech · Participação cidadã",
+      "contexto": "Plataforma de participação popular na revisão do Plano Diretor de Fortaleza: o cidadão propõe alterações nos artigos, debate e vota, e as equipes técnico-jurídica e de padronização analisam as propostas.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Arquitetura da informação e fluxos de navegação",
+        "Prototipação hi-fi navegável",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "resta1": {
+      "nome": "Resta1",
+      "tag": "App Mobile iOS/Android · Fantasy sports",
+      "contexto": "Jogo de ligas sobre o Brasileirão: a cada rodada o usuário aposta num time diferente, em ligas públicas, privadas ou oficiais, algumas com premiação.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Product Owner: backlog e priorização",
+        "Arquitetura da informação e fluxos de navegação",
+        "Prototipação hi-fi navegável",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "isanex": {
+      "tag": "Plataforma Web · M&A e Venture Capital",
+      "contexto": "Marketplace que conecta empresas vendedoras a compradores e investidores: matching, deals com NDA e teaser, pipelines e chat, com jornadas distintas para Buyer e Seller.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Identidade visual do produto",
+        "Arquitetura da informação: sitemap e navegação",
+        "Wireframes e prototipação lo-fi"
+      ]
+    },
+    "telecall": {
+      "tag": "App Mobile iOS/Android · Telecom",
+      "contexto": "App de autoatendimento da operadora: gestão de linhas móveis e fixas, consumo, faturas, abertura e acompanhamento de chamados técnicos e contratação de serviços.",
+      "atividades": [
+        "Prototipação hi-fi navegável",
+        "Design de interação: fluxos de tarefa e estados de UI",
+        "Testes de usabilidade e iteração",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "memorialDoPaco": {
+      "nome": "Memorial do Paço",
+      "tag": "App Mobile · Guia de visitação",
+      "contexto": "Guia interativo do Paço Municipal de Fortaleza: guia virtual, leitura de QR Codes nas salas, mapa do acervo, missões e quiz para os visitantes.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Arquitetura da informação e fluxos de navegação",
+        "Prototipação mid e hi-fi",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "exphobia": {
+      "tag": "App Mobile AR · Healthtech",
+      "contexto": "Sistema de apoio ao enfrentamento de fobias específicas com realidade aumentada em dispositivos móveis.",
+      "atividades": [
+        "Identidade visual (símbolo, paleta e guia de marca)",
+        "Branding",
+        "Design Lead do projeto",
+        "UX para realidade aumentada (AR)",
+        "Testes de usabilidade e iteração"
+      ],
+      "verProjeto": "[ VER PROJETO ]"
+    },
+    "agenteCidadao": {
+      "nome": "Agente Cidadão",
+      "tag": "App Mobile iOS/Android · Saúde pública",
+      "contexto": "App de mobilização social contra o Aedes aegypti (dengue, zika e chikungunya): cadastro da residência, rotina semanal de eliminação de focos com alarmes e registro de casos.",
+      "atividades": [
+        "Prototipação lo-fi a hi-fi",
+        "Design de interação: fluxos de tarefa e estados de UI",
+        "UX Research com usuários finais",
+        "Testes de usabilidade e iteração",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "iconesCulturaisVirtuais": {
+      "nome": "Ícones Culturais Virtuais",
+      "tag": "App Mobile AR · Turismo cultural",
+      "contexto": "Experiência de realidade aumentada geolocalizada: pelo mapa, o usuário vai até o ponto e encontra personagens culturais de Fortaleza (Iracema, José de Alencar, Dragão do Mar) em AR, desbloqueando o conteúdo de cada um.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Arquitetura da informação e fluxos de navegação",
+        "Prototipação hi-fi navegável",
+        "Product Owner: backlog e priorização",
+        "Testes de usabilidade e iteração",
+        "UX para realidade aumentada (AR)",
+        "Design System e biblioteca de componentes"
+      ]
+    },
+    "iracemaVirtual": {
+      "nome": "Iracema Virtual",
+      "tag": "App Mobile AR · Patrimônio cultural",
+      "contexto": "Recriação em 3D e realidade aumentada da personagem Iracema, de José de Alencar, que também ganhou projeção holográfica na Praia de Iracema.",
+      "atividades": [
+        "Discovery e especificação de requisitos",
+        "Prototipação hi-fi navegável",
+        "Arquitetura da informação e fluxos de navegação",
+        "Product Owner: backlog e priorização",
+        "Modelagem 3D de assets para AR",
+        "UX para realidade aumentada (AR)"
+      ],
+      "emAtualizacao": "[ EM ATUALIZAÇÃO ]"
+    },
+    "arraste": "arraste →",
+    "titulo": ">_ PORTFÓLIO",
+    "anterior": "Anterior",
+    "proximo": "Próximo"
+  },
+  "certificados": {
+    "diploma": "[ DIPLOMA ]",
+    "c01": {
+      "titulo": "Graduação em ADS"
+    },
+    "c02": {
+      "titulo": "MBA Design Gráfico e Digital"
+    },
+    "c03": {
+      "titulo": "Graduação em Audiovisual e Novas Mídias"
+    },
+    "certificadoProfissional": "[ CERTIFICADO PROFISSIONAL ]",
+    "c04": {
+      "titulo": "Git & GitHub básico"
+    },
+    "c07": {
+      "titulo": "Programa Corredores Digitais"
+    },
+    "c08": {
+      "titulo": "Programa Corredores Digitais + Clusters Econômicos de Inovação"
+    },
+    "certificadoAcademico": "[ CERTIFICADO ACADÊMICO ]",
+    "c16": {
+      "titulo": "CBIS Aplicativo AEDES"
+    },
+    "encontrosCientificos": "Encontros Científicos",
+    "c20": {
+      "titulo": "Análise de Requisitos"
+    },
+    "c24": {
+      "titulo": "Curso de Fotografia UFC"
+    },
+    "titulo": ">_ DIPLOMAS_E_CERTIFICAÇÕES"
+  },
+  "imprensa": {
+    "link1": {
+      "titulo": "Unifor apresenta aplicativo de mobilização social contra dengue, zika e chikungunya"
+    },
+    "link2": {
+      "titulo": "Alunos da Unifor recriam em 3D personagem de José de Alencar"
+    },
+    "link3": {
+      "titulo": "Universidade desenvolve aplicativo voltado para doentes renais"
+    },
+    "link4": {
+      "titulo": "Alunos da Unifor são finalistas do Desafio Renault Experience 2.0"
+    },
+    "link5": {
+      "titulo": "Projeção holográfica da índia Iracema pode ser visitada na Praia de Iracema"
+    },
+    "link6": {
+      "titulo": "O céu é o limite para as startups"
+    },
+    "link7": {
+      "titulo": "Startup cearense PESSE Tech participa do evento Inova Portos"
+    },
+    "link8": {
+      "titulo": "Clusters Econômicos de Inovação: jovens empreendedores se destacam no comando de startups cearenses"
+    },
+    "link9": {
+      "titulo": "Governo do Ceará e startups cearenses têm momentos de destaque no último dia da Web Summit 2022"
+    },
+    "titulo": ">_ IMPRENSA"
+  },
+  "rodape": {
+    "privacidade": "Privacidade"
+  },
+  "desafios": {
+    "titulo": "Desafios e problemas que resolvi",
+    "prostaflush": {
+      "subtitulo": "Marketing Digital Direct Response – ProstaFlush",
+      "texto": "O principal desafio foi criar copys e hooks visuais para captar usuários e também trabalhar com diversos arquivos de vídeo utilizando IA, procurando deixar a IA o mais perfeita possível para manter o usuário ativo no vídeo de vendas. Experimentar diversas IAs geradoras de vídeo me fez resolver problemas durante o processo."
+    },
+    "vortex": {
+      "subtitulo": "Universidade de Fortaleza – Vortex",
+      "texto": "O principal desafio no projeto foi utilizar o React Native com o Expo, pois eu só tinha trabalhado com o React Native sem o Expo, criando rotas manualmente. Os principais problemas que tive durante o desenvolvimento do projeto foram relacionados a ajustes de posicionamento de elementos de interface e responsividade entre Android e iOS, mas como eu já tenho um bom conhecimento de HTML5 e CSS3 isso me ajudou muito a solucionar esses problemas."
+    },
+    "crm": {
+      "subtitulo": "Universidade de Fortaleza – Diretoria de Marketing",
+      "texto": "Os principais desafios trabalhando com o CRM Dynamics 365 da Microsoft eram a interface nada intuitiva da ferramenta, um sistema muito robusto com muitas funções e possibilidades. Na época as IAs ainda não estavam tão inteligentes como hoje em dia, principalmente para informações específicas do Dynamics 365. Tive problemas de diversas naturezas dentro da plataforma, seja de base de dados, relacionamento de campos ou integrações, e a maioria eu precisava solucionar lendo documentação da própria Microsoft ou solicitando reuniões com especialistas da Microsoft, que na maioria das vezes eram de fora do país, então eu me comunicava em inglês para solucionar os problemas."
+    },
+    "pesse": {
+      "subtitulo": "PESSE – Startup de Logística",
+      "texto": "O principal desafio com a Pesse era projetar uma interface para gestores de frota utilizarem, pois na maioria das vezes o perfil deles é limitado ao uso de tecnologia. Consegui criar interfaces com princípios de acessibilidade, deixando a plataforma flexível e eficiente, o que facilitou muito seu uso durante as operações logísticas em campo."
+    },
+    "besalt": {
+      "subtitulo": "Besalt – Tecnologia e Design",
+      "texto": "Os principais desafios durante a época de empreendedorismo com a Besalt: primeiro, por ser uma sociedade, eu precisava me adaptar ao ritmo dos meus sócios. Como sócio, sentia a responsabilidade de atuar em qualquer necessidade da empresa: fui representante comercial, product owner, UI/UX designer, scrum master, criador de conteúdo, social media e desenvolvedor front-end. Como eu tinha conhecimento de produto e tecnologia, nas reuniões comerciais conseguia enxergar a viabilidade de implementação dos requisitos exigidos pelos clientes, o que facilitava o fluxo de trabalho entre cliente e desenvolvimento, evitando que problemas surgissem futuramente durante a fase de desenvolvimento."
+    },
+    "labLider": {
+      "subtitulo": "Universidade de Fortaleza – Laboratório de Inovação (Líder de Design)",
+      "texto": "Os principais desafios no Laboratório de Inovação da Unifor, como líder de design, eram levantar os requisitos com os clientes, analisá-los e repassá-los à equipe de design de produto para construir os protótipos de interface conforme o objetivo e o escopo do projeto. Nesse período comecei a estudar profundamente IHC, as heurísticas de Nielsen e os ensinamentos de Donald Norman, o que me fez enxergar o mundo e a tecnologia de outra forma, e isso me ajudou a facilitar o fluxo de trabalho entre cliente, designer e desenvolvedor, solucionando eventuais problemas de desvio de escopo e requisitos."
+    },
+    "labEstagiario": {
+      "subtitulo": "Universidade de Fortaleza – Laboratório de Inovação (Estagiário em UI & UX Design)",
+      "texto": "Durante o primeiro ano como estagiário, executei diversas atividades como modelagem 3D, animação 2D e 3D, desenho digital, iconografia, identidade visual, prototipação de interfaces, design gráfico, design para impressão, HTML e CSS, criação de artigos científicos, pesquisa e desenvolvimento acadêmico. A partir do segundo ano, percebi que meu potencial estava voltado para a criação de interfaces com as melhores práticas de design de interação e experiência do usuário. Os maiores problemas que enfrentei nesse período foram criar interfaces complexas demais para os desenvolvedores implementarem, pois eu ainda não tinha conhecimento tecnológico suficiente. Foi aí que passei a estudar mais sobre desenvolvimento front-end, principalmente para facilitar essa comunicação entre designer e desenvolvedor."
+    }
+  },
+  "consentimento": {
+    "privacidade": "[ PRIVACIDADE ]",
+    "usoOHotjarPara": "Uso o Hotjar para entender como o site é navegado (cliques, rolagem e gravações anônimas de sessão) e melhorar a experiência. Só ativo com o seu consentimento.",
+    "saibaMais": "Saiba mais",
+    "aceitar": "[ ACEITAR ]",
+    "recusar": "[ RECUSAR ]"
+  },
+  "privacidade": {
+    "titulo": "Política de Privacidade",
+    "leiGeralDeProtecao": "Lei Geral de Proteção de Dados (Lei nº 13.709/2018)",
+    "corpo": "<p><strong>Responsável:</strong> Aglalberto Silva — <a href=\"mailto:ux@aglalberto.com\" class=\"underline underline-offset-4\">ux@aglalberto.com</a>.</p> <p><strong>O que é coletado:</strong> com o seu consentimento, o Hotjar (Contentsquare) registra dados de navegação — páginas vistas, cliques, rolagem, movimentos do mouse, tipo de dispositivo e navegador, resolução de tela e localização aproximada — e grava sessões de forma anônima. Este site não tem formulários e não pede nome, e-mail ou outros dados de identificação.</p> <p><strong>Para quê:</strong> apenas para entender como o portfólio é usado e melhorar a experiência. Os dados não são vendidos nem usados para publicidade.</p> <p><strong>Estatísticas sem cookies:</strong> o Umami conta visitas e cliques nos botões (ex.: \"Ver projeto\", \"Perfil comportamental\") de forma agregada e anônima, sem cookies e sem identificar quem visita. Ele funciona independentemente da sua escolha acima.</p> <p><strong>Base legal:</strong> consentimento (art. 7º, I, da LGPD) para o Hotjar, que só carrega se você aceitar; legítimo interesse (art. 7º, IX) para as estatísticas anônimas do Umami.</p> <p><strong>Armazenamento local:</strong> o navegador guarda suas escolhas de idioma, tema (claro/escuro) e privacidade. Ao aceitar, o Hotjar cria cookies próprios de análise. Ao tocar o vídeo, o player do Vimeo pode usar cookies próprios.</p> <p><strong>Seus direitos:</strong> você pode mudar sua escolha a qualquer momento aqui ou pelo link \"Privacidade\" no rodapé, e pode pedir acesso, correção ou exclusão de dados pelo e-mail acima (art. 18 da LGPD).</p>",
+    "statusAtual": "Status atual:",
+    "aceitar": "[ ACEITAR ]",
+    "recusar": "[ RECUSAR ]",
+    "status": {
+      "aceito": "Aceito",
+      "recusado": "Recusado",
+      "pendente": "Ainda não escolhido"
+    }
+  },
+  "links": {
+    "perfilComportamental": "https://drive.google.com/file/d/1v_VBvI0d7nlX1PNFQcAu5rfhGocRK8ca/view?usp=sharing",
+    "figma": {
+      "bitmed": "https://www.figma.com/design/41bnGwn0aQgGgNyjgbiqhd/BitMed-%E2%80%94-Sistema-de-Guias-M%C3%A9dicas?m=auto&t=eDOOigwGh3rVTQOn-1",
+      "mivaEasyParkApp": "https://www.figma.com/design/3ifwRzsSz8ilxIuiVNPbfE/Miva-Easy-Park-App?m=auto&t=c11x6AN1xFm7tVlZ-1",
+      "planoDiretor": "https://www.figma.com/design/CfgCX2jZWTlJJQwAHK9OU1/Plano-Diretor-de-Fortaleza-%E2%80%94-Plataforma-de-Participa%C3%A7%C3%A3o-Popular?m=auto&t=eDOOigwGh3rVTQOn-1",
+      "resta1": "https://www.figma.com/design/1qD67Ufbq4driEqs7Kvfj9/Resta1-Futebol-App?m=auto&t=Hrz8GIzym7X7YYDQ-1",
+      "isanex": "https://www.figma.com/design/4qmPfv56L8duBkVNlQQigb/Isanex-%E2%80%94-Smart-M-A-Platform?m=auto&t=c11x6AN1xFm7tVlZ-1",
+      "telecall": "https://www.figma.com/design/M3uawm1NjT0ym3JeA06tDJ/Telecall-App?m=auto&t=Hrz8GIzym7X7YYDQ-1",
+      "memorialDoPaco": "https://www.figma.com/design/rQesHLXVyrA6WtXqwVXUzQ/Memorial-do-Pa%C3%A7o-%E2%80%94-App-Guia-de-Visita%C3%A7%C3%A3o?m=auto&t=bDGKe7dvOlNUyAvz-1",
+      "agenteCidadao": "https://www.figma.com/design/I4cyrEDDxg8BCK5I5Bvuz3?node-id=0-1",
+      "iconesCulturaisVirtuais": "https://www.figma.com/design/kSCNWkzKZde3UmwUDHDNE3?node-id=0-1"
+    }
+  },
+  "tema": {
+    "ativarEscuro": "Ativar modo escuro",
+    "ativarClaro": "Ativar modo claro"
+  },
+  "comum": {
+    "fechar": "Fechar"
+  },
+  "galeria": {
+    "anterior": "Slide anterior",
+    "proximo": "Próximo slide",
+    "imagemAmpliada": "Imagem ampliada",
+    "certificadoAmpliado": "Certificado ampliado",
+    "slide": "Slide {n} de {total}"
+  },
+  "meta": {
+    "titulo": "Aglalberto Silva | Product Designer",
+    "descricao": "Portfólio de Aglalberto Silva, Product Designer especialista em IHC: projetos de UX/UI, design de interação, Design System e realidade aumentada."
+  }
+}

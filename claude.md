@@ -69,3 +69,17 @@ For meaningful implementations:
 9. Only then consider the task complete.
 
 Do not redesign unrelated parts of the existing portfolio unless explicitly requested.
+## Textos e idiomas (i18n)
+
+Todos os textos do portfólio ficam em `locales/pt-BR.json` e `locales/en.json`.
+`/` é a página em português e `/en/` a página em inglês.
+
+Para mudar um texto:
+1. Edite o JSON (as duas versões).
+2. Rode `python3 scripts/build-i18n.py`: ele reescreve `index.html` e gera `en/index.html` e `sitemap.xml`.
+3. Suba os arquivos gerados junto.
+
+Não edite `en/index.html` à mão. No HTML, os elementos usam `data-i18n`, `data-i18n-html`,
+`data-i18n-list`, `data-i18n-type`, `data-i18n-attr` e `data-i18n-href` com a chave do JSON.
+Novo idioma: crie `locales/<código>.json` com as mesmas chaves e acrescente-o em `LANGS`
+(scripts/build-i18n.py) e `PATHS` (runtime no `<head>` do index.html).
